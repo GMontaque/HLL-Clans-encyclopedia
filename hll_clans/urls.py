@@ -19,6 +19,6 @@ from django.urls import path, include
 from clan_pages import views as clan_views
 
 urlpatterns = [
-    path('', clan_views.index, name='index'),
+    path('', clan_views.index, name='clans'),
     path('admin/', admin.site.urls),
 ]
