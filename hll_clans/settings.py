@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-qxof%3e1#c)dx4!l%353@5%*rekqh6_1k-uax9sr*0y6+!tknz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["127.0.0.1","localhost",'.herokuapp.com']
+ALLOWED_HOSTS = ["127.0.0.1","localhost",'.herokuapp.com','https://hll-clans-encyclopedia-085b920e958c.herokuapp.com/']
 
 
 # Application definition
