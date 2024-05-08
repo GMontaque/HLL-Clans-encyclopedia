@@ -1,0 +1,22 @@
+<!-- loads base.html then this html file inside it -->
+{% extends "base.html" %} 
+<!-- states content to be loaded in base.html  -->
+{% block content %}
+<!-- loads css  -->
+{% load static %}
+<!-- index.html content starts here -->
+<div class="container-fluid">
+	<div class="row ">
+        <div class="card">
+            <img class="card-img-top" src="" alt="">
+            <div class="card-body">
+                <h4 class="card-title">Title</h4>
+                <p class="card-text">text</p>
+            </div>
+        </div>
+    </div>
+		
+</div>
+{% endblock %}
+
+
