@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'index',
     'clan_pages',
+    'clan_creation',
     'notifications',
     'matches',
 ]
