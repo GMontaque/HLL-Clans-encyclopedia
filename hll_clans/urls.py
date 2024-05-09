@@ -23,6 +23,7 @@ urlpatterns = [
     path('clan_creation/', include('clan_creation.urls'), name='clan_creation'),
     path('match_request/', include('matches.urls'), name='matchs'),
     path('notifications/', include('notifications.urls'), name='notifications'),
+    path("accounts/", include("allauth.urls")),
     path('admin/', admin.site.urls),
 ]
 
