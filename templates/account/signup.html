@@ -1,4 +1,5 @@
-{% extends "account/base_entrance.html" %}
+<!-- loads base.html then this html file inside it -->
+{% extends "base.html" %} 
 {% load allauth i18n %}
 {% block head_title %}
     {% trans "Signup" %}
@@ -13,6 +14,7 @@
         {% setvar end_link %}
         </a>
     {% endsetvar %}
+    <h1>asfgasf</h1>
     <p>{% blocktranslate %}Already have an account? Then please {{ link }}sign in{{ end_link }}.{% endblocktranslate %}</p>
     {% if not SOCIALACCOUNT_ONLY %}
         {% url 'account_signup' as action_url %}
