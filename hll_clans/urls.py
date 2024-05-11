@@ -19,8 +19,8 @@ from django.urls import path, include, path
 
 urlpatterns = [
     path('', include('index.urls'), name='index'),
-    path('clan_page', include('clan_pages.urls'), name='clans'),
-    path('clan_creation/', include('clan_creation.urls'), name='clan_creation'),
+    # goes to the clan page and clan creation html
+    path('clan', include('clan_pages.urls'), name='clans'),
     path('match_request/', include('matches.urls'), name='matchs'),
     path('notifications/', include('notifications.urls'), name='notifications'),
     path("accounts/", include("allauth.urls")),
