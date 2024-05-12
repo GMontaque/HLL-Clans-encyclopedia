@@ -1,22 +1,20 @@
 from django.db import models
 from clan_pages.models import Clan
 
-gametype = {
-    "18vs18": 0,
-    "50vs50": 1,
-    "30vs30": 2,
-    "Tank": 3,
-    "Other": 4,
-}
-
-
 # Create your models here.
 class Match(models.Model):
     """
     """
-    inviter_clan = models.ForeignKey(Clan, verbose_name=(""), on_delete=models.CASCADE,related_name='inviter')
-    invitee_clan = models.ForeignKey(Clan, verbose_name=(""), on_delete=models.CASCADE,related_name='invitee')
-    game_type = models.IntegerField()
+    inviter_clan = models.ForeignKey(Clan, verbose_name=("Inviter"), on_delete=models.CASCADE,related_name='inviter')
+    invitee_clan = models.ForeignKey(Clan, verbose_name=("Invitee"), on_delete=models.CASCADE,related_name='invitee')
+    # game_type = models.IntegerField()
+    game_type = models.CharField(max_length=10, choices=[
+        ("18vs18", "18vs18"),
+        ("50vs50", "50vs50"),
+        ("30vs30", "30vs30"),
+        ("Tank", "Tank"),
+        ("Other", "Other"),
+    ])
     match_date = models.DateTimeField()
     message = models.TextField()
-    is_accepted = models.BooleanField((""))
+    is_accepted = models.BooleanField(("Is Accepted"))
