@@ -2,12 +2,12 @@ from django import forms
 # from crispy_forms.helper import FormHelper
 # from crispy_forms.layout import Submit
 
-class create_clan(forms.Form):
+class CreateClan(forms.Form):
     Clan_Name = forms.CharField()
-    Content = forms.CharField()
+    Content = forms.CharField(widget=forms.Textarea)
     Images = forms.EmailField()
-    Discord = forms.CharField(widget=forms.Textarea)
-    Website = forms.CharField(widget=forms.Textarea)
+    Discord = forms.CharField()
+    Website = forms.CharField()
 
     # def __init__(self, *args, **kwargs):
     #     super().__init__(*args, **kwargs)
