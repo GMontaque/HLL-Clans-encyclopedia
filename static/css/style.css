@@ -1,4 +1,4 @@
-/******************* General website styling *******************/
+/******************* base website styling *******************/
 html {
 	box-sizing: border-box;
 	font-size: 62.5%; /*1rem = 10px, 10px/16px = 62.5%*/
@@ -11,6 +11,29 @@ html {
 	padding: 0;
 	box-sizing: inherit;
 }
-body {
-	background-color: #f9fafc;
+
+/******************* generic styling *******************/
+.display-none {
+	display: none;
+}
+
+/******************* navbar styling *******************/
+.navbar-expand-sm .navbar-collapse {
+	justify-content: space-between;
+}
+
+.login-system {
+	display: flex;
+	width: 10%;
+	margin-bottom: 0rem;
+	padding-left: 0rem;
+	justify-content: space-around;
+}
+
+.login-system ul {
+	display: flex;
+}
+
+.login-system li {
+	list-style: none;
 }

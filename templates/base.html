@@ -1,138 +1,173 @@
 {% load static %}
+<!--  -->
 {% url 'account_login' as login_url %}
+<!--  -->
 {% url 'account_signup' as signup_url %}
+<!--  -->
 {% url 'account_logout' as logout_url %}
 
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Title</title>
-        <!-- Required meta tags -->
-        <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
+	<head>
+		<title>Title</title>
+		<!-- Required meta tags -->
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
 		<!-- Font Awesome CSS -->
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
 		/>
-        <!-- Bootstrap CSS v5.2.1 -->
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-            crossorigin="anonymous"
-        />
-        <!-- Custom CSS -->
+		<!-- Bootstrap CSS v5.2.1 -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+			crossorigin="anonymous"
+		/>
+		<!-- Custom CSS -->
 		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    </head>
-    <body>
-        <header>
-            <!-- place navbar here -->
-                <nav
-                    class="navbar navbar-expand-sm navbar-light bg-light"
-                >
-                    <div class="container">
-                        <a class="navbar-brand" href="#">Navbar</a>
-                        <button
-                            class="navbar-toggler d-lg-none"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#collapsibleNavId"
-                            aria-controls="collapsibleNavId"
-                            aria-expanded="false"
-                            aria-label="Toggle navigation"
-                        >
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="collapsibleNavId">
-                            <ul class="navbar-nav me-auto mt-2 mt-lg-0">
-                                <!-- home page link -->
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="{% url 'index' %}" aria-current="page"
-                                        >Home
-                                        <span class="visually-hidden">(current)</span></a
-                                    >
-                                </li>
-                                <!-- raise a clan game request -->
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{% url 'match_request' %}">Clan Match</a>
-                                </li>
-                                <!-- shows notifications -->
-                                <li class="nav-item">
-                                    <!-- links with url.py inside notifications app -->
-                                    <a class="nav-link" href="{% url 'notifications' %}">notification</a>
-                                </li>
-                                 <!-- clan creation  -->
-                                 <li class="nav-item">
-                                    <!-- links with url.py inside notifications app -->
-                                    <a class="nav-link" href="{% url 'clan_creation' %}">clan creation</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a
-                                        class="nav-link dropdown-toggle"
-                                        href="#"
-                                        id="dropdownId"
-                                        data-bs-toggle="dropdown"
-                                        aria-haspopup="true"
-                                        aria-expanded="false"
-                                        >Dropdown</a
-                                    >
-                                    <div
-                                        class="dropdown-menu"
-                                        aria-labelledby="dropdownId"
-                                    >
-                                        <a class="dropdown-item" href="#"
-                                            >Action 1</a
-                                        >
-                                        <a class="dropdown-item" href="#"
-                                            >Action 2</a
-                                        >
-                                    </div>
-                                </li>
-                                {% if user.is_authenticated %}
-                                <li class="nav-item">
-                                    <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
-                                </li>
-                                {% else %}
-                                <li class="nav-item">
-                                    <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
-                                        href="{% url 'account_signup' %}">Register</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">Login</a>
-                                </li>
-                                {% endif %}
-                            </ul>
-                        </div>
-                    
-                     
-                    </div>
-                </nav>
-                
-        </header>
-        <main>
-            {% block content %}
-			<!-- Content Goes here -->
-			{% endblock content %}
-        </main>
-        <footer>
-            <!-- place footer here -->
-        </footer>
-        <!-- Bootstrap JavaScript Libraries -->
-        <script
-            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-            crossorigin="anonymous"
-        ></script>
+	</head>
+	<body>
+		<header>
+			<!-- place navbar here -->
+			<nav class="navbar navbar-expand-sm navbar-light bg-light">
+				<div class="container-fluid">
+					<!-- website logo -->
+					<a class="navbar-brand" href="{% url 'index' %}">Logo</a>
+					<!-- mobile nav button -->
+					<button
+						class="navbar-toggler d-lg-none"
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#collapsibleNavId"
+						aria-controls="collapsibleNavId"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+					>
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<!-- main nav bar - 768px and above -->
+					<div class="collapse navbar-collapse" id="collapsibleNavId">
+						<ul class="navbar-nav me-auto mt-2 mt-lg-0">
+							<!-- home page link -->
+							<li class="nav-item">
+								<a
+									class="nav-link active"
+									href="{% url 'index' %}"
+									aria-current="page"
+									>Home <span class="visually-hidden">(current)</span></a
+								>
+							</li>
+							<!-- raise a clan game request -->
+							<li class="nav-item">
+								<a class="nav-link" href="{% url 'match_request' %}"
+									>Clan Match</a
+								>
+							</li>
+							<!-- shows notifications -->
+							<li class="nav-item">
+								<!-- links with url.py inside notifications app -->
+								<a class="nav-link" href="{% url 'notifications' %}"
+									>Notification</a
+								>
+							</li>
+							<!-- clan creation  -->
+							<li class="nav-item">
+								<!-- links with url.py inside notifications app -->
+								<a class="nav-link" href="{% url 'clan_creation' %}"
+									>Clan Creation</a
+								>
+							</li>
+						</ul>
+						<ul class="login-system">
+							<!-- user registration, log in or log out -->
+							{% if user.is_authenticated %}
+							<li class="nav-item">
+								<a
+									class="nav-link {% if request.path == logout_url %}active{% endif %}"
+									aria-current="page"
+									href="{% url 'account_logout' %}"
+									>Logout</a
+								>
+							</li>
+							{% else %}
+							<li class="nav-item">
+								<a
+									class="nav-link {% if request.path == signup_url %}active{% endif %}"
+									aria-current="page"
+									href="{% url 'account_signup' %}"
+									>Register</a
+								>
+							</li>
+							<li class="nav-item">
+								<a
+									class="nav-link {% if request.path == login_url %}active{% endif %}"
+									aria-current="page"
+									href="{% url 'account_login' %}"
+									>Login</a
+								>
+							</li>
+							{% endif %}
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<main>
+			<div class="container-fluid">
+				{% block content %}
+				<!-- Content Goes here -->
+				{% endblock content %}
+			</div>
+		</main>
+		<footer>
+			<!-- footer title -->
+			<h2 class="display-none">website footer</h2>
+			<div class="container-fluid">
+				<!-- footer content -->
+				<div class="row">
+					<!-- offical game external links -->
+					<section class="col-md-4 col-sm-6">
+						<ul>
+							<li><a href="#">offical hell let loose website</a></li>
+							<li><a href="#">offical hell let loose discord</a></li>
+							<li><a href="#">buyy the game</a></li>
+						</ul>
+					</section>
+					<!-- game logo and name -->
+					<section class="col-md-4 col-sm-6">
+						<h3>Hell Let Loose Encylopedia</h3>
+						<img src="" alt="" class="hll-logo" />
+					</section>
+					<!-- creator details -->
+					<section class="col-md-4 col-sm-6">
+						<h3>created by</h3>
+						<p>giulio montaque</p>
+						<p class="email">text@example.com</p>
+						<p>
+							Contact me if you have any questions or suggestions for
+							improvements
+						</p>
+					</section>
+				</div>
+			</div>
+		</footer>
+		<!-- Bootstrap JavaScript Libraries -->
 
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-            crossorigin="anonymous"
-        ></script>
-    </body>
+		<script
+			src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+			integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+			crossorigin="anonymous"
+		></script>
+
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+			integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+			crossorigin="anonymous"
+		></script>
+	</body>
 </html>
