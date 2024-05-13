@@ -4,14 +4,11 @@
 {% load static %}
 <!-- states content to be loaded in base.html  -->
 {% block content %} {% load crispy_forms_tags %}
-<!-- index.html content starts here -->
-
-<div class="row justify-content-md-center">
-	<h1>Match Request</h1>
+<div class="row">
+	<h1>Clan Creation</h1>
 	<form method="post">
-		{{ match_form | crispy }} {% csrf_token %}
-		<button type="submit" class="btn btn-primary">Submit Match Request</button>
+		{{ form | crispy }} {% csrf_token %}
+		<button type="submit" class="btn btn-primary">Create Clan</button>
 	</form>
 </div>
-
 {% endblock %}
