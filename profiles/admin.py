@@ -13,7 +13,12 @@ class UserAdmin(BaseUserAdmin):
     list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'is_clan_rep')
 
     def is_clan_rep(self, instance):
-        return instance.userprofile.clan_rep
+        try:
+            return instance.userprofile.clan_rep
+        except UserProfile.DoesNotExist:
+            UserProfile.objects.create(user=instance)
+            return False
+
     is_clan_rep.boolean = True
     is_clan_rep.short_description = 'Clan Representative'
 
