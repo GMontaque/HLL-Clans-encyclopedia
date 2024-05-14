@@ -9,6 +9,7 @@ class Match(models.Model):
     invitee_clan = models.ForeignKey(Clan, verbose_name=("Invitee"), on_delete=models.CASCADE,related_name='invitee')
     # game_type = models.IntegerField()
     game_type = models.CharField(max_length=10, choices=[
+        ("", "Select from the list below"),
         ("18vs18", "18vs18"),
         ("50vs50", "50vs50"),
         ("30vs30", "30vs30"),
