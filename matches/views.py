@@ -8,3 +8,6 @@ from .forms import ClamMatchForm
 def match_request(request):
     match_form = ClamMatchForm()
     return render(request, 'match_request.html',{'match_form': match_form})
+
+def requested_game(request):
+    return render(request, 'requested_game.html')
