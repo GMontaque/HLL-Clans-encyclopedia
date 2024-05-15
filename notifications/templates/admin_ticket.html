@@ -1,0 +1,28 @@
+<!-- loads base.html then this html file inside it -->
+{% extends "base.html" %}
+<!-- states content to be loaded in base.html  -->
+{% block content %}
+<!-- loads css  -->
+{% load static %}
+<div class="row">
+	<article>
+		<section><h1>Admin Ticket Requests</h1></section>
+		<section>
+			<p class="username">username</p>
+			<p class="clan">clan</p>
+			<p class="message">messsage</p>
+			<div class="mb-3">
+				<label for="status" class="form-label">Status</label>
+				<select class="form-select form-select-lg" name="" id="status">
+					<option selected>Select one</option>
+					<option value="">completed</option>
+					<option value="">in-progress</option>
+					<option value="">rejected</option>
+				</select>
+			</div>
+			<button type="button" class="btn btn-primary">submit</button>
+		</section>
+	</article>
+</div>
+
+{% endblock %}
