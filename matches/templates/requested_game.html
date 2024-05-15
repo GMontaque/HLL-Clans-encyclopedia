@@ -1,0 +1,21 @@
+<!-- loads base.html then this html file inside it -->
+{% extends "base.html" %}
+<!-- loads css  -->
+{% load static %}
+<!-- states content to be loaded in base.html  -->
+{% block content %} {% load crispy_forms_tags %}
+<!-- index.html content starts here -->
+
+<div class="row">
+	<section>
+		<h2 class="game-title">Game Info</h2>
+		<p class="enemy-player"></p>
+		<p class="enemy-team"></p>
+		<p class="game-type"></p>
+		<p class="timeanddate"></p>
+		<p class="comments"></p>
+		<button type="button" class="btn btn-primary">Accept</button>
+		<button type="button" class="btn btn-primary">Decline</button>
+	</section>
+</div>
+{% endblock %}
