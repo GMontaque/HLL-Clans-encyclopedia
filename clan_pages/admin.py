@@ -2,4 +2,10 @@ from django.contrib import admin
 from .models import Clan
 
 # Register your models here.
-admin.site.register(Clan)
+from django.contrib import admin
+from .models import Clan
+
+class ClanAdmin(admin.ModelAdmin):
+    list_display = ('clan_name', 'user')
+
+admin.site.register(Clan, ClanAdmin)
