@@ -7,23 +7,25 @@
 <!-- index.html content starts here -->
 <div class="row">
 	<section>
-		<h3 class="page-title">Clan Title</h3>
+		<h3 class="page-title">{{clan.clan_name}}</h3>
 		<img src="" alt="" srcset="" />
-		<p class="page-content">
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ipsa, earum
-			doloremque aperiam repellendus temporibus esse quos et a sequi ratione
-			error in, provident labore eligendi veniam ullam magnam similique libero
-			recusandae pariatur vitae. Sed dicta maiores blanditiis saepe, placeat
-			minus quis consequuntur soluta repellat est quos labore at reprehenderit!
-		</p>
+		<img src="{{clan.image_url}}" class="img-fluid rounded-top" alt="" />
+
+		<p class="page-content">{{clan.content}}</p>
 		<ul class="external-links">
 			<li class="external-links-discord">
-				<a href="http://">URL-link-discord</a>
+				<a href="http://">{{clan.discord_url}}</a>
 			</li>
 			<li class="external-links-website">
-				<a href="http://">URL-link-website</a>
+				<a href="http://">{{clan.website_url}}</a>
 			</li>
 		</ul>
+		<div class="CRUD">
+			<a name="" id="" class="btn btn-primary" href="#" role="button">Edit</a>
+			<a name="" id="" class="btn btn-secondary" href="#" role="button"
+				>Delete</a
+			>
+		</div>
 		<h3 class="accepted-matches">Upcoming Games</h3>
 		<div class="table-responsive">
 			<table class="table table-primary">

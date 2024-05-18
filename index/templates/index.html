@@ -178,15 +178,17 @@
 		<section>
 			<h2>Hell Let Loose Clans</h2>
 		</section>
+		{% for clan in clans %}
 		<section class="hll-cards">
 			<figure style="--c: #fff5">
 				<img src="https://picsum.photos/id/475/250/300" alt="Mountains" />
 				<figcaption>
-					Clan Name
-					<a href="{% url 'clan_page' %}">Find out more</a>
+					{{ clan.clan_name }}
+					<a href="{% url 'clan_page' clan.clan_name %}">Find out more</a>
 				</figcaption>
 			</figure>
 		</section>
+		{% endfor %}
 	</article>
 </div>
 {% endblock %}
