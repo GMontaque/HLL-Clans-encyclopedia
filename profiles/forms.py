@@ -7,7 +7,8 @@ class CustomSignupForm(SignupForm):
 
     def save(self, request):
         user = super(CustomSignupForm, self).save(request)
-        user_profile = UserProfile.objects.get(user=user)
-        user_profile.clan_rep = self.cleaned_data.get('clan_rep')
-        user_profile.save()
+        user_profile = UserProfile.objects.create(
+            user=user,
+            clan_rep=self.cleaned_data["clan_rep"]
+        )
         return user  
