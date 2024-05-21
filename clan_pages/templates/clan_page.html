@@ -6,50 +6,73 @@
 {% load static %}
 <!-- index.html content starts here -->
 <div class="row">
-	<section>
-		<h3 class="page-title">{{clan.clan_name}}</h3>
-		<img src="" alt="" srcset="" />
-		<img src="{{clan.image_url}}" class="img-fluid rounded-top" alt="" />
+	<article>
+		<section>
+			<h3 class="clan-name-title">{{clan.clan_name}}</h3>
+		</section>
+		<section>
+			<img src="" alt="" srcset="" />
+			<img
+				src="{{clan.image_url}}"
+				class="img-fluid rounded-top"
+				alt=""
+				id="clan-img"
+			/>
 
-		<p class="page-content">{{clan.content}}</p>
-		<ul class="external-links">
-			<li class="external-links-discord">
-				<a href="http://">{{clan.discord_url}}</a>
-			</li>
-			<li class="external-links-website">
-				<a href="http://">{{clan.website_url}}</a>
-			</li>
-		</ul>
-		<div class="CRUD">
-			<a name="" id="" class="btn btn-primary" href="#" role="button">Edit</a>
-			<a name="" id="" class="btn btn-secondary" href="#" role="button"
-				>Delete</a
-			>
-		</div>
-		<h3 class="accepted-matches">Upcoming Games</h3>
-		<div class="table-responsive">
-			<table class="table table-primary">
-				<thead>
-					<tr>
-						<th scope="col">Column 1</th>
-						<th scope="col">Column 2</th>
-						<th scope="col">Column 3</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr class="">
-						<td scope="row">R1C1</td>
-						<td>R1C2</td>
-						<td>R1C3</td>
-					</tr>
-					<tr class="">
-						<td scope="row">Item</td>
-						<td>Item</td>
-						<td>Item</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</section>
+			<p class="clan-content">{{clan.content}}</p>
+			<ul class="external-links">
+				<li class="external-links-discord">
+					<a href="http://" id="discord-url">{{clan.discord_url}}</a>
+				</li>
+				<li class="external-links-website">
+					<a href="http://" id="website-url">{{clan.website_url}}</a>
+				</li>
+			</ul>
+			<div class="CRUD">
+				<a
+					name=""
+					id=""
+					class="btn btn-primary edit-clan"
+					href="{% url 'edit_clan_page' clan.clan_name %}"
+					role="button"
+					>Edit</a
+				>
+				<button
+					id="delete-clan"
+					class="btn btn-secondary btn-delete"
+					data-clan-id="{{ clan.clan_name }}"
+					role="button"
+				>
+					Delete
+				</button>
+			</div>
+		</section>
+		<section>
+			<h3 class="accepted-matches">Upcoming Games</h3>
+			<div class="table-responsive">
+				<table class="table table-primary">
+					<thead>
+						<tr>
+							<th scope="col">Column 1</th>
+							<th scope="col">Column 2</th>
+							<th scope="col">Column 3</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="">
+							<td scope="row">R1C1</td>
+							<td>R1C2</td>
+							<td>R1C3</td>
+						</tr>
+						<tr class="">
+							<td scope="row">Item</td>
+							<td>Item</td>
+							<td>Item</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</article>
 </div>
 {% endblock %}

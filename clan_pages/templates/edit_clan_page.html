@@ -1,0 +1,16 @@
+<!-- loads base.html then this html file inside it -->
+{% extends "base.html" %}
+<!-- loads css  -->
+{% load static %}
+<!-- states content to be loaded in base.html  -->
+{% block content %} {% load crispy_forms_tags %}
+<div class="row">
+	<h1>Edit Clan Page - {{ clans.clan_name }}</h1>
+	<form id="clanCreation" method="post">
+		{{ edit_clan_form | crispy }} {% csrf_token %}
+		<button id="submitButton" type="submit" class="btn btn-primary">
+			Update Clan Page
+		</button>
+	</form>
+</div>
+{% endblock %}
