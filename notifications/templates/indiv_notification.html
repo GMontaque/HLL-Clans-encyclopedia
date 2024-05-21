@@ -1,0 +1,19 @@
+<!-- loads base.html then this html file inside it -->
+{% extends "base.html" %}
+<!-- states content to be loaded in base.html  -->
+{% block content %}
+<!-- loads css  -->
+{% load static %}
+<div class="row">
+	<section>
+		<h1>Notifications</h1>
+	</section>
+	<section class="notification">
+		<p>{{notification.issuer}}</p>
+		<p>{{notification.receiver}}</p>
+		<p>{{notification.clan}}</p>
+		<p>{{notification.content}}</p>
+		<p>{{notification.status}}</p>
+	</section>
+</div>
+{% endblock %}

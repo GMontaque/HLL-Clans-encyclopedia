@@ -8,32 +8,84 @@
 	<section>
 		<h1>Notifications</h1>
 	</section>
-	<section class="admin_notification">
-		<figure style="--c: #fff5">
-			<img src="https://picsum.photos/id/475/250/300" alt="Mountains" />
-			<figcaption>
-				Admin Response
-				<span>Completed</span>
-			</figcaption>
-		</figure>
+	<section>
+		<a
+		name=""
+		id=""
+		class="btn btn-primary"
+		href="{% url 'admin_ticket' %}"
+		role="button"
+		>Raise Admin Ticket</a>
+	</section>
+	<section>
+		<div class="table-responsive">
+			<table class="table table-primary">
+				<thead>
+					<tr>
+						<th scope="col">Issuer</th>
+						<th scope="col">Receiver</th>
+						<th scope="col">Clan</th>
+						<th scope="col">content</th>
+						<th scope="col">Status</th>
+						<th scope="col">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for ntfs in notifications %}
+					<tr class="">
+						<td scope="row">{{ ntfs.issuer}}</td>
+						<td>{{ ntfs.receiver}}</td>
+						<td>{{ ntfs.clan}}</td>
+						<td>{{ ntfs.content}}</td>
+						<td>{{ ntfs.status}}</td>
+						<td>
+							<a
+								name=""
+								id=""
+								class="btn btn-primary"
+								href="{% url 'individual_notification' ntfs.pk %}"
+								role="button"
+								>Display Message</a
+							>
+						</td>
+					</tr>
+					{% endfor%}
+				</tbody>
+			</table>
+		</div>
 	</section>
 	<section class="game_request_message">
-		<figure style="--c: #fff5">
-			<img src="https://picsum.photos/id/475/250/300" alt="Mountains" />
-			<figcaption>
-				Game Request
-				<a href="{% url 'requested_game' %}">Game Details</a>
-			</figcaption>
-		</figure>
-	</section>
-	<section class="admin_ticket">
-		<figure style="--c: #fff5">
-			<img src="https://picsum.photos/id/475/250/300" alt="Mountains" />
-			<figcaption>
-				Admin Ticket Request
-				<a href="{% url 'admin_ticket' %}">Game Details</a>
-			</figcaption>
-		</figure>
+		<div class="table-responsive">
+			<table class="table table-primary">
+				<thead>
+					<tr>
+						<th scope="col">Eneney Team</th>
+						<th scope="col">Time and Date</th>
+						<th scope="col">Game Type</th>
+						<th scope="col">Status</th>
+						<th scope="col">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="">
+						<td scope="row">test</td>
+						<td>test</td>
+						<td>test</td>
+						<td>test</td>
+						<td>
+							<a
+								name=""
+								id=""
+								class="btn btn-primary"
+								href="{% url 'requested_game' %}"
+								role="button"
+								>Display Message</a
+							>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 </div>
 
