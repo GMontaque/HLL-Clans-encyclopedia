@@ -7,7 +7,7 @@ from .models import Clan
 # clan indiviual page view
 def clan_page(request, clan_name):
     clan = get_object_or_404(Clan, clan_name=clan_name)
-    return render(request, 'clan_page.html', {'clan': clan})
+    return render(request, 'clan_page.html', {'clan': clan, 'current_user': request.user})
 
 # Clan creation.
 def clan_creation(request):
