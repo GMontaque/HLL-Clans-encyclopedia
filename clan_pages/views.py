@@ -3,8 +3,7 @@ from django.contrib import messages
 from .forms import CreateClan
 from .models import Clan
 
-# Create your views here.
-# clan indiviual page view
+# indiviual clan page
 def clan_page(request, clan_name):
     clan = get_object_or_404(Clan, clan_name=clan_name)
     return render(request, 'clan_page.html', {'clan': clan, 'current_user': request.user})
@@ -22,11 +21,12 @@ def clan_creation(request):
             messages.add_message(
                 request, messages.SUCCESS,
                 'clan created'
-            )   
+            ) 
+        return redirect('index')  
     form = CreateClan()
     return render(request, 'clan_creation.html', {'clanCreation': form}) 
 
-
+# edit clan page
 def edit_clan_page(request, clan_name):
     clan = get_object_or_404(Clan, clan_name=clan_name)
     
@@ -40,6 +40,7 @@ def edit_clan_page(request, clan_name):
     
     return render(request, 'edit_clan_page.html', {'edit_clan_form': form, 'clans': clan})
 
+# delete clan page
 def delete_clan(request, clan_name):
     clan = get_object_or_404(Clan, clan_name=clan_name)
 
