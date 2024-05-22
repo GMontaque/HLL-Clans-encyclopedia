@@ -39,3 +39,15 @@ def edit_clan_page(request, clan_name):
         form = CreateClan(instance=clan)
     
     return render(request, 'edit_clan_page.html', {'edit_clan_form': form, 'clans': clan})
+
+def delete_clan(request, clan_name):
+    clan = get_object_or_404(Clan, clan_name=clan_name)
+
+    # Check if the user is authorized to delete the clan
+    if request.user == clan.user or request.user.is_superuser:
+        clan.delete()
+        messages.add_message(
+            request, messages.SUCCESS,
+            'clan deleted'
+        )   
+        return redirect('index')

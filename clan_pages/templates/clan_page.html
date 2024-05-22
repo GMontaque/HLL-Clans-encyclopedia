@@ -39,12 +39,13 @@
 					>Edit</a
 				>
 				<button
-					id="delete-clan"
+					button
+					id="delete-clan-test"
 					class="btn btn-secondary btn-delete"
-					data-clan-id="{{ clan.clan_name }}"
-					role="button"
+					data-bs-toggle="modal"
+					data-bs-target="#deleteClanPage"
 				>
-					Delete
+					Delete Clan
 				</button>
 			</div>
 			{% endif %}
@@ -73,6 +74,50 @@
 						</tr>
 					</tbody>
 				</table>
+			</div>
+		</section>
+		<section>
+			<!-- Delete clan confirmation Modal -->
+			<div
+				class="modal fade"
+				id="deleteClanPage"
+				tabindex="-1"
+				aria-labelledby="deleteClanPageLabel"
+				aria-hidden="true"
+			>
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="deleteClanPageLabel">
+								Confirm Deletion
+							</h5>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							></button>
+						</div>
+						<div class="modal-body">
+							Are you sure you want to delete this clan?
+						</div>
+						<div class="modal-footer">
+							<button
+								type="button"
+								class="btn btn-secondary"
+								data-bs-dismiss="modal"
+							>
+								Cancel
+							</button>
+							<a
+								id="deleteConfirm"
+								class="btn btn-danger"
+								href="{% url 'delete_clan' clan.clan_name %}"
+								>Delete</a
+							>
+						</div>
+					</div>
+				</div>
 			</div>
 		</section>
 	</article>
