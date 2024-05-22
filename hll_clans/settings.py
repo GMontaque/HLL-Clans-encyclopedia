@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["127.0.0.1","localhost",'.herokuapp.com','https://hll-clans-encyclopedia-085b920e958c.herokuapp.com/','8000-gmontaque-hllclansencyc-hl58sht5t7z.ws-eu111.gitpod.io']
+ALLOWED_HOSTS = ["127.0.0.1","localhost",'.herokuapp.com','https://hll-clans-encyclopedia-085b920e958c.herokuapp.com/','.gitpod.io']
 
 
 # Application definition
@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'clan_pages',
     'notifications',
     'matches',
+    'profiles',
 ]
 
 SITE_ID = 1
@@ -62,7 +63,7 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 ACCOUNT_FORMS = {
-'signup': 'hll_clans.forms.CustomSignupForm',
+    'signup': 'profiles.forms.CustomSignupForm',
 }
 
 MIDDLEWARE = [
@@ -111,6 +112,11 @@ WSGI_APPLICATION = 'hll_clans.wsgi.application'
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.gitpod.io",
+    "https://*.herokuapp.com"
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
