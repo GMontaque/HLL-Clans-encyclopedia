@@ -9,7 +9,10 @@ from django.contrib import messages
 
 # Create your views here.
 def notifications(request):
-    temp = Notification.objects.all()
+    if request.user.is_authenticated:
+        temp = Notification.objects.filter(receiver=request.user)
+    else:
+        temp = Notification.objects.none() 
     return render(request, 'notifications.html', {'notifications':temp})
 
 def admin_notifications(request):
