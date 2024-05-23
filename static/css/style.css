@@ -75,3 +75,9 @@ figure:hover figcaption {
 figure:hover img {
 	transform: scale(1.2);
 }
+
+/******************* notification page styling *******************/
+
+.status {
+	padding: 1rem !important;
+}

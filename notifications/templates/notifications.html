@@ -10,12 +10,13 @@
 	</section>
 	<section>
 		<a
-		name=""
-		id=""
-		class="btn btn-primary"
-		href="{% url 'admin_ticket' %}"
-		role="button"
-		>Raise Admin Ticket</a>
+			name=""
+			id=""
+			class="btn btn-primary"
+			href="{% url 'admin_ticket' %}"
+			role="button"
+			>Raise Admin Ticket</a
+		>
 	</section>
 	<section>
 		<div class="table-responsive">
@@ -37,7 +38,9 @@
 						<td>{{ ntfs.receiver}}</td>
 						<td>{{ ntfs.clan}}</td>
 						<td>{{ ntfs.content}}</td>
-						<td>{{ ntfs.status}}</td>
+						<td class="status">
+							<span class="status-icon">{{ ntfs.status}}</span>
+						</td>
 						<td>
 							<a
 								name=""
