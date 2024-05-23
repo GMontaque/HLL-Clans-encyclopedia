@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 from .models import Notification
 from .forms import CreateNotification
 from django.contrib import messages
+from clan_pages.models import Clan
 
 
 # Create your views here.
@@ -39,9 +40,19 @@ def admin_notifications(request):
                 temp = Notification.objects.filter(receiver=request.user)
             else:
                 temp = Notification.objects.none() 
-            return render(request, 'notifications.html', {'notifications':temp})  
-    form = CreateNotification()
-    return render(request, 'admin_ticket.html',{'createNotification': form})
+            return render(request, 'notifications.html', {'notifications': temp})  
+    else:
+        # Fetch the clan related to the user
+        user_clan = get_object_or_404(Clan, user=request.user)
+        
+        initial_data = {
+            'issuer': request.user,  # Set the current user as the issuer
+            'clan': user_clan  # Sets clan field bases on the current user
+        }
+        form = CreateNotification(initial=initial_data)
+    
+    return render(request, 'admin_ticket.html', {'createNotification': form})
+
 
 def show_notification(request, notification_id):
     indiv_notification = get_object_or_404(Notification, pk=notification_id)
