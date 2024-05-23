@@ -12,19 +12,26 @@ def clan_page(request, clan_name):
 def clan_creation(request):
     if request.method == "POST":
         print("Received a POST request")
+        
+        # Check if the user already has a clan
+        if Clan.objects.filter(user=request.user).exists():
+            messages.add_message(request, messages.ERROR, "ERROR, a clan is already associated with this account")
+            return redirect('index')
+
         form = CreateClan(data=request.POST)
         if form.is_valid():
-            print("sent ==============")
-            comment = form.save(commit=False)
-            comment.user = request.user
-            form.save()
-            messages.add_message(
-                request, messages.SUCCESS,
-                'clan created'
-            ) 
-        return redirect('index')  
+            print("Form is valid, creating clan")
+            clan = form.save(commit=False)
+            clan.user = request.user
+            clan.save()
+            messages.add_message(request, messages.SUCCESS, 'Clan created successfully')
+            return redirect('index')
+        else:
+            messages.add_message(request, messages.ERROR, 'Form is not valid')
+            
     form = CreateClan()
-    return render(request, 'clan_creation.html', {'clanCreation': form}) 
+
+    return render(request, 'clan_creation.html', {'clanCreation': form})
 
 # edit clan page
 def edit_clan_page(request, clan_name):
