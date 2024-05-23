@@ -9,6 +9,7 @@
 		<h1>Notifications</h1>
 	</section>
 	<section>
+		{% if not user.is_superuser %}
 		<a
 			name=""
 			id=""
@@ -17,6 +18,7 @@
 			role="button"
 			>Raise Admin Ticket</a
 		>
+		{% endif %}
 	</section>
 	<section>
 		<div class="table-responsive">
