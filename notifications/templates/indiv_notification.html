@@ -15,5 +15,25 @@
 		<p>{{notification.content}}</p>
 		<p>{{notification.status}}</p>
 	</section>
+	{% if user.is_superuser %}
+	<section>
+		<a
+			name=""
+			id=""
+			class="btn btn-primary edit-clan"
+			href="{% url 'update_notification_status' notification.pk 'completed' %}"
+			role="button"
+			>Completed</a
+		>
+		<a
+			name=""
+			id=""
+			class="btn btn-primary edit-clan"
+			href="{% url 'update_notification_status' notification.pk 'rejected' %}"
+			role="button"
+			>Rejected</a
+		>
+	</section>
+	{% endif %}
 </div>
 {% endblock %}
