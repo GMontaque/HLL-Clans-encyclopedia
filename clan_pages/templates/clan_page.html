@@ -9,6 +9,7 @@
 	<article>
 		<section>
 			<h3 class="clan-name-title">{{clan.clan_name}}</h3>
+			<span class="clan-owner">Clan Owner: {{clan.user}}</span>
 		</section>
 		<section>
 			<img src="" alt="" srcset="" />
@@ -28,7 +29,7 @@
 					<a href="http://" id="website-url">{{clan.website_url}}</a>
 				</li>
 			</ul>
-			{% if current_user == clan.user or current_user.is_superuser %}
+			{% if current_user.is_superuser %}
 			<div class="CRUD">
 				<a
 					name=""
@@ -36,10 +37,8 @@
 					class="btn btn-primary edit-clan"
 					href="{% url 'edit_clan_page' clan.clan_name %}"
 					role="button"
-					>Edit</a
-				>
+				>Edit</a>
 				<button
-					button
 					id="delete-clan-test"
 					class="btn btn-secondary btn-delete"
 					data-bs-toggle="modal"
@@ -48,7 +47,25 @@
 					Delete Clan
 				</button>
 			</div>
-			{% endif %}
+		{% elif current_user == clan.user and current_user.userprofile.clan_rep %}
+			<div class="CRUD">
+				<a
+					name=""
+					id=""
+					class="btn btn-primary edit-clan"
+					href="{% url 'edit_clan_page' clan.clan_name %}"
+					role="button"
+				>Edit</a>
+				<button
+					id="delete-clan-test"
+					class="btn btn-secondary btn-delete"
+					data-bs-toggle="modal"
+					data-bs-target="#deleteClanPage"
+				>
+					Delete Clan
+				</button>
+			</div>
+		{% endif %}
 		</section>
 		<section>
 			<h3 class="accepted-matches">Upcoming Games</h3>
