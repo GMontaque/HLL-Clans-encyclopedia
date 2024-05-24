@@ -9,13 +9,31 @@
 <div class="row">
 	<section>
 		<h2 class="game-title">Game Info</h2>
-		<p class="enemy-player"></p>
-		<p class="enemy-team"></p>
-		<p class="game-type"></p>
-		<p class="timeanddate"></p>
-		<p class="comments"></p>
-		<button type="button" class="btn btn-primary">Accept</button>
-		<button type="button" class="btn btn-primary">Decline</button>
+		{% for match in matches %}
+		<p class="enemy-player">{{ match.inviter_clan}}</p>
+		<p class="enemy-team">{{ match.invitee_clan}}</p>
+		<p class="game-type">{{ match.game_type}}</p>
+		<p class="timeanddate">{{ match.match_date}}</p>
+		<p class="comments">{{ match.message}}</p>
+		<section>
+			<a
+				name=""
+				id=""
+				class="btn btn-primary edit-clan"
+				href="{% url 'update_game_request' match.pk 'accpeted' %}"
+				role="button"
+				>Accept</a
+			>
+			<a
+				name=""
+				id=""
+				class="btn btn-primary edit-clan"
+				href="{% url 'update_game_request' match.pk 'rejected' %}"
+				role="button"
+				>Decline</a
+			>
+		</section>
+		{% endfor %}
 	</section>
 </div>
 {% endblock %}

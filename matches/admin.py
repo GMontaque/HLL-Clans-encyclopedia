@@ -2,4 +2,6 @@ from django.contrib import admin
 from .models import Match
 
 # Register your models here.
-admin.site.register(Match)
+class MatchAdmin(admin.ModelAdmin):
+    list_display = ('inviter_clan', 'invitee_clan','is_accepted')
+admin.site.register(Match, MatchAdmin)
