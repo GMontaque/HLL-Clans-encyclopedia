@@ -18,4 +18,8 @@ class Match(models.Model):
     ])
     match_date = models.DateTimeField()
     message = models.TextField()
-    is_accepted = models.BooleanField(("Is Accepted"))
+    is_accepted = models.CharField(max_length=50, choices=[
+        ("accepted", "accepted"),
+        ("in-progress", "in-progress"),
+        ("rejected", "rejected"),
+    ], default='in-progress')
