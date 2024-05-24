@@ -2,11 +2,14 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from .forms import CreateClan
 from .models import Clan
+from matches.models import Match
+from django.db.models import Q
 
 # indiviual clan page
 def clan_page(request, clan_name):
-    clan = get_object_or_404(Clan, clan_name=clan_name)
-    return render(request, 'clan_page.html', {'clan': clan, 'current_user': request.user})
+    clan = Clan.objects.get(user=request.user.id)
+    matches = Match.objects.filter((Q(inviter_clan_id=clan.id) | Q(invitee_clan_id=clan.id)) & Q(is_accepted=True))
+    return render(request, 'clan_page.html', {'clan': clan, 'current_user': request.user, 'matches':matches})
 
 # Clan creation.
 def clan_creation(request):

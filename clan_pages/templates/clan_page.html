@@ -37,7 +37,8 @@
 					class="btn btn-primary edit-clan"
 					href="{% url 'edit_clan_page' clan.clan_name %}"
 					role="button"
-				>Edit</a>
+					>Edit</a
+				>
 				<button
 					id="delete-clan-test"
 					class="btn btn-secondary btn-delete"
@@ -47,7 +48,7 @@
 					Delete Clan
 				</button>
 			</div>
-		{% elif current_user == clan.user and current_user.userprofile.clan_rep %}
+			{% elif current_user == clan.user and current_user.userprofile.clan_rep %}
 			<div class="CRUD">
 				<a
 					name=""
@@ -55,7 +56,8 @@
 					class="btn btn-primary edit-clan"
 					href="{% url 'edit_clan_page' clan.clan_name %}"
 					role="button"
-				>Edit</a>
+					>Edit</a
+				>
 				<button
 					id="delete-clan-test"
 					class="btn btn-secondary btn-delete"
@@ -65,7 +67,7 @@
 					Delete Clan
 				</button>
 			</div>
-		{% endif %}
+			{% endif %}
 		</section>
 		<section>
 			<h3 class="accepted-matches">Upcoming Games</h3>
@@ -73,22 +75,21 @@
 				<table class="table table-primary">
 					<thead>
 						<tr>
-							<th scope="col">Column 1</th>
-							<th scope="col">Column 2</th>
-							<th scope="col">Column 3</th>
+							<th scope="col">inviter_clan</th>
+							<th scope="col">invitee_clan</th>
+							<th scope="col">game_type</th>
+							<th scope="col">match_date</th>
 						</tr>
 					</thead>
 					<tbody>
+						{% for match in matches %}
 						<tr class="">
-							<td scope="row">R1C1</td>
-							<td>R1C2</td>
-							<td>R1C3</td>
+							<td scope="row">{{ match.inviter_clan}}</td>
+							<td>{{ match.invitee_clan}}</td>
+							<td>{{ match.game_type}}</td>
+							<td>{{ match.match_date}}</td>
 						</tr>
-						<tr class="">
-							<td scope="row">Item</td>
-							<td>Item</td>
-							<td>Item</td>
-						</tr>
+						{% endfor %}
 					</tbody>
 				</table>
 			</div>
