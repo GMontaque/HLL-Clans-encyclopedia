@@ -20,6 +20,7 @@
 		>
 		{% endif %}
 	</section>
+	<section><h2>Inbound Messages</h2></section>
 	<section>
 		<div class="table-responsive">
 			<table class="table table-primary">
@@ -30,64 +31,107 @@
 						<th scope="col">Clan</th>
 						<th scope="col">content</th>
 						<th scope="col">Status</th>
-						<th scope="col">Action</th>
+						<th scope="col">Display Message</th>
 					</tr>
 				</thead>
 				<tbody>
-					{% for ntfs in notifications %}
+					{% for notification in all_notifications %}
+					<!--  -->
+					{% if notification.receiver == current_user %}
 					<tr class="">
-						<td scope="row">{{ ntfs.issuer}}</td>
-						<td>{{ ntfs.receiver}}</td>
-						<td>{{ ntfs.clan}}</td>
-						<td>{{ ntfs.content}}</td>
+						<td scope="row">{{ notification.issuer}}</td>
+						<td>{{ notification.receiver}}</td>
+						<td>{{ notification.clan}}</td>
+						<td>{{ notification.content |slice:":10"}}...</td>
 						<td class="status">
-							<span class="status-icon">{{ ntfs.status}}</span>
+							<span class="status-icon">{{ notification.status}}</span>
 						</td>
 						<td>
 							<a
 								name=""
 								id=""
 								class="btn btn-primary"
-								href="{% url 'individual_notification' ntfs.pk %}"
+								href="{% url 'individual_notification' notification.pk %}"
 								role="button"
-								>Display Message</a
+								>Open Message</a
 							>
 						</td>
 					</tr>
-					{% endfor%}
+					{% endif %} {% endfor%}
 				</tbody>
 			</table>
 		</div>
 	</section>
+	<section><h2>Outbound Messages</h2></section>
+	<section>
+		<div class="table-responsive">
+			<table class="table table-primary">
+				<thead>
+					<tr>
+						<th scope="col">Issuer</th>
+						<th scope="col">Receiver</th>
+						<th scope="col">Clan</th>
+						<th scope="col">content</th>
+						<th scope="col">Display Message</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for notification in all_notifications %}
+					<!--  -->
+					{% if notification.issuer == current_user %}
+					<tr class="">
+						<td scope="row">{{ notification.issuer}}</td>
+						<td>{{ notification.receiver}}</td>
+						<td>{{ notification.clan}}</td>
+						<td>{{ notification.content |slice:":10"}}...</td>
+						<td>
+							<a
+								name=""
+								id=""
+								class="btn btn-primary"
+								href="{% url 'individual_notification' notification.pk %}"
+								role="button"
+								>Open Message</a
+							>
+						</td>
+					</tr>
+					{% endif %} {% endfor%}
+				</tbody>
+			</table>
+		</div>
+	</section>
+	<section><h2>game requests</h2></section>
 	<section class="game_request_message">
 		<div class="table-responsive">
 			<table class="table table-primary">
 				<thead>
 					<tr>
 						<th scope="col">Eneney Team</th>
-						<th scope="col">Time and Date</th>
+						<th scope="col">Your Team</th>
 						<th scope="col">Game Type</th>
 						<th scope="col">Status</th>
 						<th scope="col">Action</th>
 					</tr>
 				</thead>
 				<tbody>
+					{% for match in matches%}
 					<tr class="">
-						<td scope="row">test</td>
-						<td>test</td>
-						<td>test</td>
-						<td>test</td>
+						<td scope="row">{{match.inviter_clan}}</td>
+						<td>{{match.invitee_clan}}</td>
+						<td>{{match.game_type}}</td>
+						<td>{{match.is_accepted}}</td>
 						<td>
 							<a
 								name=""
 								id=""
 								class="btn btn-primary"
-								href="{% url 'requested_game' %}"
+								href="{% url 'requested_game' match.pk %}"
 								role="button"
 								>Display Message</a
 							>
 						</td>
 					</tr>
+					{% endfor %}
 				</tbody>
 			</table>
 		</div>

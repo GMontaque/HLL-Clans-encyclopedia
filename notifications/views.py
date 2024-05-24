@@ -1,60 +1,71 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
-from django.http import HttpResponse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import Notification
 from .forms import CreateNotification
 from django.contrib import messages
 from clan_pages.models import Clan
+from django.db.models import Q
+from matches.models import Match
 
+# Helper function to get all notifications for the authenticated user
+def get_all_notifications(user):
+    if user.is_authenticated:
+        return Notification.objects.filter(Q(receiver=user) | Q(issuer=user))
+    return Notification.objects.none()
 
-# Create your views here.
+# View to show notifications
 def notifications(request):
-    if request.user.is_authenticated:
-        temp = Notification.objects.filter(receiver=request.user)
-    else:
-        temp = Notification.objects.none() 
-    return render(request, 'notifications.html', {'notifications':temp})
+    all_notifications = get_all_notifications(request.user)
+    clan = Clan.objects.get(user=request.user.id)
+    matches = Match.objects.filter(Q(inviter_clan_id=clan.id) | Q(invitee_clan_id=clan.id))
+    return render(request, 'notifications.html', {
+        'all_notifications': all_notifications,
+        'current_user': request.user,
+        'matches':matches
+    })
 
+# View to update the status of a notification
 def update_notification_status(request, pk, status):
     notification = get_object_or_404(Notification, pk=pk)
     if status in ['completed', 'rejected']:
         notification.status = status
         notification.save()
-    if request.user.is_authenticated:
-        temp = Notification.objects.filter(receiver=request.user)
-    return render(request, 'notifications.html', {'notifications':temp})
+    
+    all_notifications = get_all_notifications(request.user)
+    return render(request, 'notifications.html', {
+        'all_notifications': all_notifications,
+        'current_user': request.user
+    })
 
+# View for admin notifications
 def admin_notifications(request):
     if request.method == "POST":
-        print("Received a POST request")
         form = CreateNotification(data=request.POST)
         if form.is_valid():
-            print("sent ==============")
             form.save(commit=True)
             messages.add_message(
                 request, messages.SUCCESS,
-                'notification sent'
+                'Notification sent'
             )
-            if request.user.is_authenticated:
-                temp = Notification.objects.filter(receiver=request.user)
-            else:
-                temp = Notification.objects.none() 
-            return render(request, 'notifications.html', {'notifications': temp})  
+            all_notifications = get_all_notifications(request.user)
+            return render(request, 'notifications.html', {
+                'all_notifications': all_notifications,
+                'current_user': request.user
+            })  
     else:
-        # Fetch the clan related to the user
         user_clan = get_object_or_404(Clan, user=request.user)
-        
         initial_data = {
-            'issuer': request.user,  # Set the current user as the issuer
-            'clan': user_clan  # Sets clan field bases on the current user
+            'issuer': request.user,
+            'clan': user_clan
         }
         form = CreateNotification(initial=initial_data)
     
     return render(request, 'admin_ticket.html', {'createNotification': form})
 
-
+# View to show individual notification details
 def show_notification(request, notification_id):
     indiv_notification = get_object_or_404(Notification, pk=notification_id)
     return render(request, 'indiv_notification.html', {'notification': indiv_notification})
+
 
