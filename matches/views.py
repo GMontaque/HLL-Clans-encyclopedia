@@ -20,8 +20,8 @@ def requested_game(request, pk):
 
 def update_game_request_status(request, pk, is_accepted):
     matches = Match.objects.filter(pk=pk).first()
-    if is_accepted in ['accpeted', 'rejected']:
-        matches.is_accepted = True if is_accepted == 'accepted' else 'rejected'
+    if is_accepted in ['accepted', 'rejected']:
+        matches.is_accepted = is_accepted
         matches.save()
     all_notifications = get_all_notifications(request.user)
     clan = Clan.objects.get(user=request.user.id)
