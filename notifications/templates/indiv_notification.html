@@ -13,7 +13,9 @@
 		<p>{{notification.receiver}}</p>
 		<p>{{notification.clan}}</p>
 		<p>{{notification.content}}</p>
+		{% if not notification.issuer == request.user%}
 		<p>{{notification.status}}</p>
+		{% endif %}
 	</section>
 	{% if user.is_superuser %}
 	<section>
@@ -35,5 +37,15 @@
 		>
 	</section>
 	{% endif %}
+	<section>
+		<a
+			name=""
+			id=""
+			class="btn btn-primary edit-clan"
+			href="{% url 'notifications' %}"
+			role="button"
+			>Back</a
+		>
+	</section>
 </div>
 {% endblock %}
