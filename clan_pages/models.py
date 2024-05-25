@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 class Clan(models.Model):
     user = models.ForeignKey(User, verbose_name="User", on_delete=models.CASCADE)
     clan_name = models.CharField("Clan Name", max_length=50)
-    # content max_length needs to be updated to around 500
     content = models.CharField("Content", max_length=2000)
     image_url = models.CharField("Image URL", max_length=50,blank=True,null=True)
     discord_url = models.CharField("Discord URL", max_length=50)
