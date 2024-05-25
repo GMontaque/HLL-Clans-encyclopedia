@@ -5,4 +5,10 @@ class CreateNotification(forms.ModelForm):
     content = forms.CharField(widget=forms.Textarea, required=True)
     class Meta:
         model = Notification
-        fields = ['issuer', 'receiver','clan', 'content', 'status']
+        fields = ['content']
+
+    def __init__(self, *args, **kwargs):
+        super(CreateNotification, self).__init__(*args, **kwargs)
+        if 'initial' in kwargs:
+            for field in ['issuer', 'receiver', 'clan']:
+                self.fields[field].widget = forms.HiddenInput()

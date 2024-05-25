@@ -59,18 +59,9 @@ def admin_notifications(request):
                 'all_notifications': all_notifications,
                 'current_user': request.user
             })  
-    else:
-        user_clan = get_object_or_404(Clan, user=request.user)
-        # Fetch the admin superuser
-        admin_user = User.objects.filter(is_superuser=True).first()
-        initial_data = {
-            'issuer': request.user,
-            'clan': user_clan,
-            'receiver': admin_user
-        }
-        form = CreateNotification(initial=initial_data)
-    
-    return render(request, 'admin_ticket.html', {'createNotification': form})
+    form = CreateNotification()
+
+    return render(request, 'admin_ticket.html', {'createNotification': form, 'issuer': request.user})
 
 # View to show individual notification details
 def show_notification(request, notification_id):

@@ -9,6 +9,30 @@
 		<section><h1>Admin Ticket Requests</h1></section>
 		<section>
 			<form id="clanRepNotifications" method="post">
+				<div class="mb-3">
+					<label for="" class="form-label">From:</label>
+					<input
+						type="text"
+						class="form-control"
+						name=""
+						id=""
+						aria-describedby="helpId"
+						value="{{ issuer }}"
+						readonly
+					/>
+				</div>
+				<div class="mb-3">
+					<label for="" class="form-label">To:</label>
+					<input
+						type="text"
+						class="form-control"
+						name=""
+						id=""
+						aria-describedby="helpId"
+						value="Admin"
+						readonly
+					/>
+				</div>
 				{{ createNotification | crispy }} {% csrf_token %}
 				<button id="submitButton" type="submit" class="btn btn-primary">
 					Create Clan
