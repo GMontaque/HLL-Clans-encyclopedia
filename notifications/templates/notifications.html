@@ -20,6 +20,7 @@
 		>
 		{% endif %}
 	</section>
+	{% if user.is_superuser %}
 	<section><h2>Inbound Messages</h2></section>
 	<section>
 		<div class="table-responsive">
@@ -62,6 +63,7 @@
 			</table>
 		</div>
 	</section>
+	{% endif %}
 	{% if not user.is_superuser %}
 	<section><h2>Outbound Messages</h2></section>
 	<section>
@@ -73,18 +75,22 @@
 						<th scope="col">Receiver</th>
 						<th scope="col">Clan</th>
 						<th scope="col">content</th>
+						<th scope="col">Status</th>
 						<th scope="col">Display Message</th>
 					</tr>
 				</thead>
 				<tbody>
 					{% for notification in all_notifications %}
 					<!--  -->
-					{% if notification.issuer == current_user %}
+					{% if notification.receiver == current_user %}
 					<tr class="">
 						<td scope="row">{{ notification.issuer}}</td>
 						<td>{{ notification.receiver}}</td>
 						<td>{{ notification.clan}}</td>
 						<td>{{ notification.content |slice:":10"}}...</td>
+						<td class="status">
+							<span class="status-icon">{{ notification.status}}</span>
+						</td>
 						<td>
 							<a
 								name=""
