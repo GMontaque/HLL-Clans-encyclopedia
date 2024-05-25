@@ -28,7 +28,8 @@ def match_request(request):
 
 def requested_game(request, pk):
     matches = Match.objects.filter(pk=pk)
-    return render(request, 'requested_game.html',{'matches': matches})
+    clan = Clan.objects.get(user=request.user.id)
+    return render(request, 'requested_game.html',{'matches': matches,'user_clan': clan.clan_name })
 
 def update_game_request_status(request, pk, is_accepted):
     matches = Match.objects.filter(pk=pk).first()

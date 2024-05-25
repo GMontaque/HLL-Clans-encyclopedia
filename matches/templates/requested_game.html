@@ -7,7 +7,7 @@
 <!-- index.html content starts here -->
 
 <div class="row">
-	<section>
+	<article>
 		<h2 class="game-title">Game Info</h2>
 		{% for match in matches %}
 		<p class="enemy-player">{{ match.inviter_clan}}</p>
@@ -15,6 +15,7 @@
 		<p class="game-type">{{ match.game_type}}</p>
 		<p class="timeanddate">{{ match.match_date}}</p>
 		<p class="comments">{{ match.message}}</p>
+		{% if match.invitee_clan|stringformat:"s" == user_clan|stringformat:"s"  or user.is_superuser %}
 		<section>
 			<a
 				name=""
@@ -33,7 +34,18 @@
 				>Decline</a
 			>
 		</section>
+		{% endif %}
 		{% endfor %}
-	</section>
+		<section>
+			<a
+				name=""
+				id=""
+				class="btn btn-primary edit-clan"
+				href="{% url 'notifications' %}"
+				role="button"
+				>Back</a
+			>
+		</section>
+	</article>
 </div>
 {% endblock %}
