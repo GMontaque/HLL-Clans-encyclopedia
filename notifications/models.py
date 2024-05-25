@@ -14,4 +14,4 @@ class Notification(models.Model):
         ("in-progress", "in-progress"),
         ("rejected", "rejected"),
     ], default='in-progress')
-    # match = models.ForeignKey(Match, verbose_name=("Match"), on_delete=models.CASCADE, blank=True, null=True)
+
