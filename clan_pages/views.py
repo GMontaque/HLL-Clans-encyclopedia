@@ -7,8 +7,8 @@ from django.db.models import Q
 
 # indiviual clan page
 def clan_page(request, clan_name):
-    clan = Clan.objects.get(user=request.user.id)
-    matches = Match.objects.filter((Q(inviter_clan_id=clan.id) | Q(invitee_clan_id=clan.id)) & Q(is_accepted=True))
+    clan = Clan.objects.get(clan_name=clan_name)
+    matches = Match.objects.filter((Q(inviter_clan_id=clan.id) | Q(invitee_clan_id=clan.id)) & Q(is_accepted="accepted"))
     return render(request, 'clan_page.html', {'clan': clan, 'current_user': request.user, 'matches':matches})
 
 # Clan creation.
