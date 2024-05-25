@@ -7,6 +7,7 @@ from django.contrib import messages
 from clan_pages.models import Clan
 from django.db.models import Q
 from matches.models import Match
+from django.contrib.auth.models import User
 
 # Helper function to get all notifications for the authenticated user
 def get_all_notifications(user):
@@ -18,11 +19,16 @@ def get_all_notifications(user):
 def notifications(request):
     all_notifications = get_all_notifications(request.user)
     clan = Clan.objects.get(user=request.user.id)
-    matches = Match.objects.filter(Q(inviter_clan_id=clan.id) | Q(invitee_clan_id=clan.id))
+    admin_user = User.objects.filter(is_superuser=True).first()
+    if request.user == admin_user:
+        matches = Match.objects.all()
+    else:
+        matches = Match.objects.filter(Q(inviter_clan_id=clan.id) | Q(invitee_clan_id=clan.id))
     return render(request, 'notifications.html', {
         'all_notifications': all_notifications,
         'current_user': request.user,
-        'matches':matches
+        'matches':matches,
+        'user_clan': clan.clan_name 
     })
 
 # View to update the status of a notification
@@ -55,9 +61,12 @@ def admin_notifications(request):
             })  
     else:
         user_clan = get_object_or_404(Clan, user=request.user)
+        # Fetch the admin superuser
+        admin_user = User.objects.filter(is_superuser=True).first()
         initial_data = {
             'issuer': request.user,
-            'clan': user_clan
+            'clan': user_clan,
+            'receiver': admin_user
         }
         form = CreateNotification(initial=initial_data)
     

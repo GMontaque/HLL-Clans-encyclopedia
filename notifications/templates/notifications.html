@@ -62,6 +62,7 @@
 			</table>
 		</div>
 	</section>
+	{% if not user.is_superuser %}
 	<section><h2>Outbound Messages</h2></section>
 	<section>
 		<div class="table-responsive">
@@ -100,8 +101,11 @@
 			</table>
 		</div>
 	</section>
-	<section><h2>game requests</h2></section>
+	{% endif %}
+	
+	{% if user.is_superuser %}
 	<section class="game_request_message">
+		<h2>Game Requests</h2>
 		<div class="table-responsive">
 			<table class="table table-primary">
 				<thead>
@@ -127,7 +131,7 @@
 								class="btn btn-primary"
 								href="{% url 'requested_game' match.pk %}"
 								role="button"
-								>Display Message</a
+								>Open Message</a
 							>
 						</td>
 					</tr>
@@ -136,6 +140,84 @@
 			</table>
 		</div>
 	</section>
+	{% endif %}
+	{% if not user.is_superuser %}
+	<section>
+		<h2>Game Requests - received</h2>
+		<div class="table-responsive">
+			<table class="table table-primary">
+				<thead>
+					<tr>
+						<th scope="col">Issuer</th>
+						<th scope="col">Receiver</th>
+						<th scope="col">Clan</th>
+						<th scope="col">content</th>
+						<th scope="col">Display Message</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for match in matches%}
+					<!--  -->
+					{% if match.invitee_clan|stringformat:"s" == user_clan|stringformat:"s" %}
+					<tr class="">
+						<td scope="row">{{match.inviter_clan}}</td>
+						<td>{{match.invitee_clan}}</td>
+						<td>{{match.game_type}}</td>
+						<td>{{match.is_accepted}}</td>
+						<td>
+							<a
+								name=""
+								id=""
+								class="btn btn-primary"
+								href="{% url 'requested_game' match.pk %}"
+								role="button"
+								>Open Message</a
+							>
+						</td>
+					</tr>
+					{% endif %} {% endfor%}
+				</tbody>
+			</table>
+		</div>
+	</section>
+	<section>
+		<h2>Game Requests - sent</h2>
+		<div class="table-responsive">
+			<table class="table table-primary">
+				<thead>
+					<tr>
+						<th scope="col">Issuer</th>
+						<th scope="col">Receiver</th>
+						<th scope="col">Clan</th>
+						<th scope="col">content</th>
+						<th scope="col">content</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for match in matches%}
+					<!--  -->
+					{% if match.inviter_clan|stringformat:"s" == user_clan|stringformat:"s" %}
+					<tr class="">
+						<td scope="row">{{match.inviter_clan}}</td>
+						<td>{{match.invitee_clan}}</td>
+						<td>{{match.game_type}}</td>
+						<td>{{match.is_accepted}}</td>
+						<td>
+							<a
+								name=""
+								id=""
+								class="btn btn-primary"
+								href="{% url 'requested_game' match.pk %}"
+								role="button"
+								>Open Message</a
+							>
+						</td>
+					</tr>
+					{% endif %} {% endfor%}
+				</tbody>
+			</table>
+		</div>
+	</section>
+	{% endif %}
 </div>
-
 {% endblock %}
