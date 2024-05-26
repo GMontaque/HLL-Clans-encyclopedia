@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 from clan_pages.models import Clan
 from matches.models import Match
 
+# creates notification database
 class Notification(models.Model):
-    
     issuer = models.ForeignKey(User, verbose_name=("Issuer"), on_delete=models.CASCADE,related_name='issuer')
     receiver = models.ForeignKey(User, verbose_name=("Receiver"), on_delete=models.CASCADE,related_name='receiver')
     clan = models.ForeignKey(Clan, verbose_name=("Clan"), on_delete=models.CASCADE)

@@ -8,6 +8,7 @@
 	<article>
 		<section><h1>Admin Ticket Requests</h1></section>
 		<section>
+			<!-- static code show To and From  -->
 			<form id="clanRepNotifications" method="post">
 				<div class="mb-3">
 					<label for="" class="form-label">From:</label>
@@ -33,6 +34,7 @@
 						readonly
 					/>
 				</div>
+				<!-- form to raise ticket  -->
 				{{ createNotification | crispy }} {% csrf_token %}
 				<button id="submitButton" type="submit" class="btn btn-primary">
 					Create Clan

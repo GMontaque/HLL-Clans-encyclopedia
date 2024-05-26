@@ -9,6 +9,7 @@
 		<h1>Notifications</h1>
 	</section>
 	<section>
+		<!-- displays if logged in user is not admin  -->
 		{% if not user.is_superuser %}
 		<a
 			name=""
@@ -20,6 +21,7 @@
 		>
 		{% endif %}
 	</section>
+	<!-- displays for admin shows messages received -->
 	{% if user.is_superuser %}
 	<section><h2>Inbound Messages</h2></section>
 	<section>
@@ -37,7 +39,7 @@
 				</thead>
 				<tbody>
 					{% for notification in all_notifications %}
-					<!--  -->
+					<!-- displays by receiver name -->
 					{% if notification.receiver == current_user %}
 					<tr class="">
 						<td scope="row">{{ notification.issuer}}</td>
@@ -64,6 +66,7 @@
 		</div>
 	</section>
 	{% endif %}
+	<!-- displays if logged in user is not admin, shows messages sent by user-->
 	{% if not user.is_superuser %}
 	<section><h2>Outbound Messages</h2></section>
 	<section>
@@ -81,7 +84,7 @@
 				</thead>
 				<tbody>
 					{% for notification in all_notifications %}
-					<!--  -->
+					<!-- displays by issuer name -->
 					{% if notification.issuer == current_user %}
 					<tr class="">
 						<td scope="row">{{ notification.issuer}}</td>
@@ -108,7 +111,7 @@
 		</div>
 	</section>
 	{% endif %}
-	
+	<!-- if user is admin displays all games sent -->
 	{% if user.is_superuser %}
 	<section class="game_request_message">
 		<h2>Game Requests</h2>
@@ -147,6 +150,7 @@
 		</div>
 	</section>
 	{% endif %}
+	<!-- splits games sent into received and sent for clan reps -->
 	{% if not user.is_superuser %}
 	<section>
 		<h2>Game Requests - received</h2>

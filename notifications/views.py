@@ -9,16 +9,19 @@ from django.db.models import Q
 from matches.models import Match
 from django.contrib.auth.models import User
 
-# Helper function to get all notifications for the authenticated user
+# function gets all notifications for the authorised user
 def get_all_notifications(user):
     if user.is_authenticated:
         return Notification.objects.filter(Q(receiver=user) | Q(issuer=user))
     return Notification.objects.none()
 
-# View to show notifications
+# displays notification page and data
 def notifications(request):
+     # gets notifications based on user
     all_notifications = get_all_notifications(request.user)
+    # gets clan page based on user id
     clan = Clan.objects.get(user=request.user.id)
+    # gets admin user
     admin_user = User.objects.filter(is_superuser=True).first()
     if request.user == admin_user:
         matches = Match.objects.all()
@@ -31,9 +34,11 @@ def notifications(request):
         'user_clan': clan.clan_name 
     })
 
-# View to update the status of a notification
+# updates status of a notification
 def update_notification_status(request, pk, status):
+    # gets individual notification by primary key
     notification = get_object_or_404(Notification, pk=pk)
+    # checks value of status that has been passed
     if status in ['completed','in-progress','rejected']:
         notification.status = status
         notification.save()
@@ -45,14 +50,17 @@ def update_notification_status(request, pk, status):
         'matches':matches,
     })
 
-# View for admin notifications
+# displays admin notification form
 def admin_notifications(request):
+    # gets admin user
     admin_user = User.objects.filter(is_superuser=True).first()
+    # gets clan page based on user id
     clan = Clan.objects.get(user=request.user.id)
     if request.method == "POST":
         form = CreateNotification(data=request.POST)
         if form.is_valid():
             ticket = form.save(commit=False)
+            # auto completes forms fields not shown to member
             ticket.issuer = request.user
             ticket.receiver = admin_user
             ticket.clan = clan
@@ -62,10 +70,11 @@ def admin_notifications(request):
                 'Notification sent'
             )
             return redirect('notifications') 
+    # notification form
     form = CreateNotification()
     return render(request, 'admin_ticket.html', {'createNotification': form, 'issuer': request.user})
 
-# View to show individual notification details
+# displays individual notification
 def show_notification(request, notification_id):
     indiv_notification = get_object_or_404(Notification, pk=notification_id)
     return render(request, 'indiv_notification.html', {'notification': indiv_notification})

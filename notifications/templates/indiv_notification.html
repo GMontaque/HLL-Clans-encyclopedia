@@ -5,6 +5,7 @@
 <!-- loads css  -->
 {% load static %}
 <div class="row">
+	<!-- displays individual notification -->
 	<section>
 		<h1>Notifications</h1>
 	</section>
@@ -17,6 +18,7 @@
 		<p>{{notification.status}}</p>
 		{% endif %}
 	</section>
+	<!-- allows addmin to update notification status -->
 	{% if user.is_superuser %}
 	<section>
 		<a
@@ -45,6 +47,7 @@
 		>
 	</section>
 	{% endif %}
+	<!-- return to notifications page -->
 	<section>
 		<a
 			name=""
