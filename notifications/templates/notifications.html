@@ -82,7 +82,7 @@
 				<tbody>
 					{% for notification in all_notifications %}
 					<!--  -->
-					{% if notification.receiver == current_user %}
+					{% if notification.issuer == current_user %}
 					<tr class="">
 						<td scope="row">{{ notification.issuer}}</td>
 						<td>{{ notification.receiver}}</td>
