@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Notification
@@ -34,33 +34,35 @@ def notifications(request):
 # View to update the status of a notification
 def update_notification_status(request, pk, status):
     notification = get_object_or_404(Notification, pk=pk)
-    if status in ['completed', 'rejected']:
+    if status in ['completed','in-progress','rejected']:
         notification.status = status
         notification.save()
-    
+    matches = Match.objects.all()
     all_notifications = get_all_notifications(request.user)
     return render(request, 'notifications.html', {
         'all_notifications': all_notifications,
-        'current_user': request.user
+        'current_user': request.user,
+        'matches':matches,
     })
 
 # View for admin notifications
 def admin_notifications(request):
+    admin_user = User.objects.filter(is_superuser=True).first()
+    clan = Clan.objects.get(user=request.user.id)
     if request.method == "POST":
         form = CreateNotification(data=request.POST)
         if form.is_valid():
-            form.save(commit=True)
+            ticket = form.save(commit=False)
+            ticket.issuer = request.user
+            ticket.receiver = admin_user
+            ticket.clan = clan
+            ticket.save()
             messages.add_message(
                 request, messages.SUCCESS,
                 'Notification sent'
             )
-            all_notifications = get_all_notifications(request.user)
-            return render(request, 'notifications.html', {
-                'all_notifications': all_notifications,
-                'current_user': request.user
-            })  
+            return redirect('notifications') 
     form = CreateNotification()
-
     return render(request, 'admin_ticket.html', {'createNotification': form, 'issuer': request.user})
 
 # View to show individual notification details
