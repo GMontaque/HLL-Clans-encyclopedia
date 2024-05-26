@@ -36,12 +36,4 @@ def update_game_request_status(request, pk, is_accepted):
     if is_accepted in ['accepted', 'rejected']:
         matches.is_accepted = is_accepted
         matches.save()
-    all_notifications = get_all_notifications(request.user)
-    clan = Clan.objects.get(user=request.user.id)
-    matches = Match.objects.filter(Q(inviter_clan_id=clan.id) | Q(invitee_clan_id=clan.id))
-    
-    return render(request, 'notifications.html', {
-        'all_notifications': all_notifications,
-        'current_user': request.user,
-        'matches':matches
-    })
+    return redirect('notifications')

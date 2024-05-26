@@ -15,6 +15,7 @@
 		<p class="game-type">{{ match.game_type}}</p>
 		<p class="timeanddate">{{ match.match_date}}</p>
 		<p class="comments">{{ match.message}}</p>
+		<p class="comments">{{ match.is_accepted}}</p>
 		{% if match.invitee_clan|stringformat:"s" == user_clan|stringformat:"s"  or user.is_superuser %}
 		<section>
 			<a
