@@ -10,8 +10,9 @@ from django.db.models import Q
 from notifications.views import get_all_notifications
 from django.contrib import messages
 
-# Create your views here.
+# displays match request page and form
 def match_request(request):
+    # submits forms if valid and method has a value of post
     if request.method == "POST":
         print("Received a POST request")
         
@@ -23,15 +24,19 @@ def match_request(request):
             return redirect('index')
         else:
             messages.add_message(request, messages.ERROR, 'Form is not valid')
+    # match request form
     match_form = ClamMatchForm()
     return render(request, 'match_request.html',{'match_form': match_form})
 
+# displays individual match requests
 def requested_game(request, pk):
     matches = Match.objects.filter(pk=pk)
     clan = Clan.objects.get(user=request.user.id)
     return render(request, 'requested_game.html',{'matches': matches,'user_clan': clan.clan_name })
 
+# updates game request and redirects to notifications page
 def update_game_request_status(request, pk, is_accepted):
+    # gets match by primary key value
     matches = Match.objects.filter(pk=pk).first()
     if is_accepted in ['accepted', 'rejected']:
         matches.is_accepted = is_accepted
