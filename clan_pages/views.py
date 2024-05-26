@@ -5,14 +5,15 @@ from .models import Clan
 from matches.models import Match
 from django.db.models import Q
 
-# indiviual clan page
+# displays indiviual clan page
 def clan_page(request, clan_name):
     clan = Clan.objects.get(clan_name=clan_name)
     matches = Match.objects.filter((Q(inviter_clan_id=clan.id) | Q(invitee_clan_id=clan.id)) & Q(is_accepted="accepted"))
     return render(request, 'clan_page.html', {'clan': clan, 'current_user': request.user, 'matches':matches})
 
-# Clan creation.
+# creates Clan page
 def clan_creation(request):
+    # checks for a post value from the method on the form
     if request.method == "POST":
         print("Received a POST request")
         
@@ -22,6 +23,7 @@ def clan_creation(request):
             return redirect('index')
 
         form = CreateClan(data=request.POST)
+        # saves the newly created form and redirects to home page(index)
         if form.is_valid():
             print("Form is valid, creating clan")
             clan = form.save(commit=False)
@@ -33,13 +35,15 @@ def clan_creation(request):
             messages.add_message(request, messages.ERROR, 'Form is not valid')
             
     form = CreateClan()
-
+    # displays clan creation page and form
     return render(request, 'clan_creation.html', {'clanCreation': form})
 
-# edit clan page
+# edits clan page
 def edit_clan_page(request, clan_name):
+    # gets specific clan based on clan name
     clan = get_object_or_404(Clan, clan_name=clan_name)
-    
+    # checks for a post value from the method on the form
+    # saves edited form
     if request.method == 'POST':
         form = CreateClan(request.POST, instance=clan)
         if form.is_valid():
@@ -47,10 +51,10 @@ def edit_clan_page(request, clan_name):
             return redirect('clan_page', clan_name=clan.clan_name)
     else:
         form = CreateClan(instance=clan)
-    
+    # displays the edit clan page and form
     return render(request, 'edit_clan_page.html', {'edit_clan_form': form, 'clans': clan})
 
-# delete clan page
+# deletes clan page
 def delete_clan(request, clan_name):
     clan = get_object_or_404(Clan, clan_name=clan_name)
 

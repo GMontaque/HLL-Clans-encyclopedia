@@ -4,14 +4,16 @@
 {% block content %}
 <!-- loads css  -->
 {% load static %}
-<!-- index.html content starts here -->
+<!-- displays clan page -->
 <div class="row">
 	<article>
 		<section>
+			<!-- clan name and owner -->
 			<h3 class="clan-name-title">{{clan.clan_name}}</h3>
 			<span class="clan-owner">Clan Owner: {{clan.user}}</span>
 		</section>
 		<section>
+			<!-- clan image logo -->
 			<img src="" alt="" srcset="" />
 			<img
 				src="{{clan.image_url}}"
@@ -19,8 +21,9 @@
 				alt=""
 				id="clan-img"
 			/>
-
+			<!-- infomration on clan -->
 			<p class="clan-content">{{clan.content}}</p>
+			<!-- external social links -->
 			<ul class="external-links">
 				<li class="external-links-discord">
 					<a href="http://" id="discord-url">{{clan.discord_url}}</a>
@@ -29,6 +32,7 @@
 					<a href="http://" id="website-url">{{clan.website_url}}</a>
 				</li>
 			</ul>
+			<!-- superuser access to update and delete page -->
 			{% if current_user.is_superuser %}
 			<div class="CRUD">
 				<a
@@ -48,6 +52,7 @@
 					Delete Clan
 				</button>
 			</div>
+			<!-- clan rep access to update and delete page if they created the page -->
 			{% elif current_user == clan.user and current_user.userprofile.clan_rep %}
 			<div class="CRUD">
 				<a
@@ -69,6 +74,7 @@
 			</div>
 			{% endif %}
 		</section>
+		<!-- upcoming accepted clan matches -->
 		<section>
 			<h3 class="accepted-matches">Upcoming Games</h3>
 			<div class="table-responsive">
@@ -95,7 +101,7 @@
 			</div>
 		</section>
 		<section>
-			<!-- Delete clan confirmation Modal -->
+			<!-- Delete clan page confirmation Modal -->
 			<div
 				class="modal fade"
 				id="deleteClanPage"

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+# database layout for clans
 class Clan(models.Model):
     user = models.ForeignKey(User, verbose_name="User", on_delete=models.CASCADE)
     clan_name = models.CharField("Clan Name", max_length=50)
