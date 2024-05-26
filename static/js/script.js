@@ -1,4 +1,4 @@
-// sets status of notification
+// displays an icone and text based on value of notification message status
 
 let notification_status = document.getElementsByClassName("status-icon");
 

@@ -4,10 +4,11 @@
 {% block content %}
 <!-- loads css  -->
 {% load static %}
-<!-- index.html content starts here -->
+<!-- html code which makes up homepage -->
 <div class="row">
 	<article>
 		<section><h1>homepage</h1></section>
+		<!-- image carousel -->
 		<section>
 			<div
 				id="carouselExampleCaptions"
@@ -178,6 +179,7 @@
 		<section>
 			<h2>Hell Let Loose Clans</h2>
 		</section>
+		<!-- displays clan pages as cards with name and link to full page-->
 		<section class="hll-cards">
 			{% for clan in clans %}
 			<figure style="--c: #fff5">
