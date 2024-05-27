@@ -1,4 +1,4 @@
-/******************* General website styling *******************/
+/******************* base website styling *******************/
 html {
 	box-sizing: border-box;
 	font-size: 62.5%; /*1rem = 10px, 10px/16px = 62.5%*/
@@ -11,6 +11,97 @@ html {
 	padding: 0;
 	box-sizing: inherit;
 }
+
+/******************* generic styling *******************/
+.display-none {
+	display: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "Black Ops One", system-ui !important;
+	font-weight: 400;
+	font-style: normal;
+}
+
 body {
-	background-color: #f9fafc;
+	font-family: "Special Elite", system-ui;
+	font-weight: 400;
+	font-style: normal;
+}
+
+/******************* navbar styling *******************/
+.logo {
+	width: 20rem;
+	background-color: #666666;
+	padding: 0.5rem 1rem;
+	border-radius: 1rem;
+}
+
+.navbar-expand-sm .navbar-collapse {
+	justify-content: space-between;
+}
+
+.login-system {
+	display: flex;
+	width: 10%;
+	margin-bottom: 0rem;
+	padding-left: 0rem;
+	justify-content: space-around;
+}
+
+.login-system ul {
+	display: flex;
+}
+
+.login-system li {
+	list-style: none;
+}
+
+/******************* HLL clans homepage card styling *******************/
+
+.hll-cards {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+figure {
+	display: grid;
+	border-radius: 1rem;
+	overflow: hidden;
+	cursor: pointer;
+	width: 200px;
+	margin: 2rem;
+}
+figure > * {
+	grid-area: 1/1;
+	transition: 0.4s;
+}
+figure figcaption {
+	display: grid;
+	align-items: end;
+	font-family: sans-serif;
+	font-size: 2.3rem;
+	font-weight: bold;
+	color: black;
+	padding: 0.75rem;
+	background: var(--c, #0009);
+	clip-path: inset(0 var(--_i, 100%) 0 0);
+	margin: -1px;
+}
+figure:hover figcaption {
+	--_i: 0%;
+}
+figure:hover img {
+	transform: scale(1.2);
+}
+
+/******************* notification page styling *******************/
+
+.status {
+	padding: 1rem !important;
 }
