@@ -17,7 +17,31 @@ html {
 	display: none;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "Black Ops One", system-ui !important;
+	font-weight: 400;
+	font-style: normal;
+}
+
+body {
+	font-family: "Special Elite", system-ui;
+	font-weight: 400;
+	font-style: normal;
+}
+
 /******************* navbar styling *******************/
+.logo {
+	width: 20rem;
+	background-color: #666666;
+	padding: 0.5rem 1rem;
+	border-radius: 1rem;
+}
+
 .navbar-expand-sm .navbar-collapse {
 	justify-content: space-between;
 }
@@ -41,9 +65,8 @@ html {
 /******************* HLL clans homepage card styling *******************/
 
 .hll-cards {
-	margin: 0;
-	display: grid;
-	grid-auto-flow: column;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 figure {
@@ -52,6 +75,7 @@ figure {
 	overflow: hidden;
 	cursor: pointer;
 	width: 200px;
+	margin: 2rem;
 }
 figure > * {
 	grid-area: 1/1;
