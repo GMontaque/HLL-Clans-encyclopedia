@@ -75,11 +75,11 @@
 					</button>
 					<!-- main nav bar - 768px and above -->
 					<div class="collapse navbar-collapse" id="collapsibleNavId">
-						<ul class="navbar-nav me-auto mt-2 mt-lg-0">
+						<ul class="navbar-links navbar-nav me-auto mt-2 mt-lg-0">
 							<!-- home page link -->
 							<li class="nav-item">
 								<a
-									class="nav-link active"
+									class="nav-link {% if request.path == '/' %}active{% endif %}"
 									href="{% url 'index' %}"
 									aria-current="page"
 									>Home <span class="visually-hidden">(current)</span></a
@@ -89,30 +89,36 @@
 							{% if user.is_authenticated %} {% if user.userprofile.clan_rep %}
 							<!-- raise a clan game request -->
 							<li class="nav-item">
-								<a class="nav-link" href="{% url 'match_request' %}"
+								<a
+									class="nav-link {% if request.path == '/match_request/' %}active{% endif %}"
+									href="{% url 'match_request' %}"
 									>Match Request</a
 								>
 							</li>
 							<!-- shows notifications -->
 							<li class="nav-item">
-								<a class="nav-link" href="{% url 'notifications' %}"
+								<a
+									class="nav-link {% if request.path == '/notifications/' %}active{% endif %}"
+									href="{% url 'notifications' %}"
 									>Notification</a
 								>
 							</li>
 							<!-- create clan page -->
 							<li class="nav-item">
-								<a class="nav-link" href="{% url 'clan_creation' %}"
+								<a
+									class="nav-link {% if request.path == '/clan_creation/' %}active{% endif %}"
+									href="{% url 'clan_creation' %}"
 									>Clan Creation</a
 								>
 							</li>
 							{% endif %} {% endif %}
 						</ul>
-						<ul class="login-system">
+						<ul class="login-system navbar-links">
 							<!-- dispalys user registration, log in or log out and admin panel -->
 							{% if user.is_authenticated %} {% if user.is_superuser %}
-							<li class="nav-item">
+							<li class="nav-item admin-link">
 								<a
-									class="nav-link {% if request.path == logout_url %}active{% endif %}"
+									class="nav-link"
 									aria-current="page"
 									href="{% url 'admin:index' %}"
 									>Admin Panel</a
@@ -121,7 +127,7 @@
 							{% endif %}
 							<li class="nav-item">
 								<a
-									class="nav-link {% if request.path == logout_url %}active{% endif %}"
+									class="nav-link {% if request.path == '/accounts/logout/' %}active{% endif %}"
 									aria-current="page"
 									href="{% url 'account_logout' %}"
 									>Logout</a
@@ -130,7 +136,7 @@
 							{% else %}
 							<li class="nav-item">
 								<a
-									class="nav-link {% if request.path == signup_url %}active{% endif %}"
+									class="nav-link {% if request.path == '/signup/' %}active{% endif %}"
 									aria-current="page"
 									href="{% url 'account_signup' %}"
 									>Register</a
@@ -138,7 +144,7 @@
 							</li>
 							<li class="nav-item">
 								<a
-									class="nav-link {% if request.path == login_url %}active{% endif %}"
+									class="nav-link {% if request.path == '/login/' %}active{% endif %}"
 									aria-current="page"
 									href="{% url 'account_login' %}"
 									>Login</a
@@ -167,18 +173,16 @@
 			</script>
 			{% endif %}
 		</header>
-		<main>
-			<div class="container-fluid">
-				{% if user.is_authenticated %}
-				<p class="text-end m-3">You are logged in as {{ user }}</p>
-				{% else %}
-				<p class="text-end m-3">You are not logged in</p>
-				{% endif %}
-				<!-- main site -->
-				{% block content %}
-				<!-- Content Goes here -->
-				{% endblock content %}
-			</div>
+		<main class="container-fluid">
+			{% if user.is_authenticated %}
+			<p class="text-end m-3">You are logged in as {{ user }}</p>
+			{% else %}
+			<p class="text-end m-3">You are not logged in</p>
+			{% endif %}
+			<!-- main site -->
+			{% block content %}
+			<!-- Content Goes here -->
+			{% endblock content %}
 		</main>
 		<footer>
 			<!-- footer title -->
