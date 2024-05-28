@@ -7,11 +7,18 @@
 <!-- index.html content starts here -->
 
 <div class="row justify-content-md-center">
-	<h1>Match Request</h1>
-	<form method="post">
-		{{ match_form | crispy }} {% csrf_token %}
-		<button type="submit" class="btn btn-primary">Submit Match Request</button>
-	</form>
+	<article class="center-content">
+		<section>
+			<h1 class="sub-section-title">Match Request</h1>
+
+			<form method="post" class="match-form">
+				{{ match_form | crispy }} {% csrf_token %}
+				<button type="submit" class="btn btn-primary">
+					Submit Match Request
+				</button>
+			</form>
+		</section>
+	</article>
 </div>
 
 {% endblock %}
