@@ -6,10 +6,10 @@
 {% load static %}
 <!-- html code which makes up homepage -->
 <div class="row">
-	<article>
-		<section><h1>homepage</h1></section>
+	<article class="carousel-style">
 		<!-- image carousel -->
 		<section>
+			<h1 class="display-none">homepage</h1>
 			<div
 				id="carouselExampleCaptions"
 				class="carousel slide"
@@ -65,7 +65,7 @@
 					<div class="carousel-item active">
 						<img
 							src="{% static 'img/hll-carousel-background-1.jpg' %}"
-							class="d-block w-100"
+							class="d-block w-100 carousel-img"
 							alt="..."
 						/>
 						<div class="carousel-caption d-none d-md-block">
@@ -78,7 +78,7 @@
 					<div class="carousel-item">
 						<img
 							src="{% static 'img/hll-carousel-background-2.jpeg' %}"
-							class="d-block w-100"
+							class="d-block w-100 carousel-img"
 							alt="..."
 						/>
 						<div class="carousel-caption d-none d-md-block">
@@ -91,7 +91,7 @@
 					<div class="carousel-item">
 						<img
 							src="{% static 'img/hll-carousel-background-3.jpeg' %}"
-							class="d-block w-100"
+							class="d-block w-100 carousel-img"
 							alt="..."
 						/>
 						<div class="carousel-caption d-none d-md-block">
@@ -104,7 +104,7 @@
 					<div class="carousel-item">
 						<img
 							src="{% static 'img/hll-carousel-background-4.jpeg' %}"
-							class="d-block w-100"
+							class="d-block w-100 carousel-img"
 							alt="..."
 						/>
 						<div class="carousel-caption d-none d-md-block">
@@ -117,7 +117,7 @@
 					<div class="carousel-item">
 						<img
 							src="{% static 'img/hll-carousel-background-5.jpeg' %}"
-							class="d-block w-100"
+							class="d-block w-100 carousel-img"
 							alt="..."
 						/>
 						<div class="carousel-caption d-none d-md-block">
@@ -130,7 +130,7 @@
 					<div class="carousel-item">
 						<img
 							src="{% static 'img/hll-carousel-background-6.jpeg' %}"
-							class="d-block w-100"
+							class="d-block w-100 carousel-img"
 							alt="..."
 						/>
 						<div class="carousel-caption d-none d-md-block">
@@ -143,7 +143,7 @@
 					<div class="carousel-item">
 						<img
 							src="{% static 'img/hll-carousel-background-7.jpeg' %}"
-							class="d-block w-100"
+							class="d-block w-100 carousel-img"
 							alt="..."
 						/>
 						<div class="carousel-caption d-none d-md-block">
@@ -177,16 +177,19 @@
 	</article>
 	<article>
 		<section>
-			<h2>Hell Let Loose Clans</h2>
+			<h2 class="clans-title">Hell Let Loose Clans</h2>
 		</section>
 		<!-- displays clan pages as cards with name and link to full page-->
 		<section class="hll-cards">
+			<h2 class="display-none">Hell Let Loose Clans</h2>
 			{% for clan in clans %}
 			<figure style="--c: #fff5">
+				
 				<img src="https://picsum.photos/id/475/250/300" alt="Mountains" />
+				<p class="card-title">{{ clan.clan_name }}</p>
 				<figcaption>
-					{{ clan.clan_name }}
-					<a href="{% url 'clan_page' clan.clan_name %}">Find out more</a>
+					<p class="fig-hover-colour">{{ clan.clan_name }}</p>
+					<a class="fig-hover-colour" href="{% url 'clan_page' clan.clan_name %}">Find out more</a>
 				</figcaption>
 			</figure>
 			{% endfor %}
