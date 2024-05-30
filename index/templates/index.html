@@ -183,13 +183,17 @@
 		<section class="hll-cards">
 			<h2 class="display-none">Hell Let Loose Clans</h2>
 			{% for clan in clans %}
-			<figure style="--c: #fff5">
-				
-				<img src="https://picsum.photos/id/475/250/300" alt="Mountains" />
+			<figure>
+				<img class="figure-img" src="{% static "img/background-card.png" %}"
+				alt="hell let loose image" />
 				<p class="card-title">{{ clan.clan_name }}</p>
 				<figcaption>
 					<p class="fig-hover-colour">{{ clan.clan_name }}</p>
-					<a class="fig-hover-colour" href="{% url 'clan_page' clan.clan_name %}">Find out more</a>
+					<a
+						class="fig-hover-colour"
+						href="{% url 'clan_page' clan.clan_name %}"
+						>Find out more</a
+					>
 				</figcaption>
 			</figure>
 			{% endfor %}
