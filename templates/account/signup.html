@@ -5,8 +5,10 @@
     {% trans "Signup" %}
 {% endblock head_title %}
 {% block content %}
+<div class="row justify-content-md-center">
+    <div class="center-content">
     {% element h1 %}
-        {% trans "Sign Up" %}
+        {% trans "Signs Up" %}
     {% endelement %}
     {% setvar link %}
         <a href="{{ login_url }}">
@@ -14,7 +16,6 @@
         {% setvar end_link %}
         </a>
     {% endsetvar %}
-    <h1>asfgasf</h1>
     <p>{% blocktranslate %}Already have an account? Then please {{ link }}sign in{{ end_link }}.{% endblocktranslate %}</p>
     {% if not SOCIALACCOUNT_ONLY %}
         {% url 'account_signup' as action_url %}
@@ -35,4 +36,7 @@
     {% if SOCIALACCOUNT_ENABLED %}
         {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
     {% endif %}
+    </div>
+</div>
 {% endblock content %}
+
