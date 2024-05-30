@@ -53,7 +53,7 @@
 		<header>
 			<!-- Navigation bar -->
 			<nav class="navbar navbar-expand-sm navbar-light bg-light">
-				<div class="container-fluid">
+				<div class="container-fluid margin-top">
 					<!-- website logo -->
 					<a class="navbar-brand" href="{% url 'index' %}"
 						><img
@@ -173,47 +173,59 @@
 			</script>
 			{% endif %}
 		</header>
+		{% if user.is_authenticated %}
+		<p class="user-status text-end m-3">You are logged in as {{ user }}</p>
+		{% else %}
+		<p class="user-status text-end m-3">You are not logged in</p>
+		{% endif %}
 		<main class="container-fluid">
-			{% if user.is_authenticated %}
-			<p class="text-end m-3">You are logged in as {{ user }}</p>
-			{% else %}
-			<p class="text-end m-3">You are not logged in</p>
-			{% endif %}
 			<!-- main site -->
 			{% block content %}
 			<!-- Content Goes here -->
 			{% endblock content %}
 		</main>
-		<footer>
-			<!-- footer title -->
-			<h2 class="display-none">website footer</h2>
-			<div class="container-fluid">
-				<!-- footer content -->
-				<div class="row">
-					<!-- offical game external links -->
-					<section class="col-md-4 col-sm-6">
-						<ul>
-							<li><a href="#">offical hell let loose website</a></li>
-							<li><a href="#">offical hell let loose discord</a></li>
-							<li><a href="#">buyy the game</a></li>
-						</ul>
-					</section>
-					<!-- game logo and name -->
-					<section class="col-md-4 col-sm-6">
-						<h3>Hell Let Loose Encylopedia</h3>
-						<img src="" alt="" class="hll-logo" />
-					</section>
-					<!-- creator details -->
-					<section class="col-md-4 col-sm-6">
-						<h3>created by</h3>
-						<p>giulio montaque</p>
-						<p class="email">text@example.com</p>
-						<p>
-							Contact me if you have any questions or suggestions for
-							improvements
-						</p>
-					</section>
-				</div>
+		<footer class="container-fluid" style="height: 100%">
+			<!-- footer content -->
+			<div class="row">
+				<!-- footer title -->
+				<h2 class="display-none">website footer</h2>
+				<!-- offical game external links -->
+				<section class="col-md-4 col-sm-6 footer-style">
+					<ul style="list-style: none">
+						<li>
+							<a href="https://www.hellletloose.com/" target="_blank"
+								>Offical Hell Let Loose Website</a
+							>
+						</li>
+						<li>
+							<a href="https://discord.com/invite/hellletloose" target="_blank"
+								>Offical Hell Let Loose Discord</a
+							>
+						</li>
+						<li>
+							<a
+								href="https://store.steampowered.com/app/686810/Hell_Let_Loose/"
+								target="_blank"
+								>Buy the game</a
+							>
+						</li>
+					</ul>
+				</section>
+				<!-- game logo and name -->
+				<section class="col-md-4 col-sm-6 footer-style">
+					<h3>Hell Let Loose Encylopedia</h3>
+					<img
+						class="logo m-1rem"
+						src="{% static 'img/logo.svg' %}"
+						alt="hell let loose logo"
+					/>
+				</section>
+				<!-- creator details -->
+				<section class="col-md-4 col-sm-6 footer-style">
+					<h3>created by</h3>
+					<p>giulio montaque</p>
+					<p>Contact Admin if you need any help</p>
+				</section>
 			</div>
 		</footer>
 		<!-- Bootstrap JavaScript Libraries -->
