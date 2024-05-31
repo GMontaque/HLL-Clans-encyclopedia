@@ -9,8 +9,9 @@
 <div class="row justify-content-md-center">
 	<article class="center-content">
 		<section>
+			<hr>
 			<h1 class="sub-section-title">Match Request</h1>
-
+			<hr>
 			<form method="post" class="match-form">
 				{{ match_form | crispy }} {% csrf_token %}
 				<button type="submit" class="btn btn-primary">
