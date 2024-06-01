@@ -415,3 +415,74 @@ footer {
 	font-size: 1.5rem;
 }
 
+/******************* admin ticket page *******************/
+
+.admin-message-error {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.admin-message-error i {
+	margin: 5rem 0rem;
+}
+
+/******************* log in page *******************/
+
+.helptext {
+	display: block;
+	padding-top: 2rem;
+}
+
+label[for="id_login"],
+label[for="id_password"] {
+	margin-right: 2rem;
+}
+
+.login p:has(> label[for="id_remember"]) {
+	display: flex;
+	align-items: center;
+}
+
+.login p:has(> label[for="id_remember"]) label {
+	margin-right: 2rem;
+}
+
+
+
+/******************* sign out page *******************/
+
+.logout-img {
+	width: 100%;
+}
+
+/******************* sign in page *******************/
+
+label[for="id_username"],
+label[for="id_email"],
+label[for="id_clan_rep"],
+label[for="id_password1"],
+label[for="id_password2"] {
+	width: 20rem;
+}
+
+input[id="id_clan_rep"] {
+	width: 2rem;
+}
+
+.sign-in-and-out-tag,
+.helptext a {
+	background-color: #222222;
+	padding: 0.7rem;
+	border-radius: 1rem;
+	color: white;
+	border: 2px solid white;
+	text-decoration: none;
+}
+
+.sign-in-and-out-tag:hover,
+.helptext a:hover {
+	color: #222222;
+	background-color: #ff0000;
+	border: 2px solid #ff0000;
+}
