@@ -12,13 +12,13 @@
 			<hr />
 		</section>
 
-		<section class="margin-bottom">
+		<section class="margin-b-3rem">
 			<!-- displays if logged in user is not admin  -->
 			{% if not user.is_superuser %}
 			<a
 				name=""
 				id=""
-				class="btn btn-primary margin-top-sm"
+				class="btn btn-primary margin-t-1rem"
 				href="{% url 'admin_ticket' %}"
 				role="button"
 				>Raise Admin Ticket</a
@@ -28,7 +28,7 @@
 		<!-- displays for admin shows messages received -->
 		{% if user.is_superuser %}
 		<section class="notification-table">
-			<h2 class="subhead-notifications">Inbound Messages</h2>
+			<h2 class="margin-b-1rem">Inbound Messages</h2>
 			<div class="table-responsive">
 				<table class="table table-primary">
 					<thead>
@@ -71,7 +71,7 @@
 		<!-- displays if logged in user is not admin, shows messages sent by user-->
 		{% if not user.is_superuser %}
 		<section class="notification-table">
-			<h2 class="subhead-notifications">Outbound Messages</h2>
+			<h2 class="margin-b-1rem">Outbound Messages</h2>
 			<div class="table-responsive">
 				<table class="table table-primary">
 					<thead>
@@ -112,7 +112,7 @@
 		<!-- if user is admin displays all games sent -->
 		{% if user.is_superuser %}
 		<section class="game_request_message notification-table">
-			<h2 class="subhead-notifications">Game Requests</h2>
+			<h2 class="margin-b-1rem">Game Requests</h2>
 			<div class="table-responsive">
 				<table class="table table-primary">
 					<thead>
@@ -151,7 +151,7 @@
 		<!-- splits games sent into received and sent for clan reps -->
 		{% if not user.is_superuser %}
 		<section class="notification-table">
-			<h2 class="subhead-notifications">Game Requests - received</h2>
+			<h2 class="margin-b-1rem">Game Requests - received</h2>
 			<div class="table-responsive">
 				<table class="table table-primary">
 					<thead>
@@ -187,7 +187,7 @@
 			</div>
 		</section>
 		<section class="notification-table">
-			<h2 class="subhead-notifications">Game Requests - sent</h2>
+			<h2 class="margin-b-1rem">Game Requests - sent</h2>
 			<div class="table-responsive">
 				<table class="table table-primary">
 					<thead>
