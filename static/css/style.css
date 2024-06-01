@@ -205,3 +205,69 @@ footer {
 	list-style: none;
 }
 
+/******************* HLL clans homepage card *******************/
+.index-sub-title {
+	text-align: center;
+	margin: 3rem 0rem;
+}
+
+.hll-cards {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.card-title {
+	width: min-content;
+	margin: auto 2rem;
+	padding: 1rem;
+	font-size: 3rem;
+}
+
+.fig-hover-colour {
+	color: #ff0000;
+	text-decoration: none;
+	font-size: 3rem;
+}
+
+figure {
+	display: grid;
+	border-radius: 1rem;
+	overflow: hidden;
+	cursor: pointer;
+	width: 200px;
+	margin: 2rem;
+	height: 35rem;
+	width: 25rem;
+	--c: #fff5;
+}
+
+figure > * {
+	grid-area: 1/1;
+	transition: 0.4s;
+}
+
+figure figcaption {
+	display: grid;
+	align-items: end;
+	font-size: 2.3rem;
+	font-weight: bold;
+	color: black;
+	padding: 0.75rem;
+	background: var(--c, #0009);
+	clip-path: inset(0 var(--_i, 100%) 0 0);
+	margin: -1px;
+	height: 36rem;
+}
+
+figure:hover figcaption {
+	--_i: 0%;
+}
+
+.figure-img {
+	width: 141%;
+}
+
+figure:hover img {
+	transform: scale(1.2);
+}
+
