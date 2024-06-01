@@ -46,7 +46,6 @@
 						{% if notification.receiver == current_user %}
 						<tr class="">
 							<td scope="row">{{ notification.issuer}}</td>
-							<td>{{ notification.receiver}}</td>
 							<td>{{ notification.clan}}</td>
 							<td>{{ notification.content |slice:":10"}}...</td>
 							<td class="status">
