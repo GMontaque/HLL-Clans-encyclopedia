@@ -178,7 +178,9 @@
 		{% else %}
 		<p class="user-status text-end m-3">You are not logged in</p>
 		{% endif %}
-		<main class="container-fluid">
+		<main
+			class="container-fluid {% if request.path != '/' %}background-img{% endif %}"
+		>
 			<!-- main site -->
 			{% block content %}
 			<!-- Content Goes here -->
