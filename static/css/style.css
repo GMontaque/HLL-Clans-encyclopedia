@@ -146,3 +146,62 @@ ul li a {
 	font-size: 1.5rem;
 }
 
+/******************* navbar styling *******************/
+.logo {
+	width: 20rem;
+	background-color: #222222;
+	padding: 0.5rem 1rem;
+	border-radius: 1rem;
+}
+
+.navbar,
+footer {
+	height: 10rem;
+	background-color: #222222 !important;
+}
+
+.margin-t-3rem {
+	margin-top: 3rem;
+}
+
+.margin-t-1rem {
+	margin-top: 1rem;
+}
+
+.navbar-links {
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+.nav-link {
+	color: white;
+}
+
+.nav-link:hover {
+	color: #ff0000;
+}
+
+.navbar-expand-sm .navbar-collapse {
+	justify-content: space-between;
+}
+
+.navbar-toggler {
+	background-color: white;
+}
+
+.login-system {
+	display: flex;
+	width: 15%;
+	margin-bottom: 0rem;
+	padding-left: 0rem;
+	justify-content: space-around;
+}
+
+.login-system ul {
+	display: flex;
+}
+
+.login-system li {
+	list-style: none;
+}
+
