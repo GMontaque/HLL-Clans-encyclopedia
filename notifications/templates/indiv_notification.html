@@ -13,21 +13,21 @@
 		</section>
 		<!-- displays individual notification -->
 		<section class="notification">
-			<p><span>From:</span> {{notification.issuer}}</p>
-			<p><span>To:</span> {{notification.receiver}}</p>
+			<p><strong>From:</strong> {{notification.issuer}}</p>
+			<p><strong>To:</strong> {{notification.receiver}}</p>
 			{% if current_user.is_superuser %}
-			<p><span>Sender Clan:</span> {{notification.clan}}</p>
+			<p><strong>Sender Clan:</strong> {{notification.clan}}</p>
 			{% endif %}
 			<p class="notification-message-content">
-				<span>Message:</span> {{notification.content}}
+				<strong>Message:</strong> {{notification.content}}
 			</p>
-			<p><span>Status:</span> {{notification.status}}</p>
+			<p><strong>Status:</strong> {{notification.status}}</p>
 			<img src="{% static "img/truck.png" %}" class="img-fluid rounded-top"
 			alt="" />
 		</section>
 		<!-- allows addmin to update notification status -->
 		{% if user.is_superuser %}
-		<section class="notification">
+		<section class="notification status-btn">
 			<a
 				name=""
 				id=""

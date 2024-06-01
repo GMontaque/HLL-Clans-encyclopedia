@@ -340,6 +340,15 @@ tbody {
 	flex-direction: column;
 }
 
+.status-btn{
+	flex-direction: row;
+	margin-bottom: 3rem;
+}
+
+.status-btn a:not(:last-child){
+	margin-right: 2rem;
+}
+
 /******************* match request page *******************/
 
 .center-content {
