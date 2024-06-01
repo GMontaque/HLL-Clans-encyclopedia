@@ -28,27 +28,170 @@ h6 {
 	font-style: normal;
 }
 
+hr {
+	border: 0.2rem solid white;
+	opacity: 1;
+	width: 100%;
+}
+
 body {
 	font-family: "Special Elite", system-ui;
 	font-weight: 400;
 	font-style: normal;
+	background-color: #595959;
+	color: white;
+}
+
+body .background-img {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+		url("../img/carentan.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+}
+
+.active {
+	color: #ff0000 !important;
+}
+
+main {
+	min-height: 100vh;
+	font-size: 2rem;
+}
+
+h1 {
+	margin: 3rem 0rem;
+	text-align: center;
+}
+
+.m-1rem {
+	margin-left: -1rem;
+}
+
+.btn,
+button {
+	background-color: #222222;
+	border: 2px solid white;
+	padding: 1rem 2rem;
+	font-size: 2rem;
+	font-weight: bold;
+	color: white;
+	border-radius: 1rem;
+}
+
+.btn:hover,
+button:hover {
+	background-color: #ff0000;
+	color: #222222;
+	border: 2px solid #ff0000;
+}
+
+.margin-b-3rem {
+	margin-bottom: 3rem;
+}
+
+.margin-b-1rem {
+	margin-bottom: 1rem;
+}
+
+/******************* clan page styling *******************/
+
+/* delete pop up modal for clan page */
+.modal-content {
+	background-color: #222222;
+}
+
+.clan-card {
+	width: 70%;
+	margin: auto;
+}
+
+.clan-owner {
+	margin-bottom: 3rem;
+	display: block;
+}
+
+.external-links {
+	display: flex;
+	justify-content: space-between;
+}
+
+.external-links-discord:hover,
+.external-links-website:hover {
+	text-decoration: underline;
+	color: #222222;
+	font-size: 2rem;
+}
+
+/******************* form styling *******************/
+
+select,
+input {
+	height: 4rem;
+}
+
+textarea {
+	height: 200px;
+}
+
+label {
+	color: white;
+	text-decoration: underline;
+}
+
+ul li a {
+	text-decoration: none;
+	color: inherit;
+	font-size: 1.5rem;
 }
 
 /******************* navbar styling *******************/
 .logo {
 	width: 20rem;
-	background-color: #666666;
+	background-color: #222222;
 	padding: 0.5rem 1rem;
 	border-radius: 1rem;
+}
+
+.navbar,
+footer {
+	height: 10rem;
+	background-color: #222222 !important;
+}
+
+.margin-t-3rem {
+	margin-top: 3rem;
+}
+
+.margin-t-1rem {
+	margin-top: 1rem;
+}
+
+.navbar-links {
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+.nav-link {
+	color: white;
+}
+
+.nav-link:hover {
+	color: #ff0000;
 }
 
 .navbar-expand-sm .navbar-collapse {
 	justify-content: space-between;
 }
 
+.navbar-toggler {
+	background-color: white;
+}
+
 .login-system {
 	display: flex;
-	width: 10%;
+	width: 15%;
 	margin-bottom: 0rem;
 	padding-left: 0rem;
 	justify-content: space-around;
@@ -62,11 +205,28 @@ body {
 	list-style: none;
 }
 
-/******************* HLL clans homepage card styling *******************/
+/******************* HLL clans homepage card *******************/
+.index-sub-title {
+	text-align: center;
+	margin: 3rem 0rem;
+}
 
 .hll-cards {
 	display: flex;
 	flex-wrap: wrap;
+}
+
+.card-title {
+	width: min-content;
+	margin: auto 2rem;
+	padding: 1rem;
+	font-size: 3rem;
+}
+
+.fig-hover-colour {
+	color: #ff0000;
+	text-decoration: none;
+	font-size: 3rem;
 }
 
 figure {
@@ -76,15 +236,19 @@ figure {
 	cursor: pointer;
 	width: 200px;
 	margin: 2rem;
+	height: 35rem;
+	width: 25rem;
+	--c: #fff5;
 }
+
 figure > * {
 	grid-area: 1/1;
 	transition: 0.4s;
 }
+
 figure figcaption {
 	display: grid;
 	align-items: end;
-	font-family: sans-serif;
 	font-size: 2.3rem;
 	font-weight: bold;
 	color: black;
@@ -92,16 +256,233 @@ figure figcaption {
 	background: var(--c, #0009);
 	clip-path: inset(0 var(--_i, 100%) 0 0);
 	margin: -1px;
+	height: 36rem;
 }
+
 figure:hover figcaption {
 	--_i: 0%;
 }
+
+.figure-img {
+	width: 141%;
+}
+
 figure:hover img {
 	transform: scale(1.2);
 }
 
-/******************* notification page styling *******************/
+/******************* notification page *******************/
+
+.table > :not(caption) > * > * {
+	background-color: transparent;
+}
+
+thead {
+	background: #222222;
+	color: white !important;
+}
+
+tbody {
+	background-color: #e5e5e5;
+	opacity: 0.8;
+}
+
+.table thead th {
+	color: white;
+}
 
 .status {
 	padding: 1rem !important;
+}
+
+.status-icon {
+	color: #222222 !important;
+}
+
+.fa-clock:before,
+.fa-circle-xmark:before,
+.fa-circle-check:before {
+	color: #222222;
+}
+
+.notification-table {
+	display: flex;
+	flex-direction: column;
+	max-width: 70%;
+	margin: 3rem auto;
+}
+
+/******************* individual notifications *******************/
+
+.notification-message-content {
+	word-wrap: break-word;
+	max-width: 100%;
+}
+
+.notification {
+	max-width: 50%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin: auto;
+	padding-top: 5rem;
+	padding-right: 0rem;
+	padding-bottom: 0rem;
+	padding-left: 5rem;
+}
+
+.notification:last-child {
+	padding-top: 0rem;
+}
+
+.flex {
+	display: flex;
+	flex-direction: column;
+}
+
+/******************* match request page *******************/
+
+.center-content {
+	width: 40%;
+}
+
+/******************* index page *******************/
+
+.user-status {
+	background-color: #222222;
+	margin: 0 !important;
+	padding-right: 1rem;
+	font-size: 1.5rem;
+}
+
+/******************* hero homepage image *******************/
+
+.hero-image {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+		url("../img/carentan.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	height: 35vh;
+}
+
+.hero-text {
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+}
+
+.hero-text button {
+	border: none;
+	outline: 0;
+	display: inline-block;
+	padding: 10px 25px;
+	color: black;
+	background-color: #ddd;
+	text-align: center;
+	cursor: pointer;
+}
+
+.hero-text button:hover {
+	background-color: #555;
+	color: white;
+}
+
+/******************* footer section *******************/
+
+footer {
+	color: white;
+}
+
+.footer-style {
+	align-content: center;
+	text-align: center;
+	margin: 4rem 0rem 2rem 0rem;
+	font-size: 2rem;
+}
+
+.login-btn {
+	color: white;
+}
+
+.footer-style ul li a:hover {
+	text-decoration: underline;
+	color: #ff0000;
+	font-size: 1.5rem;
+}
+
+/******************* admin ticket page *******************/
+
+.admin-message-error {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.admin-message-error i {
+	margin: 5rem 0rem;
+}
+
+/******************* log in page *******************/
+
+.helptext {
+	display: block;
+	padding-top: 2rem;
+}
+
+label[for="id_login"],
+label[for="id_password"] {
+	margin-right: 2rem;
+}
+
+.login p:has(> label[for="id_remember"]) {
+	display: flex;
+	align-items: center;
+}
+
+.login p:has(> label[for="id_remember"]) label {
+	margin-right: 2rem;
+}
+
+
+
+/******************* sign out page *******************/
+
+.logout-img {
+	width: 100%;
+}
+
+/******************* sign in page *******************/
+
+label[for="id_username"],
+label[for="id_email"],
+label[for="id_clan_rep"],
+label[for="id_password1"],
+label[for="id_password2"] {
+	width: 20rem;
+}
+
+input[id="id_clan_rep"] {
+	width: 2rem;
+}
+
+.sign-in-and-out-tag,
+.helptext a {
+	background-color: #222222;
+	padding: 0.7rem;
+	border-radius: 1rem;
+	color: white;
+	border: 2px solid white;
+	text-decoration: none;
+}
+
+.sign-in-and-out-tag:hover,
+.helptext a:hover {
+	color: #222222;
+	background-color: #ff0000;
+	border: 2px solid #ff0000;
 }
