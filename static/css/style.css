@@ -124,3 +124,25 @@ button:hover {
 	font-size: 2rem;
 }
 
+/******************* form styling *******************/
+
+select,
+input {
+	height: 4rem;
+}
+
+textarea {
+	height: 200px;
+}
+
+label {
+	color: white;
+	text-decoration: underline;
+}
+
+ul li a {
+	text-decoration: none;
+	color: inherit;
+	font-size: 1.5rem;
+}
+
