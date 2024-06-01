@@ -95,3 +95,32 @@ button:hover {
 	margin-bottom: 1rem;
 }
 
+/******************* clan page styling *******************/
+
+/* delete pop up modal for clan page */
+.modal-content {
+	background-color: #222222;
+}
+
+.clan-card {
+	width: 70%;
+	margin: auto;
+}
+
+.clan-owner {
+	margin-bottom: 3rem;
+	display: block;
+}
+
+.external-links {
+	display: flex;
+	justify-content: space-between;
+}
+
+.external-links-discord:hover,
+.external-links-website:hover {
+	text-decoration: underline;
+	color: #222222;
+	font-size: 2rem;
+}
+
