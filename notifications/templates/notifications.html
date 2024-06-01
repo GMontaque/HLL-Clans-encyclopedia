@@ -5,229 +5,225 @@
 <!-- loads css  -->
 {% load static %}
 <div class="row">
-	<section>
-		<h1>Notifications</h1>
-	</section>
-	<section>
-		<!-- displays if logged in user is not admin  -->
-		{% if not user.is_superuser %}
-		<a
-			name=""
-			id=""
-			class="btn btn-primary"
-			href="{% url 'admin_ticket' %}"
-			role="button"
-			>Raise Admin Ticket</a
-		>
+	<article>
+		<section>
+			<hr />
+			<h1 class="notification-title">Notifications</h1>
+			<hr />
+		</section>
+
+		<section class="margin-bottom">
+			<!-- displays if logged in user is not admin  -->
+			{% if not user.is_superuser %}
+			<a
+				name=""
+				id=""
+				class="btn btn-primary"
+				href="{% url 'admin_ticket' %}"
+				role="button"
+				>Raise Admin Ticket</a
+			>
+			{% endif %}
+		</section>
+		<!-- displays for admin shows messages received -->
+		{% if user.is_superuser %}
+		<section class="notification-table">
+			<h2 class="subhead-notifications">Inbound Messages</h2>
+			<div class="table-responsive">
+				<table class="table table-primary">
+					<thead>
+						<tr>
+							<th scope="col">Issuer</th>
+							<th scope="col">Clan</th>
+							<th scope="col">content</th>
+							<th scope="col">Status</th>
+							<th scope="col">Display Message</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for notification in all_notifications %}
+						<!-- displays by receiver name -->
+						{% if notification.receiver == current_user %}
+						<tr class="">
+							<td scope="row">{{ notification.issuer}}</td>
+							<td>{{ notification.receiver}}</td>
+							<td>{{ notification.clan}}</td>
+							<td>{{ notification.content |slice:":10"}}...</td>
+							<td class="status">
+								<span class="status-icon">{{ notification.status}}</span>
+							</td>
+							<td>
+								<a
+									name=""
+									id=""
+									class="btn btn-primary"
+									href="{% url 'individual_notification' notification.pk %}"
+									role="button"
+									>Open Message</a
+								>
+							</td>
+						</tr>
+						{% endif %} {% endfor%}
+					</tbody>
+				</table>
+			</div>
+		</section>
 		{% endif %}
-	</section>
-	<!-- displays for admin shows messages received -->
-	{% if user.is_superuser %}
-	<section><h2>Inbound Messages</h2></section>
-	<section>
-		<div class="table-responsive">
-			<table class="table table-primary">
-				<thead>
-					<tr>
-						<th scope="col">Issuer</th>
-						<th scope="col">Receiver</th>
-						<th scope="col">Clan</th>
-						<th scope="col">content</th>
-						<th scope="col">Status</th>
-						<th scope="col">Display Message</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for notification in all_notifications %}
-					<!-- displays by receiver name -->
-					{% if notification.receiver == current_user %}
-					<tr class="">
-						<td scope="row">{{ notification.issuer}}</td>
-						<td>{{ notification.receiver}}</td>
-						<td>{{ notification.clan}}</td>
-						<td>{{ notification.content |slice:":10"}}...</td>
-						<td class="status">
-							<span class="status-icon">{{ notification.status}}</span>
-						</td>
-						<td>
-							<a
-								name=""
-								id=""
-								class="btn btn-primary"
-								href="{% url 'individual_notification' notification.pk %}"
-								role="button"
-								>Open Message</a
-							>
-						</td>
-					</tr>
-					{% endif %} {% endfor%}
-				</tbody>
-			</table>
-		</div>
-	</section>
-	{% endif %}
-	<!-- displays if logged in user is not admin, shows messages sent by user-->
-	{% if not user.is_superuser %}
-	<section><h2>Outbound Messages</h2></section>
-	<section>
-		<div class="table-responsive">
-			<table class="table table-primary">
-				<thead>
-					<tr>
-						<th scope="col">Issuer</th>
-						<th scope="col">Receiver</th>
-						<th scope="col">Clan</th>
-						<th scope="col">content</th>
-						<th scope="col">Status</th>
-						<th scope="col">Display Message</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for notification in all_notifications %}
-					<!-- displays by issuer name -->
-					{% if notification.issuer == current_user %}
-					<tr class="">
-						<td scope="row">{{ notification.issuer}}</td>
-						<td>{{ notification.receiver}}</td>
-						<td>{{ notification.clan}}</td>
-						<td>{{ notification.content |slice:":10"}}...</td>
-						<td class="status">
-							<span class="status-icon">{{ notification.status}}</span>
-						</td>
-						<td>
-							<a
-								name=""
-								id=""
-								class="btn btn-primary"
-								href="{% url 'individual_notification' notification.pk %}"
-								role="button"
-								>Open Message</a
-							>
-						</td>
-					</tr>
-					{% endif %} {% endfor%}
-				</tbody>
-			</table>
-		</div>
-	</section>
-	{% endif %}
-	<!-- if user is admin displays all games sent -->
-	{% if user.is_superuser %}
-	<section class="game_request_message">
-		<h2>Game Requests</h2>
-		<div class="table-responsive">
-			<table class="table table-primary">
-				<thead>
-					<tr>
-						<th scope="col">Eneney Team</th>
-						<th scope="col">Your Team</th>
-						<th scope="col">Game Type</th>
-						<th scope="col">Status</th>
-						<th scope="col">Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for match in matches%}
-					<tr class="">
-						<td scope="row">{{match.inviter_clan}}</td>
-						<td>{{match.invitee_clan}}</td>
-						<td>{{match.game_type}}</td>
-						<td>{{match.is_accepted}}</td>
-						<td>
-							<a
-								name=""
-								id=""
-								class="btn btn-primary"
-								href="{% url 'requested_game' match.pk %}"
-								role="button"
-								>Open Message</a
-							>
-						</td>
-					</tr>
-					{% endfor %}
-				</tbody>
-			</table>
-		</div>
-	</section>
-	{% endif %}
-	<!-- splits games sent into received and sent for clan reps -->
-	{% if not user.is_superuser %}
-	<section>
-		<h2>Game Requests - received</h2>
-		<div class="table-responsive">
-			<table class="table table-primary">
-				<thead>
-					<tr>
-						<th scope="col">Issuer</th>
-						<th scope="col">Receiver</th>
-						<th scope="col">Clan</th>
-						<th scope="col">content</th>
-						<th scope="col">Display Message</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for match in matches%}
-					<!--  -->
-					{% if match.invitee_clan|stringformat:"s" == user_clan|stringformat:"s" %}
-					<tr class="">
-						<td scope="row">{{match.inviter_clan}}</td>
-						<td>{{match.invitee_clan}}</td>
-						<td>{{match.game_type}}</td>
-						<td>{{match.is_accepted}}</td>
-						<td>
-							<a
-								name=""
-								id=""
-								class="btn btn-primary"
-								href="{% url 'requested_game' match.pk %}"
-								role="button"
-								>Open Message</a
-							>
-						</td>
-					</tr>
-					{% endif %} {% endfor%}
-				</tbody>
-			</table>
-		</div>
-	</section>
-	<section>
-		<h2>Game Requests - sent</h2>
-		<div class="table-responsive">
-			<table class="table table-primary">
-				<thead>
-					<tr>
-						<th scope="col">Issuer</th>
-						<th scope="col">Receiver</th>
-						<th scope="col">Clan</th>
-						<th scope="col">content</th>
-						<th scope="col">content</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for match in matches%}
-					<!--  -->
-					{% if match.inviter_clan|stringformat:"s" == user_clan|stringformat:"s" %}
-					<tr class="">
-						<td scope="row">{{match.inviter_clan}}</td>
-						<td>{{match.invitee_clan}}</td>
-						<td>{{match.game_type}}</td>
-						<td>{{match.is_accepted}}</td>
-						<td>
-							<a
-								name=""
-								id=""
-								class="btn btn-primary"
-								href="{% url 'requested_game' match.pk %}"
-								role="button"
-								>Open Message</a
-							>
-						</td>
-					</tr>
-					{% endif %} {% endfor%}
-				</tbody>
-			</table>
-		</div>
-	</section>
-	{% endif %}
+		<!-- displays if logged in user is not admin, shows messages sent by user-->
+		{% if not user.is_superuser %}
+		<section class="notification-table">
+			<h2 class="subhead-notifications">Outbound Messages</h2>
+			<div class="table-responsive">
+				<table class="table table-primary">
+					<thead>
+						<tr>
+							<th scope="col">Receiver</th>
+							<th scope="col">content</th>
+							<th scope="col">Status</th>
+							<th scope="col">Display Message</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for notification in all_notifications %}
+						<!-- displays by issuer name -->
+						{% if notification.issuer == current_user %}
+						<tr class="">
+							<td>{{ notification.receiver}}</td>
+							<td>{{ notification.content |slice:":10"}}...</td>
+							<td class="status">
+								<span class="status-icon">{{ notification.status}}</span>
+							</td>
+							<td>
+								<a
+									name=""
+									id=""
+									class="btn btn-primary"
+									href="{% url 'individual_notification' notification.pk %}"
+									role="button"
+									>Open Message</a
+								>
+							</td>
+						</tr>
+						{% endif %} {% endfor%}
+					</tbody>
+				</table>
+			</div>
+		</section>
+		{% endif %}
+		<!-- if user is admin displays all games sent -->
+		{% if user.is_superuser %}
+		<section class="game_request_message notification-table">
+			<h2 class="subhead-notifications">Game Requests</h2>
+			<div class="table-responsive">
+				<table class="table table-primary">
+					<thead>
+						<tr>
+							<th scope="col">Eneney Team</th>
+							<th scope="col">Your Team</th>
+							<th scope="col">Game Type</th>
+							<th scope="col">Status</th>
+							<th scope="col">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for match in matches%}
+						<tr class="">
+							<td scope="row">{{match.inviter_clan}}</td>
+							<td>{{match.invitee_clan}}</td>
+							<td>{{match.game_type}}</td>
+							<td>{{match.is_accepted}}</td>
+							<td>
+								<a
+									name=""
+									id=""
+									class="btn btn-primary"
+									href="{% url 'requested_game' match.pk %}"
+									role="button"
+									>Open Message</a
+								>
+							</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</section>
+		{% endif %}
+		<!-- splits games sent into received and sent for clan reps -->
+		{% if not user.is_superuser %}
+		<section class="notification-table">
+			<h2 class="subhead-notifications">Game Requests - received</h2>
+			<div class="table-responsive">
+				<table class="table table-primary">
+					<thead>
+						<tr>
+							<th scope="col">Issuer</th>
+							<th scope="col">Game Type</th>
+							<th scope="col">Status</th>
+							<th scope="col">Display Message</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for match in matches%}
+						<!--  -->
+						{% if match.invitee_clan|stringformat:"s" == user_clan|stringformat:"s" %}
+						<tr class="">
+							<td scope="row">{{match.inviter_clan}}</td>
+							<td>{{match.game_type}}</td>
+							<td>{{match.is_accepted}}</td>
+							<td>
+								<a
+									name=""
+									id=""
+									class="btn btn-primary"
+									href="{% url 'requested_game' match.pk %}"
+									role="button"
+									>Open Message</a
+								>
+							</td>
+						</tr>
+						{% endif %} {% endfor%}
+					</tbody>
+				</table>
+			</div>
+		</section>
+		<section class="notification-table">
+			<h2 class="subhead-notifications">Game Requests - sent</h2>
+			<div class="table-responsive">
+				<table class="table table-primary">
+					<thead>
+						<tr>
+							<th scope="col">Receiver</th>
+							<th scope="col">Game Type</th>
+							<th scope="col">Status</th>
+							<th scope="col">Display Message</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for match in matches%}
+						<!--  -->
+						{% if match.inviter_clan|stringformat:"s" == user_clan|stringformat:"s" %}
+						<tr class="">
+							<td>{{match.invitee_clan}}</td>
+							<td>{{match.game_type}}</td>
+							<td>{{match.is_accepted}}</td>
+							<td>
+								<a
+									name=""
+									id=""
+									class="btn btn-primary"
+									href="{% url 'requested_game' match.pk %}"
+									role="button"
+									>Open Message</a
+								>
+							</td>
+						</tr>
+						{% endif %} {% endfor%}
+					</tbody>
+				</table>
+			</div>
+		</section>
+		{% endif %}
+	</article>
 </div>
 {% endblock %}

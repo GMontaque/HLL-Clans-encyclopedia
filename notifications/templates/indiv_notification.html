@@ -4,59 +4,67 @@
 {% block content %}
 <!-- loads css  -->
 {% load static %}
-<div class="row">
-	<!-- displays individual notification -->
-	<section>
-		<h1>Notifications</h1>
-	</section>
-	<section class="notification">
-		<p>{{notification.issuer}}</p>
-		<p>{{notification.receiver}}</p>
-		<p>{{notification.clan}}</p>
-		<p>{{notification.content}}</p>
-		{% if not notification.issuer == request.user%}
-		<p>{{notification.status}}</p>
+<div class="row flex">
+	<article>
+		<section>
+			<hr />
+			<h1 class="notification-title">Notification</h1>
+			<hr />
+		</section>
+		<!-- displays individual notification -->
+		<section class="notification">
+			<p><span>From:</span> {{notification.issuer}}</p>
+			<p><span>To:</span> {{notification.receiver}}</p>
+			{% if current_user.is_superuser %}
+			<p><span>Sender Clan:</span> {{notification.clan}}</p>
+			{% endif %}
+			<p class="notification-message-content">
+				<span>Message:</span> {{notification.content}}
+			</p>
+			<p><span>Status:</span> {{notification.status}}</p>
+			<img src="{% static "img/truck.png" %}" class="img-fluid rounded-top"
+			alt="" />
+		</section>
+		<!-- allows addmin to update notification status -->
+		{% if user.is_superuser %}
+		<section class="notification">
+			<a
+				name=""
+				id=""
+				class="btn btn-primary edit-clan"
+				href="{% url 'update_notification_status' notification.pk 'completed' %}"
+				role="button"
+				>Completed</a
+			>
+			<a
+				name=""
+				id=""
+				class="btn btn-primary edit-clan"
+				href="{% url 'update_notification_status' notification.pk 'in-progress' %}"
+				role="button"
+				>In Progress</a
+			>
+			<a
+				name=""
+				id=""
+				class="btn btn-primary edit-clan"
+				href="{% url 'update_notification_status' notification.pk 'rejected' %}"
+				role="button"
+				>Rejected</a
+			>
+		</section>
 		{% endif %}
-	</section>
-	<!-- allows addmin to update notification status -->
-	{% if user.is_superuser %}
-	<section>
-		<a
-			name=""
-			id=""
-			class="btn btn-primary edit-clan"
-			href="{% url 'update_notification_status' notification.pk 'completed' %}"
-			role="button"
-			>Completed</a
-		>
-		<a
-			name=""
-			id=""
-			class="btn btn-primary edit-clan"
-			href="{% url 'update_notification_status' notification.pk 'in-progress' %}"
-			role="button"
-			>In Progress</a
-		>
-		<a
-			name=""
-			id=""
-			class="btn btn-primary edit-clan"
-			href="{% url 'update_notification_status' notification.pk 'rejected' %}"
-			role="button"
-			>Rejected</a
-		>
-	</section>
-	{% endif %}
-	<!-- return to notifications page -->
-	<section>
-		<a
-			name=""
-			id=""
-			class="btn btn-primary edit-clan"
-			href="{% url 'notifications' %}"
-			role="button"
-			>Back</a
-		>
-	</section>
+		<!-- return to notifications page -->
+		<section class="notification">
+			<a
+				name=""
+				id=""
+				class="btn btn-primary edit-clan"
+				href="{% url 'notifications' %}"
+				role="button"
+				>Back</a
+			>
+		</section>
+	</article>
 </div>
 {% endblock %}
