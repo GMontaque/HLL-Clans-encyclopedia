@@ -271,3 +271,44 @@ figure:hover img {
 	transform: scale(1.2);
 }
 
+/******************* notification page *******************/
+
+.table > :not(caption) > * > * {
+	background-color: transparent;
+}
+
+thead {
+	background: #222222;
+	color: white !important;
+}
+
+tbody {
+	background-color: #e5e5e5;
+	opacity: 0.8;
+}
+
+.table thead th {
+	color: white;
+}
+
+.status {
+	padding: 1rem !important;
+}
+
+.status-icon {
+	color: #222222 !important;
+}
+
+.fa-clock:before,
+.fa-circle-xmark:before,
+.fa-circle-check:before {
+	color: #222222;
+}
+
+.notification-table {
+	display: flex;
+	flex-direction: column;
+	max-width: 70%;
+	margin: 3rem auto;
+}
+
