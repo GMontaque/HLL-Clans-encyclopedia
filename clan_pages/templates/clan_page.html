@@ -8,10 +8,10 @@
 <div class="row">
 	<article class="clan-card">
 		<section class="margin-bottom">
-			<hr>
+			<hr />
 			<!-- clan name and owner -->
 			<h1 class="clan-name-title">{{clan.clan_name}}</h1>
-			<hr>
+			<hr />
 			<span class="clan-owner">Clan Owner: {{clan.user}}</span>
 			<!-- clan image logo -->
 			<img
@@ -19,18 +19,29 @@
 				class="img-fluid rounded-top"
 				alt=""
 				id="clan-img"
-				style="display:none"
+				style="display: none"
 			/>
 			<!-- infomration on clan -->
-			<p class="clan-content">{{clan.content}}</p>
+			<p class="margin-bottom">{{clan.content}}</p>
 			<!-- external social links -->
 			<div class="external-links">
-				<a class="external-links-discord btn btn-primary" href="{{clan.discord_url}}" target="_blank" id="discord-url"><i class="fa-brands fa-discord"></i>  Discord</a>
+				<a
+					class="external-links-discord btn btn-primary"
+					href="{{clan.discord_url}}"
+					target="_blank"
+					id="discord-url"
+					><i class="fa-brands fa-discord"></i> Discord</a
+				>
 				{% if clan.website_url %}
-				<a class="external-links-website btn btn-primary" href="{{clan.website_url}}" target="_blank" id="website-url"><i class="fa-solid fa-globe"></i>  Website</a>
+				<a
+					class="external-links-website btn btn-primary"
+					href="{{clan.website_url}}"
+					target="_blank"
+					id="website-url"
+					><i class="fa-solid fa-globe"></i> Website</a
+				>
 				{% endif %}
 			</div>
-			
 		</section>
 		<!-- upcoming accepted clan matches -->
 		<section class="margin-bottom">
@@ -48,7 +59,9 @@
 					<tbody>
 						{% for match in matches %}
 						<tr class="">
-							<td scope="row">{{ match.inviter_clan}} vs {{ match.invitee_clan}}</td>
+							<td scope="row">
+								{{ match.inviter_clan}} vs {{ match.invitee_clan}}
+							</td>
 							<td>{{ match.game_type}}</td>
 							<td>{{ match.match_date}}</td>
 							<td>{{ match.is_accepted}}</td>
