@@ -11,7 +11,7 @@
 			<h1 class="sub-section-title">Clan Creation</h1>
 			<hr />
 			<!-- clan creation form  -->
-			<form id="clanCreation" method="post">
+			<form id="clanCreation" method="post" enctype="multipart/form-data">
 				{{ clanCreation | crispy }} {% csrf_token %} {% if users %}
 				<label for="clan_rep_name">Clan Rep: </label>
 				<select

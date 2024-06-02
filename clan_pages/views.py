@@ -27,7 +27,7 @@ def clan_creation(request):
         # form data to be passed to database
         data = {'clan_name': request.POST.get('clan_name'),
         'content': request.POST.get('content'),
-        'image_url': request.POST.get('image_url'),
+        'image_url': request.FILES.get('image_url'),
         'discord_url': request.POST.get('discord_url'),
         'website_url': request.POST.get('website_url')}
         # checks if user is admin or clan rep
@@ -37,8 +37,8 @@ def clan_creation(request):
             messages.add_message(request, messages.ERROR, "ERROR, a clan is already associated with this account")
             return redirect('index')
 
-        form = CreateClan(data=data)
-        # saves the newly created form and redirects to home page(index)
+        form = CreateClan(request.POST, request.FILES)
+        # saves the newly created form and redirects to home pagoke(index)
         if form.is_valid():
             print("Form is valid, creating clan")
             clan = form.save(commit=False)

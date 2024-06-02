@@ -6,46 +6,58 @@
 {% load static %}
 <!-- displays clan page -->
 <div class="row">
-	<article class="clan-card">
+	<article>
 		<section class="margin-b-3rem">
 			<hr />
 			<!-- clan name and owner -->
 			<h1 class="clan-name-title">{{clan.clan_name}}</h1>
 			<hr />
-			<span class="clan-owner">Clan Owner: {{clan.user}}</span>
-			<!-- clan image logo -->
-			<img
-				src="{{clan.image_url}}"
-				class="img-fluid rounded-top"
-				alt=""
-				id="clan-img"
-				style="display: none"
-			/>
-			<!-- infomration on clan -->
-			<p class="margin-b-3rem">{{clan.content}}</p>
-			<!-- external social links -->
-			<div class="external-links">
-				<a
-					class="external-links-discord btn btn-primary"
-					href="{{clan.discord_url}}"
-					target="_blank"
-					id="discord-url"
-					><i class="fa-brands fa-discord"></i> Discord</a
-				>
-				{% if clan.website_url %}
-				<a
-					class="external-links-website btn btn-primary"
-					href="{{clan.website_url}}"
-					target="_blank"
-					id="website-url"
-					><i class="fa-solid fa-globe"></i> Website</a
-				>
-				{% endif %}
+			<div class="clan-card">
+				<div class="clan-owner-info margin-b-3rem">
+					<span class="clan-owner">Clan Owner: {{clan.user}}</span>
+					<!-- clan image logo -->
+					{% if "placeholder" in clan.image_url.url %}
+					<img
+						src="{% static 'img/hll-logo.webp' %}"
+						class="img-fluid rounded-top"
+						alt="placeholder-logo"
+						id="clan-img"
+					/>
+					{% else %}
+					<img
+						class="img-fluid rounded-top"
+						src=" {{ clan.image_url.url }}"
+						alt="{{ clan.clan_name }}-logo"
+						id="clan-img"
+					/>
+					{% endif %}
+				</div>
+				<!-- infomration on clan -->
+				<p class="margin-b-3rem">{{clan.content}}</p>
+				<!-- external social links -->
+				<div class="external-links">
+					<a
+						class="external-links-discord btn btn-primary"
+						href="{{clan.discord_url}}"
+						target="_blank"
+						id="discord-url"
+						><i class="fa-brands fa-discord"></i> Discord</a
+					>
+					{% if clan.website_url %}
+					<a
+						class="external-links-website btn btn-primary"
+						href="{{clan.website_url}}"
+						target="_blank"
+						id="website-url"
+						><i class="fa-solid fa-globe"></i> Website</a
+					>
+					{% endif %}
+				</div>
 			</div>
 		</section>
 		{% if matches %}
 		<!-- upcoming accepted clan matches -->
-		<section class="margin-b-3rem">
+		<section class="margin-b-3rem clan-card">
 			<h3 class="margin-b-1rem">Upcoming Games</h3>
 			<div class="table-responsive">
 				<table class="table table-primary">
@@ -76,7 +88,7 @@
 		<section>
 			<!-- superuser access to update and delete page -->
 			{% if current_user.is_superuser %}
-			<div class="CRUD">
+			<div class="CRUD clan-card">
 				<a
 					name=""
 					id=""

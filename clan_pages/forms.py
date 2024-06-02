@@ -6,7 +6,7 @@ class CreateClan(forms.ModelForm):
     # makes content a text area allowing for more text conent
     content = forms.CharField(widget=forms.Textarea, required=True)
     # image is not required for form completion
-    image_url = forms.CharField(required=False)
+    # image_url = forms.CharField(required=False)
     class Meta:
         model = Clan
         # the names of the different fields in the form
