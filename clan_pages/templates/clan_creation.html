@@ -7,13 +7,30 @@
 <div class="row justify-content-md-center">
 	<article class="center-content">
 		<section>
-			<hr>
+			<hr />
 			<h1 class="sub-section-title">Clan Creation</h1>
-			<hr>
+			<hr />
 			<!-- clan creation form  -->
 			<form id="clanCreation" method="post">
-				{{ clanCreation | crispy }} {% csrf_token %}
-				<button id="submitButton" type="submit" class="btn btn-primary margin-t-1rem">
+				{{ clanCreation | crispy }} {% csrf_token %} {% if users %}
+				<label for="clan_rep_name">Clan Rep: </label>
+				<select
+					id="clan_rep_name"
+					class="form-select"
+					name="selected_user"
+					aria-label="Default select example"
+				>
+					<option selected>Open this select menu</option>
+					{% for user in users %}
+					<option value="{{user.username}}">{{user.username}}</option>
+					{% endfor %}
+				</select>
+				{% endif %}
+				<button
+					id="submitButton"
+					type="submit"
+					class="btn btn-primary margin-t-1rem"
+				>
 					Create Clan
 				</button>
 			</form>
