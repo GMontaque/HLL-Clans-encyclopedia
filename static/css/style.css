@@ -103,18 +103,31 @@ button:hover {
 }
 
 .clan-card {
-	width: 70%;
+	width: 60%;
 	margin: auto;
 }
 
+#clan-img {
+	border-radius: 4rem;
+	width: 14rem;
+}
+
+.clan-owner-info {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
 .clan-owner {
-	margin-bottom: 3rem;
+	margin: 3rem 0rem;
 	display: block;
 }
 
 .external-links {
 	display: flex;
 	justify-content: space-between;
+	margin-top: 3rem;
 }
 
 .external-links-discord:hover,
@@ -340,12 +353,12 @@ tbody {
 	flex-direction: column;
 }
 
-.status-btn{
+.status-btn {
 	flex-direction: row;
 	margin-bottom: 3rem;
 }
 
-.status-btn a:not(:last-child){
+.status-btn a:not(:last-child) {
 	margin-right: 2rem;
 }
 
@@ -456,8 +469,6 @@ label[for="id_password"] {
 .login p:has(> label[for="id_remember"]) label {
 	margin-right: 2rem;
 }
-
-
 
 /******************* sign out page *******************/
 
