@@ -86,21 +86,21 @@
 								>
 							</li>
 							<!-- navbar links on visible for authorised users  -->
-							{% if user.is_authenticated %} {% if user.userprofile.clan_rep %}
+							{% if user.is_authenticated %}
+							<li class="nav-item">
+								<a
+									class="nav-link {% if request.path == '/notifications/' %}active{% endif %}"
+									href="{% url 'notifications' %}"
+									>Notification</a
+								>
+							</li>
+							{% if user.userprofile.clan_rep %}
 							<!-- raise a clan game request -->
 							<li class="nav-item">
 								<a
 									class="nav-link {% if request.path == '/match_request/' %}active{% endif %}"
 									href="{% url 'match_request' %}"
 									>Match Request</a
-								>
-							</li>
-							<!-- shows notifications -->
-							<li class="nav-item">
-								<a
-									class="nav-link {% if request.path == '/notifications/' %}active{% endif %}"
-									href="{% url 'notifications' %}"
-									>Notification</a
 								>
 							</li>
 							<!-- create clan page -->
