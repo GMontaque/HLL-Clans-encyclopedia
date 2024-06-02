@@ -10,4 +10,4 @@ class ClamMatchForm(forms.ModelForm):
     class Meta:
         model = Match
         # clan match field names
-        fields = ['inviter_clan', 'invitee_clan', 'game_type', 'match_date','message']
+        fields = [ 'invitee_clan', 'game_type', 'match_date','message']

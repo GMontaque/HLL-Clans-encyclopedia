@@ -13,6 +13,32 @@
 			<h1 class="sub-section-title">Match Request</h1>
 			<hr />
 			<form method="post" class="match-form">
+				<div class="mb-3">
+					{% if user.username != "admin" %}
+					<label for="" class="form-label">Inviter:</label>
+					<input
+						type="text"
+						class="form-control"
+						name=""
+						id=""
+						aria-describedby="helpId"
+						value="{{ request.user }}"
+						readonly
+					/>
+					{% else %}
+					<label for="" class="form-label">Inviter:</label>
+					<select
+						class="form-select"
+						name="selected_user"
+						aria-label="Default select example"
+					>
+						<option selected>Open this select menu</option>
+						{% for user in users %}
+						<option value="{{user.username}}">{{user.username}}</option>
+						{% endfor %}
+					</select>
+					{% endif %}
+				</div>
 				{{ match_form | crispy }} {% csrf_token %}
 				<button type="submit" class="btn btn-primary margin-t-1rem">
 					Submit Match Request

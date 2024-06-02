@@ -12,12 +12,17 @@ from django.contrib import messages
 
 # displays match request page and form
 def match_request(request):
+    users = None
+    if request.user.username == "admin":
+        users = User.objects.all()
     # submits forms if valid and method has a value of post
     if request.method == "POST":
         print("Received a POST request")
         
         form = ClamMatchForm(data=request.POST)
         if form.is_valid():
+            if request.user.username != "admin":
+                clan.inviter_clan = User.objects.get(username=request.POST.get('selected_user')) if request.POST.get('selected_user') else request.user
             clan = form.save(commit=False)
             clan.save()
             messages.add_message(request, messages.SUCCESS, 'match request sent')
@@ -26,7 +31,7 @@ def match_request(request):
             messages.add_message(request, messages.ERROR, 'Form is not valid')
     # match request form
     match_form = ClamMatchForm()
-    return render(request, 'match_request.html',{'match_form': match_form})
+    return render(request, 'match_request.html',{'match_form': match_form, 'users':users})
 
 # displays individual match requests
 def requested_game(request, pk):
