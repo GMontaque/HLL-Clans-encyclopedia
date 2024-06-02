@@ -16,6 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include, path
+from django.conf.urls import handler404
+from index.views import error_view
+
+hander404 = error_view
+
 
 urlpatterns = [
     path('', include('index.urls'), name='index'),

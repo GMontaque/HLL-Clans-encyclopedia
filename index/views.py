@@ -24,3 +24,6 @@ def logout_popup(request, *args, **kwargs):
     response = logout(request, *args, **kwargs)
     messages.info(request, 'Signed out successfully')
     return redirect('index.html') 
+
+def error_view(request):
+    return render(request, '404.html')
