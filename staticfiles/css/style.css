@@ -157,7 +157,6 @@ button:hover {
 
 .external-links-discord:hover,
 .external-links-website:hover {
-	text-decoration: underline;
 	color: #222222;
 	font-size: 2rem;
 }
@@ -189,7 +188,6 @@ textarea {
 
 label {
 	color: white;
-	text-decoration: underline;
 }
 
 ul li a {
@@ -376,8 +374,6 @@ figure:hover img {
 	}
 }
 
-
-
 .table > :not(caption) > * > * {
 	background-color: transparent;
 }
@@ -440,7 +436,6 @@ tbody {
 	padding-right: 0rem;
 	padding-bottom: 0rem;
 	flex-wrap: wrap;
-	/* padding-left: 5rem; */
 }
 
 @media (min-width: 426px) {
@@ -452,11 +447,6 @@ tbody {
 .notification:last-child {
 	padding-top: 0rem;
 }
-
-/* .flex {
-	display: flex;
-	flex-direction: column;
-} */
 
 .status-btn {
 	flex-direction: row;
