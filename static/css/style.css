@@ -207,13 +207,17 @@ footer {
 }
 
 .navbar-links {
-	font-size: 2rem;
+	font-size: 1.8rem;
 	font-weight: bold;
+}
+
+.navbar-links hr{
+	margin: 0;
 }
 
 .nav-link {
 	color: white;
-	padding: 0rem 2rem;
+	padding: 0rem 1rem;
 	margin-bottom: 1rem;
 }
 
@@ -236,10 +240,11 @@ footer {
 }
 
 .login-system {
-	display: flex;
-	margin-bottom: 0rem;
-	padding-left: 0rem;
-	justify-content: space-around;
+    display: flex;
+    margin-bottom: 0rem;
+    padding-left: 0rem;
+    width: 9rem;
+    flex-wrap: wrap;
 }
 
 .login-system ul {
@@ -253,6 +258,12 @@ footer {
 @media (min-width: 426px) {
 	.nav-link {
 		margin-bottom: 0rem;
+	}
+}
+
+@media (min-width: 818px) {
+	.navbar-links {
+		font-size: 2rem;
 	}
 }
 
@@ -345,6 +356,18 @@ figure:hover img {
 
 /******************* notification page *******************/
 
+.table, .btn-notification{
+	font-size: 1.5rem;
+}
+
+@media (min-width: 426px) {
+	.table, .btn-notification{
+		font-size: 2rem;
+	}
+}
+
+
+
 .table > :not(caption) > * > * {
 	background-color: transparent;
 }
@@ -364,7 +387,7 @@ tbody {
 }
 
 .status {
-	padding: 1rem !important;
+	padding: 1rem 0rem !important;
 }
 
 .status-icon {
@@ -380,8 +403,14 @@ tbody {
 .notification-table {
 	display: flex;
 	flex-direction: column;
-	max-width: 70%;
+	max-width: 95%;
 	margin: 3rem auto;
+}
+
+@media (min-width: 769px) {
+	.notification-table{
+		max-width: 70%;
+	}
 }
 
 /******************* individual notifications *******************/
@@ -421,10 +450,22 @@ tbody {
 	margin-right: 2rem;
 }
 
-/******************* match request page *******************/
+/******************* match request, sign in page *******************/
 
 .center-content {
-	width: 40%;
+	width: 86%;
+}
+
+@media (min-width: 426px) {
+	.center-content {
+		width: 59%;
+	}
+}
+
+@media (min-width: 769px) {
+	.center-content {
+		width: 40%;
+	}
 }
 
 /******************* index page *******************/
@@ -565,4 +606,10 @@ input[id="id_clan_rep"] {
 	color: #222222;
 	background-color: #ff0000;
 	border: 2px solid #ff0000;
+}
+
+@media (min-width: 769px) {
+	.center-content {
+		width: 40%;
+	}
 }

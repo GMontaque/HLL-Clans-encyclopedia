@@ -17,6 +17,15 @@ html {
 	display: none;
 }
 
+.main-header{
+	font-size: 3rem;
+}
+
+
+.sub-header-text{
+	font-size: 2rem;
+}
+
 h1,
 h2,
 h3,
@@ -49,6 +58,10 @@ body .background-img {
 	background-repeat: no-repeat;
 	background-size: cover;
 	position: relative;
+}
+
+.pd-right{
+	padding-right: 1rem;
 }
 
 .active {
@@ -95,6 +108,18 @@ button:hover {
 	margin-bottom: 1rem;
 }
 
+@media (min-width: 426px) {
+	.main-header{
+		font-size: 4rem;
+	}
+}
+
+@media (min-width: 769px) {
+	.main-header{
+		font-size: 5rem;
+	}
+}
+
 /******************* clan page styling *******************/
 
 /* delete pop up modal for clan page */
@@ -103,18 +128,31 @@ button:hover {
 }
 
 .clan-card {
-	width: 70%;
+	width: 60%;
 	margin: auto;
 }
 
+#clan-img {
+	border-radius: 4rem;
+	width: 14rem;
+}
+
+.clan-owner-info {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
 .clan-owner {
-	margin-bottom: 3rem;
+	margin: 3rem 0rem;
 	display: block;
 }
 
 .external-links {
 	display: flex;
 	justify-content: space-between;
+	margin-top: 3rem;
 }
 
 .external-links-discord:hover,
@@ -169,12 +207,18 @@ footer {
 }
 
 .navbar-links {
-	font-size: 2rem;
+	font-size: 1.8rem;
 	font-weight: bold;
+}
+
+.navbar-links hr{
+	margin: 0;
 }
 
 .nav-link {
 	color: white;
+	padding: 0rem 1rem;
+	margin-bottom: 1rem;
 }
 
 .nav-link:hover {
@@ -189,12 +233,18 @@ footer {
 	background-color: white;
 }
 
+.navbar-collapse{
+	z-index: 1;
+    background-color: #222222;
+    margin: 0rem -1rem;
+}
+
 .login-system {
-	display: flex;
-	width: 15%;
-	margin-bottom: 0rem;
-	padding-left: 0rem;
-	justify-content: space-around;
+    display: flex;
+    margin-bottom: 0rem;
+    padding-left: 0rem;
+    width: 9rem;
+    flex-wrap: wrap;
 }
 
 .login-system ul {
@@ -205,15 +255,48 @@ footer {
 	list-style: none;
 }
 
-/******************* HLL clans homepage card *******************/
+@media (min-width: 426px) {
+	.nav-link {
+		margin-bottom: 0rem;
+	}
+}
+
+@media (min-width: 818px) {
+	.navbar-links {
+		font-size: 2rem;
+	}
+}
+
+/******************* index page *******************/
+
 .index-sub-title {
 	text-align: center;
 	margin: 3rem 0rem;
 }
 
+.homepage-description{
+	padding: 3rem 2rem;
+}
+
+@media (min-width: 426px) {
+	.homepage-description{
+		padding: 3rem 5rem;
+	}
+}
+
+@media (min-width: 769px) {
+	.homepage-description{
+		padding: 5rem 10rem;
+	}
+}
+
+/******************* HLL clans homepage card *******************/
+
+
 .hll-cards {
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: center;
 }
 
 .card-title {
@@ -273,6 +356,18 @@ figure:hover img {
 
 /******************* notification page *******************/
 
+.table, .btn-notification{
+	font-size: 1.5rem;
+}
+
+@media (min-width: 426px) {
+	.table, .btn-notification{
+		font-size: 2rem;
+	}
+}
+
+
+
 .table > :not(caption) > * > * {
 	background-color: transparent;
 }
@@ -292,7 +387,7 @@ tbody {
 }
 
 .status {
-	padding: 1rem !important;
+	padding: 1rem 0rem !important;
 }
 
 .status-icon {
@@ -308,8 +403,14 @@ tbody {
 .notification-table {
 	display: flex;
 	flex-direction: column;
-	max-width: 70%;
+	max-width: 95%;
 	margin: 3rem auto;
+}
+
+@media (min-width: 769px) {
+	.notification-table{
+		max-width: 70%;
+	}
 }
 
 /******************* individual notifications *******************/
@@ -340,10 +441,31 @@ tbody {
 	flex-direction: column;
 }
 
-/******************* match request page *******************/
+.status-btn {
+	flex-direction: row;
+	margin-bottom: 3rem;
+}
+
+.status-btn a:not(:last-child) {
+	margin-right: 2rem;
+}
+
+/******************* match request, sign in page *******************/
 
 .center-content {
-	width: 40%;
+	width: 86%;
+}
+
+@media (min-width: 426px) {
+	.center-content {
+		width: 59%;
+	}
+}
+
+@media (min-width: 769px) {
+	.center-content {
+		width: 40%;
+	}
 }
 
 /******************* index page *******************/
@@ -374,6 +496,7 @@ tbody {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	color: white;
+	width: 90%;
 }
 
 .hero-text button {
@@ -448,8 +571,6 @@ label[for="id_password"] {
 	margin-right: 2rem;
 }
 
-
-
 /******************* sign out page *******************/
 
 .logout-img {
@@ -485,4 +606,10 @@ input[id="id_clan_rep"] {
 	color: #222222;
 	background-color: #ff0000;
 	border: 2px solid #ff0000;
+}
+
+@media (min-width: 769px) {
+	.center-content {
+		width: 40%;
+	}
 }
