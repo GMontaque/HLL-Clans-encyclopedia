@@ -52,103 +52,64 @@
 	<body>
 		<header>
 			<!-- Navigation bar -->
-			<nav class="navbar navbar-expand-sm navbar-light bg-light">
+			<nav class="navbar navbar-expand-md navbar-light bg-light">
 				<div class="container-fluid margin-t-3rem">
-					<!-- website logo -->
-					<a class="navbar-brand" href="{% url 'index' %}"
-						><img
-							class="logo"
-							src="{% static 'img/logo.svg' %}"
-							alt="hell let loose logo"
-					/></a>
-					<!-- mobile nav button -->
-					<button
-						class="navbar-toggler d-lg-none"
-						type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#collapsibleNavId"
-						aria-controls="collapsibleNavId"
-						aria-expanded="false"
-						aria-label="Toggle navigation"
-					>
+					<!-- Website logo -->
+					<a class="navbar-brand" href="{% url 'index' %}">
+						<img class="logo" src="{% static 'img/logo.svg' %}" alt="hell let loose logo"/>
+					</a>
+					<!-- Mobile nav button -->
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId"
+							aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
-					<!-- main nav bar - 768px and above -->
+					<!-- Main nav bar - 768px and above -->
 					<div class="collapse navbar-collapse" id="collapsibleNavId">
 						<ul class="navbar-links navbar-nav me-auto mt-2 mt-lg-0">
-							<!-- home page link -->
+							<!-- Home page link -->
 							<li class="nav-item">
-								<a
-									class="nav-link {% if request.path == '/' %}active{% endif %}"
-									href="{% url 'index' %}"
-									aria-current="page"
-									>Home <span class="visually-hidden">(current)</span></a
-								>
+								<a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'index' %}"
+								   aria-current="page">Home <span class="visually-hidden">(current)</span></a>
 							</li>
-							<!-- navbar links on visible for authorised users  -->
+							<!-- Navbar links on visible for authorised users  -->
 							{% if user.is_authenticated %}
 							<li class="nav-item">
-								<a
-									class="nav-link {% if request.path == '/notifications/' %}active{% endif %}"
-									href="{% url 'notifications' %}"
-									>Notification</a
-								>
+								<a class="nav-link {% if request.path == '/notifications/' %}active{% endif %}"
+								   href="{% url 'notifications' %}">Notification</a>
 							</li>
 							{% if user.userprofile.clan_rep %}
-							<!-- raise a clan game request -->
+							<!-- Raise a clan game request -->
 							<li class="nav-item">
-								<a
-									class="nav-link {% if request.path == '/match_request/' %}active{% endif %}"
-									href="{% url 'match_request' %}"
-									>Match Request</a
-								>
+								<a class="nav-link {% if request.path == '/match_request/' %}active{% endif %}"
+								   href="{% url 'match_request' %}">Match Request</a>
 							</li>
-							<!-- create clan page -->
+							<!-- Create clan page -->
 							<li class="nav-item">
-								<a
-									class="nav-link {% if request.path == '/clan_creation/' %}active{% endif %}"
-									href="{% url 'clan_creation' %}"
-									>Clan Creation</a
-								>
+								<a class="nav-link {% if request.path == '/clan_creation/' %}active{% endif %}"
+								   href="{% url 'clan_creation' %}">Clan Creation</a>
 							</li>
 							{% endif %} {% endif %}
 						</ul>
 						<ul class="login-system navbar-links">
-							<!-- dispalys user registration, log in or log out and admin panel -->
+							<!-- Displays user registration, log in or log out and admin panel -->
 							{% if user.is_authenticated %} {% if user.is_superuser %}
 							<li class="nav-item admin-link">
-								<a
-									class="nav-link"
-									aria-current="page"
-									href="{% url 'admin:index' %}"
-									>Admin Panel</a
-								>
+								<a class="nav-link" aria-current="page" href="{% url 'admin:index' %}">Admin</a>
 							</li>
+							<hr>
 							{% endif %}
 							<li class="nav-item">
-								<a
-									class="nav-link {% if request.path == '/accounts/logout/' %}active{% endif %}"
-									aria-current="page"
-									href="{% url 'account_logout' %}"
-									>Logout</a
-								>
+								<a class="nav-link {% if request.path == '/accounts/logout/' %}active{% endif %}"
+								   aria-current="page" href="{% url 'account_logout' %}">Logout</a>
 							</li>
 							{% else %}
 							<li class="nav-item">
-								<a
-									class="nav-link {% if request.path == '/signup/' %}active{% endif %}"
-									aria-current="page"
-									href="{% url 'account_signup' %}"
-									>Register</a
-								>
+								<a class="nav-link {% if request.path == '/signup/' %}active{% endif %} pd-right"
+								   aria-current="page" href="{% url 'account_signup' %}">Register</a>
 							</li>
 							<li class="nav-item">
-								<a
-									class="nav-link {% if request.path == '/login/' %}active{% endif %}"
-									aria-current="page"
-									href="{% url 'account_login' %}"
-									>Login</a
-								>
+								<a class="nav-link {% if request.path == '/login/' %}active{% endif %}"
+								   aria-current="page" href="{% url 'account_login' %}">Login</a>
 							</li>
 							{% endif %}
 						</ul>
@@ -159,15 +120,15 @@
 			<script>
 				document.addEventListener("DOMContentLoaded", function () {
 					{% for message in messages %}
-						Swal.fire({
-							icon: "{% if message.tags == 'success' %}success{% elif message.tags == 'info' %}info{% elif message.tags == 'warning' %}warning{% elif message.tags == 'error' %}error{% endif %}",
-							title: "{{ message }}",
-							toast: true,
-							position: "top-end",
-							showConfirmButton: false,
-							timer: 3000,
-							timerProgressBar: true,
-						});
+					Swal.fire({
+						icon: "{% if message.tags == 'success' %}success{% elif message.tags == 'info' %}info{% elif message.tags == 'warning' %}warning{% elif message.tags == 'error' %}error{% endif %}",
+						title: "{{ message }}",
+						toast: true,
+						position: "top-end",
+						showConfirmButton: false,
+						timer: 3000,
+						timerProgressBar: true,
+					});
 					{% endfor %}
 				});
 			</script>
