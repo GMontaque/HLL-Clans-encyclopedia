@@ -35,9 +35,9 @@
 						<tr>
 							<th scope="col">Issuer</th>
 							<th scope="col">Clan</th>
-							<th scope="col">content</th>
+							<th scope="col" class="d-none d-sm-table-cell">content</th>
 							<th scope="col">Status</th>
-							<th scope="col">Display Message</th>
+							<th scope="col">Message</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -47,7 +47,7 @@
 						<tr class="">
 							<td scope="row">{{ notification.issuer}}</td>
 							<td>{{ notification.clan}}</td>
-							<td>{{ notification.content |slice:":10"}}...</td>
+							<td class="d-none d-sm-table-cell">{{ notification.content |slice:":10"}}...</td>
 							<td class="status">
 								<span class="status-icon">{{ notification.status}}</span>
 							</td>
@@ -55,10 +55,10 @@
 								<a
 									name=""
 									id=""
-									class="btn btn-primary"
+									class="btn btn-primary btn-notification"
 									href="{% url 'individual_notification' notification.pk %}"
 									role="button"
-									>Open Message</a
+									>Open</a
 								>
 							</td>
 						</tr>
@@ -79,7 +79,7 @@
 							<th scope="col">Receiver</th>
 							<th scope="col">content</th>
 							<th scope="col">Status</th>
-							<th scope="col">Display Message</th>
+							<th scope="col">Message</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -96,10 +96,10 @@
 								<a
 									name=""
 									id=""
-									class="btn btn-primary"
+									class="btn btn-primary btn-notification"
 									href="{% url 'individual_notification' notification.pk %}"
 									role="button"
-									>Open Message</a
+									>Open</a
 								>
 							</td>
 						</tr>
@@ -117,8 +117,7 @@
 				<table class="table table-primary">
 					<thead>
 						<tr>
-							<th scope="col">Eneney Team</th>
-							<th scope="col">Your Team</th>
+							<th scope="col">Teams</th>
 							<th scope="col">Game Type</th>
 							<th scope="col">Status</th>
 							<th scope="col">Action</th>
@@ -127,18 +126,17 @@
 					<tbody>
 						{% for match in matches%}
 						<tr class="">
-							<td scope="row">{{match.inviter_clan}}</td>
-							<td>{{match.invitee_clan}}</td>
+							<td scope="row">{{match.inviter_clan}} <strong>vs</strong> {{match.invitee_clan}}</td>
 							<td>{{match.game_type}}</td>
 							<td>{{match.is_accepted}}</td>
 							<td>
 								<a
 									name=""
 									id=""
-									class="btn btn-primary"
+									class="btn btn-primary btn-notification"
 									href="{% url 'requested_game' match.pk %}"
 									role="button"
-									>Open Message</a
+									>Open</a
 								>
 							</td>
 						</tr>
@@ -159,7 +157,7 @@
 							<th scope="col">Issuer</th>
 							<th scope="col">Game Type</th>
 							<th scope="col">Status</th>
-							<th scope="col">Display Message</th>
+							<th scope="col">Message</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -174,10 +172,10 @@
 								<a
 									name=""
 									id=""
-									class="btn btn-primary"
+									class="btn btn-primary btn-notification"
 									href="{% url 'requested_game' match.pk %}"
 									role="button"
-									>Open Message</a
+									>Open</a
 								>
 							</td>
 						</tr>
@@ -195,7 +193,7 @@
 							<th scope="col">Receiver</th>
 							<th scope="col">Game Type</th>
 							<th scope="col">Status</th>
-							<th scope="col">Display Message</th>
+							<th scope="col">Message</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -210,10 +208,10 @@
 								<a
 									name=""
 									id=""
-									class="btn btn-primary"
+									class="btn btn-primary btn-notification"
 									href="{% url 'requested_game' match.pk %}"
 									role="button"
-									>Open Message</a
+									>Open</a
 								>
 							</td>
 						</tr>
