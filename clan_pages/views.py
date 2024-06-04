@@ -23,7 +23,6 @@ def clan_creation(request):
         users = User.objects.all()
     # checks for a post value from the method on the form
     if request.method == "POST":
-        print("Received a POST request")
         # form data to be passed to database
         data = {'clan_name': request.POST.get('clan_name'),
         'content': request.POST.get('content'),
@@ -38,9 +37,8 @@ def clan_creation(request):
             return redirect('index')
 
         form = CreateClan(request.POST, request.FILES)
-        # saves the newly created form and redirects to home pagoke(index)
+        # saves the newly created form and redirects to home page(index)
         if form.is_valid():
-            print("Form is valid, creating clan")
             clan = form.save(commit=False)
             clan.user = user
             clan.save()
@@ -55,18 +53,21 @@ def clan_creation(request):
 
 # edits clan page
 def edit_clan_page(request, clan_name):
-    # gets specific clan based on clan name
     clan = get_object_or_404(Clan, clan_name=clan_name)
-    # checks for a post value from the method on the form
-    # saves edited form
-    if request.method == 'POST':
-        form = CreateClan(request.POST, instance=clan)
+
+    if request.method == "POST":
+        form = CreateClan(request.POST, request.FILES, instance=clan)
         if form.is_valid():
-            form.save()
+            clan = form.save(commit=False)
+            # checks for a new image
+            if 'image_url' in request.FILES:  # check if a new image was uploaded
+                clan.image_url = request.FILES['image_url']
+            clan.save()
+            messages.add_message(request, messages.SUCCESS, 'Clan page updated')
             return redirect('clan_page', clan_name=clan.clan_name)
     else:
         form = CreateClan(instance=clan)
-    # displays the edit clan page and form
+
     return render(request, 'edit_clan_page.html', {'edit_clan_form': form, 'clans': clan})
 
 # deletes clan page

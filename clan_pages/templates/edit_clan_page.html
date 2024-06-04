@@ -11,7 +11,7 @@
 			<h1>Edit Clan Page - {{ clans.clan_name }}</h1>
 			<hr />
 			<!-- form to edit clan page -->
-			<form id="clanCreation" method="post">
+			<form id="clanCreation" method="post" enctype="multipart/form-data">
 				{{ edit_clan_form | crispy }} {% csrf_token %}
 				<button id="submitButton" type="submit" class="btn btn-primary">
 					Update Clan Page
