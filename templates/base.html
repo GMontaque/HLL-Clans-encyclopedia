@@ -53,7 +53,7 @@
 		<header>
 			<!-- Navigation bar -->
 			<nav class="navbar navbar-expand-md navbar-light bg-light">
-				<div class="container-fluid margin-t-3rem">
+				<div class="container-fluid margin-t-3rem width-99">
 					<!-- Website logo -->
 					<a class="navbar-brand" href="{% url 'index' %}">
 						<img class="logo" src="{% static 'img/logo.svg' %}" alt="hell let loose logo"/>
@@ -107,6 +107,7 @@
 								<a class="nav-link {% if request.path == '/signup/' %}active{% endif %} pd-right"
 								   aria-current="page" href="{% url 'account_signup' %}">Register</a>
 							</li>
+							<hr>
 							<li class="nav-item">
 								<a class="nav-link {% if request.path == '/login/' %}active{% endif %}"
 								   aria-current="page" href="{% url 'account_login' %}">Login</a>
