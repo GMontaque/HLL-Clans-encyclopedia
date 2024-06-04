@@ -17,8 +17,6 @@ def match_request(request):
         users = User.objects.all()
     # submits forms if valid and method has a value of post
     if request.method == "POST":
-        print("Received a POST request")
-        
         form = ClamMatchForm(data=request.POST)
         if form.is_valid():
             if request.user.username != "admin":
