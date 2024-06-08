@@ -46,7 +46,8 @@ def clan_creation(request):
             return redirect('index')
         else:
             messages.add_message(request, messages.ERROR, 'Form is not valid')
-            
+    # removes admin from dropdown list
+    users = User.objects.exclude(username='admin')        
     form = CreateClan()
     # displays clan creation page and form
     return render(request, 'clan_creation.html', {'clanCreation': form, 'users':users})
