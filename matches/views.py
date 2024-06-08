@@ -15,27 +15,42 @@ def match_request(request):
     users = None
     if request.user.username == "admin":
         users = User.objects.all()
+
     # submits forms if valid and method has a value of post
     if request.method == "POST":
         form = ClamMatchForm(data=request.POST)
         if form.is_valid():
+            # Saves the form but don't commit
+            match = form.save(commit=False)
+
+            # Set the inviter_clan based on the user context
             if request.user.username != "admin":
-                clan.inviter_clan = User.objects.get(username=request.POST.get('selected_user')) if request.POST.get('selected_user') else request.user
-            clan = form.save(commit=False)
-            clan.save()
-            messages.add_message(request, messages.SUCCESS, 'match request sent')
+                match.inviter_clan = Clan.objects.get(user=request.user)
+            else:
+                selected_user = request.POST.get('selected_user')
+                if selected_user:
+                    match.inviter_clan = Clan.objects.get(user=User.objects.get(username=selected_user))
+
+            # Saves and commits
+            match.save()
+            messages.add_message(request, messages.SUCCESS, 'Match request sent')
             return redirect('index')
         else:
             messages.add_message(request, messages.ERROR, 'Form is not valid')
+    # removes admin from drop down list
+    users = User.objects.exclude(username='admin')
     # match request form
     match_form = ClamMatchForm()
-    return render(request, 'match_request.html',{'match_form': match_form, 'users':users})
+    return render(request, 'match_request.html', {'match_form': match_form, 'users': users})
 
 # displays individual match requests
 def requested_game(request, pk):
     matches = Match.objects.filter(pk=pk)
-    clan = Clan.objects.get(user=request.user.id)
-    return render(request, 'requested_game.html',{'matches': matches,'user_clan': clan.clan_name })
+    clan_name = "admin"
+    if request.user.username != "admin":
+        clan = Clan.objects.get(user=request.user.id)
+        clan_name = clan.clan_name
+    return render(request, 'requested_game.html',{'matches': matches,'user_clan': clan_name })
 
 # updates game request and redirects to notifications page
 def update_game_request_status(request, pk, is_accepted):
