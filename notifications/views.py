@@ -9,7 +9,7 @@ from django.db.models import Q
 from matches.models import Match
 from django.contrib.auth.models import User
 
-# function gets all notifications for the authorised user
+# function gets all notifications for the authorized user
 def get_all_notifications(user):
     if user.is_authenticated:
         return Notification.objects.filter(Q(receiver=user) | Q(issuer=user))
@@ -17,21 +17,30 @@ def get_all_notifications(user):
 
 # displays notification page and data
 def notifications(request):
-     # gets notifications based on user
+    # gets notifications based on user
     all_notifications = get_all_notifications(request.user)
-    # gets clan page based on user id
-    clan = Clan.objects.get(user=request.user.id)
+    
     # gets admin user
     admin_user = User.objects.filter(is_superuser=True).first()
+    
     if request.user == admin_user:
         matches = Match.objects.all()
+        clan_name = "Admin Clan"  # sets clan name to admin for the admin user
     else:
-        matches = Match.objects.filter(Q(inviter_clan_id=clan.id) | Q(invitee_clan_id=clan.id))
+        # gets clan page based on user id
+        try:
+            clan = Clan.objects.get(user=request.user.id)
+            matches = Match.objects.filter(Q(inviter_clan_id=clan.id) | Q(invitee_clan_id=clan.id))
+            clan_name = clan.clan_name
+        except Clan.DoesNotExist:
+            clan_name = "non-clan-rep"
+            matches = Match.objects.none()
+
     return render(request, 'notifications.html', {
         'all_notifications': all_notifications,
         'current_user': request.user,
-        'matches':matches,
-        'user_clan': clan.clan_name 
+        'matches': matches,
+        'user_clan': clan_name
     })
 
 # updates status of a notification
@@ -55,7 +64,12 @@ def admin_notifications(request):
     # gets admin user
     admin_user = User.objects.filter(is_superuser=True).first()
     # gets clan page based on user id
-    clan = Clan.objects.get(user=request.user.id)
+    # clan = Clan.objects.get(user=request.user.id)
+    try:
+        clan = Clan.objects.get(user=request.user.id)
+    except Clan.DoesNotExist:
+        clan = "non-clan-rep"
+
     if request.method == "POST":
         form = CreateNotification(data=request.POST)
         if form.is_valid():

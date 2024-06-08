@@ -148,6 +148,8 @@
 		{% endif %}
 		<!-- splits games sent into received and sent for clan reps -->
 		{% if not user.is_superuser %}
+		{% if not user_clan == "non-clan-rep"  %}
+
 		<section class="notification-table">
 			<h2 class="margin-b-1rem">Game Requests - received</h2>
 			<div class="table-responsive">
@@ -161,6 +163,7 @@
 						</tr>
 					</thead>
 					<tbody>
+						{% if matches %}
 						{% for match in matches%}
 						<!--  -->
 						{% if match.invitee_clan|stringformat:"s" == user_clan|stringformat:"s" %}
@@ -179,7 +182,7 @@
 								>
 							</td>
 						</tr>
-						{% endif %} {% endfor%}
+						{% endif %} {% endfor%} {% endif %}
 					</tbody>
 				</table>
 			</div>
@@ -220,6 +223,7 @@
 				</table>
 			</div>
 		</section>
+		{% endif %}
 		{% endif %}
 	</article>
 </div>
