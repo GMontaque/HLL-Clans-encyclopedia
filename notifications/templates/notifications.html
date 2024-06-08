@@ -47,7 +47,9 @@
 						<tr class="">
 							<td scope="row">{{ notification.issuer}}</td>
 							<td>{{ notification.clan}}</td>
-							<td class="d-none d-sm-table-cell">{{ notification.content |slice:":10"}}...</td>
+							<td class="d-none d-sm-table-cell">
+								{{ notification.content |slice:":10"}}...
+							</td>
 							<td class="status">
 								<span class="status-icon">{{ notification.status}}</span>
 							</td>
@@ -126,7 +128,11 @@
 					<tbody>
 						{% for match in matches%}
 						<tr class="">
-							<td scope="row">{{match.inviter_clan}} <strong>vs</strong> {{match.invitee_clan}}</td>
+							<td scope="row">
+								{{match.inviter_clan}}
+								<strong>vs</strong>
+								{{match.invitee_clan}}
+							</td>
 							<td>{{match.game_type}}</td>
 							<td>{{match.is_accepted}}</td>
 							<td>
@@ -148,8 +154,7 @@
 		{% endif %}
 		<!-- splits games sent into received and sent for clan reps -->
 		{% if not user.is_superuser %}
-		{% if not user_clan == "non-clan-rep"  %}
-
+		{% if not user_clan == "non-clan-rep" %}
 		<section class="notification-table">
 			<h2 class="margin-b-1rem">Game Requests - received</h2>
 			<div class="table-responsive">
