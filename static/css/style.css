@@ -44,6 +44,10 @@ hr {
 	margin: 0.2rem 0rem;
 }
 
+.hr-title-margin{
+	margin: 3rem 0rem;
+}
+
 body {
 	font-family: "Special Elite", system-ui;
 	font-weight: 400;
@@ -130,6 +134,11 @@ button:hover {
 /* delete pop up modal for clan page */
 .modal-content {
 	background-color: #222222;
+}
+
+.clan-page{
+	margin: auto;
+    width: 92%;
 }
 
 #clan-img {

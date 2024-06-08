@@ -7,9 +7,9 @@
 <div class="row justify-content-center">
 	<article class="center-content">
 		<section>
-			<hr />
+			<hr class="hr-title-margin" />
 			<h1>Edit Clan Page - {{ clans.clan_name }}</h1>
-			<hr />
+			<hr class="hr-title-margin" />
 			<!-- form to edit clan page -->
 			<form id="clanCreation" method="post" enctype="multipart/form-data">
 				{{ edit_clan_form | crispy }} {% csrf_token %}
