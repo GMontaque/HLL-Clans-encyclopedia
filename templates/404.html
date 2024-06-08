@@ -5,10 +5,17 @@
 <!-- loads css  -->
 {% load static %}
 <!-- html code which makes up homepage -->
-<div class="row">
-	<section style="padding: 0">
-		<h1 class="">Error!</h1>
-        <p>There is no page with that name</p>
+<div class="row justify-content-center">
+	<article class="">
+		<section class="margin-b-3rem">
+			<hr class="hr-title-margin" />
+			<h1 class="">Error!</h1>
+			<hr class="hr-title-margin" />
+			<div class="center-content" style="margin: auto">
+				<p>OOPS! looks like you got a little lost</p>
+				<img src="{% static "img/error-img.png" %}" class="img-fluid
+				rounded-top" alt="error image" />
+			</div>
 		</section>
 	</article>
 </div>
