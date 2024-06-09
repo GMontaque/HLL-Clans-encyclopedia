@@ -78,9 +78,13 @@ main {
 	font-size: 2rem;
 }
 
-h1 {
+h1, h2 {
 	margin: 3rem 0rem;
 	text-align: center;
+}
+
+h2{
+	font-size: 3rem;
 }
 
 .m-1rem {
@@ -128,6 +132,8 @@ button:hover {
 		font-size: 5rem;
 	}
 }
+
+
 
 /******************* clan page styling *******************/
 
@@ -270,6 +276,15 @@ footer {
 
 .login-system li {
 	list-style: none;
+}
+
+.nav-line{
+	border: 0.2rem solid white;
+    opacity: 1;
+    margin: 0.2rem 0rem;
+	height: 0.5rem;
+    width: 100%;
+    background-color: white;
 }
 
 @media (min-width: 426px) {
@@ -635,3 +650,11 @@ input[id="id_clan_rep"] {
 		width: 40%;
 	}
 }
+
+/******************* 404 page *******************/
+
+.error-page-inner{
+	max-width: 50% !important;
+	margin: auto;
+}
+
