@@ -1,6 +1,7 @@
 from allauth.account.forms import SignupForm
 from django import forms
 
+
 class CustomSignupForm(SignupForm):
     clan_rep = forms.BooleanField(label="Clan Rep", required=False)
 
@@ -9,4 +10,3 @@ class CustomSignupForm(SignupForm):
         user.clan_rep = self.cleaned_data['clan_rep']
         user.save()
         return user
-    

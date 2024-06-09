@@ -10,6 +10,7 @@ from django.db.models import Q
 from notifications.views import get_all_notifications
 from django.contrib import messages
 
+
 # displays match request page and form
 def match_request(request):
     users = None
@@ -33,7 +34,8 @@ def match_request(request):
 
             # Saves and commits
             match.save()
-            messages.add_message(request, messages.SUCCESS, 'Match request sent')
+            messages.add_message(request, messages.SUCCESS,
+                                 'Match request sent')
             return redirect('index')
         else:
             messages.add_message(request, messages.ERROR, 'Form is not valid')
@@ -41,7 +43,9 @@ def match_request(request):
     users = User.objects.exclude(username='admin')
     # match request form
     match_form = ClamMatchForm()
-    return render(request, 'match_request.html', {'match_form': match_form, 'users': users})
+    return render(request, 'match_request.html', {'match_form': match_form,
+                                                  'users': users})
+
 
 # displays individual match requests
 def requested_game(request, pk):
@@ -50,7 +54,9 @@ def requested_game(request, pk):
     if request.user.username != "admin":
         clan = Clan.objects.get(user=request.user.id)
         clan_name = clan.clan_name
-    return render(request, 'requested_game.html',{'matches': matches,'user_clan': clan_name })
+    return render(request, 'requested_game.html', {'matches': matches,
+                                                   'user_clan': clan_name})
+
 
 # updates game request and redirects to notifications page
 def update_game_request_status(request, pk, is_accepted):
