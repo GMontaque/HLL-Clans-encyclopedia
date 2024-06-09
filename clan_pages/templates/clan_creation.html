@@ -1,18 +1,24 @@
 <!-- loads base.html then this html file inside it -->
 {% extends "base.html" %}
-<!-- loads css  -->
+<!-- loads css and img -->
 {% load static %}
 <!-- states content to be loaded in base.html  -->
-{% block content %} {% load crispy_forms_tags %}
+{% block content %} 
+<!-- form render -->
+{% load crispy_forms_tags %}
 <div class="row justify-content-center">
 	<article class="center-content">
+		<h1 class="display-none">clan creation</h1>
 		<section>
 			<hr class="hr-title-margin" />
-			<h1 class="sub-section-title">Clan Creation</h1>
+			<h2 class="sub-section-title">Clan Creation</h2>
 			<hr class="hr-title-margin" />
 			<!-- clan creation form  -->
 			<form id="clanCreation" method="post" enctype="multipart/form-data">
-				{{ clanCreation | crispy }} {% csrf_token %} {% if users %}
+				{% comment %} loads form {% endcomment %}
+				{{ clanCreation | crispy }} {% csrf_token %}
+				{% comment %} checks if user is admin {% endcomment %} 
+				{% if users %}
 				<label for="clan_rep_name">Clan Rep: </label>
 				<select
 					id="clan_rep_name"
@@ -26,6 +32,7 @@
 					{% endfor %}
 				</select>
 				{% endif %}
+				<!-- form submit button  -->
 				<button
 					id="submitButton"
 					type="submit"

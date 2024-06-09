@@ -7,10 +7,11 @@
 <!-- displays clan page -->
 <div class="row">
 	<article class="clan-page">
+		<h1 class="display-none">clan page</h1>
 		<section class="margin-b-3rem">
 			<hr class="hr-title-margin" />
 			<!-- clan name and owner -->
-			<h1 class="clan-name-title">{{clan.clan_name}}</h1>
+			<h2 class="clan-name-title">{{clan.clan_name}}</h2>
 			<hr class="hr-title-margin" />
 			<div class="clan-card">
 				<div class="clan-owner-info margin-b-3rem">
@@ -86,12 +87,12 @@
 		</section>
 		{% endif %}
 		<section class="margin-b-3rem clan-card">
+			<h2 class="display-none">edit and delete clan</h2>
 			<!-- superuser access to update and delete page -->
 			{% if current_user.is_superuser %}
 			<div class="CRUD">
 				<a
-					name=""
-					id=""
+					id="edit-btn"
 					class="btn btn-primary edit-clan"
 					href="{% url 'edit_clan_page' clan.clan_name %}"
 					role="button"
@@ -110,8 +111,7 @@
 			{% elif current_user == clan.user and current_user.userprofile.clan_rep %}
 			<div class="CRUD">
 				<a
-					name=""
-					id=""
+					id="edit-btn"
 					class="btn btn-primary edit-clan"
 					href="{% url 'edit_clan_page' clan.clan_name %}"
 					role="button"

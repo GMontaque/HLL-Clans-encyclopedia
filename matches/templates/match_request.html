@@ -8,26 +8,27 @@
 
 <div class="row justify-content-center">
 	<article class="center-content">
+		<h1 class="display-none">match request</h1>
 		<section>
 			<hr class="hr-title-margin" />
-			<h1 class="sub-section-title">Match Request</h1>
+			<h2 class="sub-section-title">Match Request</h2>
 			<hr class="hr-title-margin" />
 			<form method="post" class="match-form">
 				<div class="mb-3">
 					{% if user.username != "admin" %}
-					<label for="" class="form-label">Inviter:</label>
+					<label for="from" class="form-label">Inviter:</label>
 					<input
 						type="text"
 						class="form-control"
-						name=""
-						id=""
+						id="from"
 						aria-describedby="helpId"
 						value="{{ request.user }}"
 						readonly
 					/>
 					{% else %}
-					<label for="" class="form-label">Inviter:</label>
+					<label for="to" class="form-label">Inviter:</label>
 					<select
+						id="to"
 						class="form-select"
 						name="selected_user"
 						aria-label="Default select example"

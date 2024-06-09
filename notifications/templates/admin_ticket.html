@@ -4,35 +4,32 @@
 {% block content %}
 <!-- loads css  -->
 {% load static %} {% load crispy_forms_tags %}
-<div class="row justify-content-md-center">
+<div class="row justify-content-center">
 	<article class="center-content">
+		<h1 class="display-none">admin ticket</h1>
 		<section>
 			<hr class="hr-title-margin">
-			<h1 class="sub-section-title">Admin Ticket Requests</h1>
+			<h2 class="sub-section-title">Admin Ticket Requests</h2>
 			<hr class="hr-title-margin">
 			{% if not user.is_superuser %}
 			<!-- static code show To and From  -->
 			<form id="clanRepNotifications" method="post">
 				<div class="mb-3">
-					<label for="" class="form-label">From:</label>
+					<label for="from" class="form-label">From:</label>
 					<input
 						type="text"
 						class="form-control"
-						name=""
-						id=""
-						aria-describedby="helpId"
+						id="from"
 						value="{{ issuer }}"
 						readonly
 					/>
 				</div>
 				<div class="mb-3">
-					<label for="" class="form-label">To:</label>
+					<label for="to" class="form-label">To:</label>
 					<input
 						type="text"
 						class="form-control"
-						name=""
-						id=""
-						aria-describedby="helpId"
+						id="to"
 						value="Admin"
 						readonly
 					/>

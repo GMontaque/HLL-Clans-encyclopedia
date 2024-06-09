@@ -96,7 +96,7 @@
 							<li class="nav-item admin-link">
 								<a class="nav-link" aria-current="page" href="{% url 'admin:index' %}">Admin</a>
 							</li>
-							<hr>
+							<li class="nav-line"></li>
 							{% endif %}
 							<li class="nav-item">
 								<a class="nav-link {% if request.path == '/accounts/logout/' %}active{% endif %}"
@@ -151,10 +151,10 @@
 		<footer class="container-fluid" style="height: 100%">
 			<!-- footer content -->
 			<div class="row">
-				<!-- footer title -->
-				<h2 class="display-none">website footer</h2>
 				<!-- offical game external links -->
 				<section class="col-md-4 col-sm-6 footer-style">
+					<!-- footer title -->
+					<h2 class="display-none">website footer</h2>
 					<ul style="list-style: none">
 						<li>
 							<a href="https://www.hellletloose.com/" target="_blank"

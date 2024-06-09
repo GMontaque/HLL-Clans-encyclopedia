@@ -6,13 +6,15 @@
 {% load static %}
 <div class="row flex">
 	<article>
+		<h1 class="display-none">individual notification</h1>
 		<section>
 			<hr class="hr-title-margin" />
-			<h1 class="notification-title">Notification</h1>
+			<h2 class="notification-title">Notification</h2>
 			<hr class="hr-title-margin" />
 		</section>
 		<!-- displays individual notification -->
 		<section class="notification">
+			<h2 class="display-none">individual notification content</h2>
 			<p><strong>From:</strong> {{notification.issuer}}</p>
 			<p><strong>To:</strong> {{notification.receiver}}</p>
 			{% if current_user.is_superuser %}
@@ -22,31 +24,24 @@
 				<strong>Message:</strong> {{notification.content}}
 			</p>
 			<p><strong>Status:</strong> {{notification.status}}</p>
-			<img src="{% static "img/truck.png" %}" class="img-fluid rounded-top"
-			alt="" />
 		</section>
 		<!-- allows addmin to update notification status -->
 		{% if user.is_superuser %}
 		<section class="notification status-btn">
+			<h2 class="display-none">status update</h2>
 			<a
-				name=""
-				id=""
 				class="btn btn-primary edit-clan"
 				href="{% url 'update_notification_status' notification.pk 'completed' %}"
 				role="button"
 				>Completed</a
 			>
 			<a
-				name=""
-				id=""
 				class="btn btn-primary edit-clan"
 				href="{% url 'update_notification_status' notification.pk 'in-progress' %}"
 				role="button"
 				>In Progress</a
 			>
 			<a
-				name=""
-				id=""
 				class="btn btn-primary edit-clan"
 				href="{% url 'update_notification_status' notification.pk 'rejected' %}"
 				role="button"
@@ -56,9 +51,8 @@
 		{% endif %}
 		<!-- return to notifications page -->
 		<section class="notification">
+			<h2 class="display-none">return home button</h2>
 			<a
-				name=""
-				id=""
 				class="btn btn-primary edit-clan"
 				href="{% url 'notifications' %}"
 				role="button"

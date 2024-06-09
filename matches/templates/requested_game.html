@@ -7,9 +7,10 @@
 <!-- displays individual game requests  -->
 <div class="row justify-content-center">
 	<article class="center-content">
+		<h1 class="display-none">requested game</h1>
 		<section>
 			<hr class="hr-title-margin" />
-			<h1 class="game-title">Game Info</h1>
+			<h2 class="game-title">Game Info</h2>
 			<hr class="hr-title-margin" />
 			<div class="clan-card">
 			<!-- game request data  -->
@@ -25,18 +26,15 @@
 
 		{% if match.invitee_clan|stringformat:"s" == user_clan|stringformat:"s" or user.is_superuser %}
 		<section class="clan-card accept-decline">
+			<h2 class="display-none">update-status</h2>
 			<!-- update game request status if they have access  -->
 			<a
-				name=""
-				id=""
 				class="btn btn-primary edit-clan"
 				href="{% url 'update_game_request' match.pk 'accepted' %}"
 				role="button"
 				>Accept</a
 			>
 			<a
-				name=""
-				id=""
 				class="btn btn-primary edit-clan"
 				href="{% url 'update_game_request' match.pk 'rejected' %}"
 				role="button"
@@ -45,10 +43,9 @@
 		</section>
 		{% endif %} {% endfor %}
 		<section class="clan-card">
+			<h2 class="display-none">return button</h2>
 			<!-- return to notifications page  -->
 			<a
-				name=""
-				id=""
 				class="btn btn-primary edit-clan"
 				href="{% url 'notifications' %}"
 				role="button"
