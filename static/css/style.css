@@ -658,3 +658,13 @@ input[id="id_clan_rep"] {
 	margin: auto;
 }
 
+
+/******************* password reset *******************/
+
+.password-reset{
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	max-width: 70%;
+	margin: auto;
+}
