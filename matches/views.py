@@ -3,6 +3,7 @@ from django.views import generic
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from .forms import ClamMatchForm
+from clan_pages.models import Clan
 from .models import Match
 from django.contrib.auth.models import User
 from clan_pages.models import Clan
@@ -13,6 +14,11 @@ from django.contrib import messages
 
 # displays match request page and form
 def match_request(request):
+    # checks if user has created a clan
+    if not Clan.objects.filter(user=request.user).exists() and not request.user.username == "admin":
+        messages.add_message(request, messages.ERROR,
+                                 'You must make a clan before you can request a game')
+        return redirect('clan_creation')
     users = None
     if request.user.username == "admin":
         users = User.objects.all()
@@ -40,7 +46,7 @@ def match_request(request):
         else:
             messages.add_message(request, messages.ERROR, 'Form is not valid')
     # removes admin from drop down list
-    users = User.objects.exclude(username='admin')
+    users = User.objects.exclude(username='admin').filter(clan__isnull=False)
     # match request form
     match_form = ClamMatchForm()
     return render(request, 'match_request.html', {'match_form': match_form,
