@@ -92,12 +92,13 @@
 						</ul>
 						<ul class="login-system navbar-links">
 							<!-- Displays user registration, log in or log out and admin panel -->
-							{% if user.is_authenticated %} {% if user.is_superuser %}
-							<li class="nav-item admin-link">
-								<a class="nav-link" aria-current="page" href="{% url 'admin:index' %}">Admin</a>
-							</li>
-							<li class="nav-line"></li>
-							{% endif %}
+							{% if user.is_authenticated %} 
+								{% if user.is_superuser %}
+									<li class="nav-item admin-link">
+										<a class="nav-link" aria-current="page" href="{% url 'admin:index' %}">Admin</a>
+									</li>
+									<li class="nav-line"></li>
+								{% endif %}
 							<li class="nav-item">
 								<a class="nav-link {% if request.path == '/accounts/logout/' %}active{% endif %}"
 								   aria-current="page" href="{% url 'account_logout' %}">Logout</a>
