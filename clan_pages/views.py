@@ -25,7 +25,7 @@ def clan_page(request, clan_name):
 def clan_creation(request):
     users = None
     if request.user.username == "admin":
-        users = User.objects.all()
+        users = "admin"
     # checks for a post value from the method on the form
     if request.method == "POST":
         # form data to be passed to database
@@ -36,12 +36,18 @@ def clan_creation(request):
                 'website_url': request.POST.get('website_url')}
         # checks if user is admin or clan rep
         user = User.objects.get(username=request.POST.get('selected_user'))if request.POST.get('selected_user') else request.user
+        clan_name_lower = data["clan_name"].lower()
         # Check if the user already has a clan
         if Clan.objects.filter(user=user).exists():
             messages.add_message(request, messages.ERROR,
                                  "ERROR, a clan is already "
                                  "associated with this account")
             return redirect('index')
+        elif Clan.objects.filter(clan_name__iexact=clan_name_lower).exists():
+            messages.add_message(request, messages.ERROR,
+                                 "ERROR, a clan with that name "
+                                 "alreadt exits.")
+            return redirect('clan_creation')
 
         form = CreateClan(request.POST, request.FILES)
         # saves the newly created form and redirects to home page(index)
@@ -55,11 +61,11 @@ def clan_creation(request):
         else:
             messages.add_message(request, messages.ERROR, 'Form is not valid')
     # removes admin from dropdown list
-    users = User.objects.exclude(username='admin')
+    user_accounts = User.objects.exclude(username='admin')
     form = CreateClan()
     # displays clan creation page and form
     return render(request, 'clan_creation.html',
-                  {'clanCreation': form, 'users': users})
+                  {'clanCreation': form, 'users': users, 'user_accounts':user_accounts})
 
 
 # edits clan page
