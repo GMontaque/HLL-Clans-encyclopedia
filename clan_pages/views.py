@@ -6,6 +6,7 @@ from matches.models import Match
 from django.db.models import Q
 from index.views import error_view
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 
 # displays indiviual clan page
@@ -22,6 +23,7 @@ def clan_page(request, clan_name):
 
 
 # creates Clan page
+@login_required
 def clan_creation(request):
     users = None
     if request.user.username == "admin":
@@ -69,12 +71,13 @@ def clan_creation(request):
 
 
 # edits clan page
+@login_required
 def edit_clan_page(request, clan_name):
     clan = get_object_or_404(Clan, clan_name=clan_name)
 
     if request.method == "POST":
         form = CreateClan(request.POST, request.FILES, instance=clan)
-        if form.is_valid():
+        if form.is_valid() and (request.user == clan.user or request.user.is_superuser):
             clan = form.save(commit=False)
             # checks for a new image
             if 'image_url' in request.FILES:  # checks if new image is uploaded
@@ -82,6 +85,9 @@ def edit_clan_page(request, clan_name):
             clan.save()
             messages.add_message(request, messages.SUCCESS, 'Clan Updated')
             return redirect('clan_page', clan_name=clan.clan_name)
+        else:
+            messages.add_message(request, messages.ERROR, 'You do not have permission to update this clan page')
+            return redirect('index')
     else:
         form = CreateClan(instance=clan)
 
@@ -90,6 +96,7 @@ def edit_clan_page(request, clan_name):
 
 
 # deletes clan page
+@login_required
 def delete_clan(request, clan_name):
     clan = get_object_or_404(Clan, clan_name=clan_name)
 

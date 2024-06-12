@@ -8,6 +8,7 @@ from clan_pages.models import Clan
 from django.db.models import Q
 from matches.models import Match
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 
 # function gets all notifications for the authorized user
@@ -18,6 +19,7 @@ def get_all_notifications(user):
 
 
 # displays notification page and data
+@login_required
 def notifications(request):
     # gets notifications based on user
     all_notifications = get_all_notifications(request.user)
@@ -47,6 +49,7 @@ def notifications(request):
 
 
 # updates status of a notification
+@login_required
 def update_notification_status(request, pk, status):
     # gets individual notification by primary key
     notification = get_object_or_404(Notification, pk=pk)
@@ -64,6 +67,7 @@ def update_notification_status(request, pk, status):
 
 
 # displays admin notification form
+@login_required
 def admin_notifications(request):
     # gets admin user
     admin_user = User.objects.filter(is_superuser=True).first()
@@ -95,6 +99,7 @@ def admin_notifications(request):
 
 
 # displays individual notification
+@login_required
 def show_notification(request, notification_id):
     indiv_notification = get_object_or_404(Notification, pk=notification_id)
     return render(request, 'indiv_notification.html',
