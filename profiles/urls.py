@@ -1,8 +1,10 @@
 # profiles/urls.py
 from django.urls import path
-from .views import password_reset_request, password_reset_form
+from django.contrib.auth import views as auth_views
+from . import views
 
 urlpatterns = [
-    path('password_reset/', password_reset_request, name='password_reset_request'),
-    path('password_reset_form/<int:user_id>/', password_reset_form, name='password_reset_form'),
+    path('reset_password/', views.password_reset_request, name='password_reset_request'),
+    path('change_password/<uidb64>/<token>/', views.password_change, name='password_change'),
+    path('reset_password/done/', auth_views.PasswordResetDoneView.as_view(template_name='account/password_reset_done.html'), name='password_reset_done'),
 ]

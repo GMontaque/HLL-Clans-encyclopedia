@@ -1,16 +1,24 @@
-from allauth.account.forms import SignupForm
+# profiles/forms.py
 from django import forms
-from .models import UserProfile
+from django.contrib.auth.models import User
 
+class PasswordResetRequestForm(forms.Form):
+    email = forms.EmailField(label="Email", max_length=254)
+    verification_value = forms.CharField(label="Mother's maiden name", max_length=100)
 
-class CustomSignupForm(SignupForm):
-    clan_rep = forms.BooleanField(required=False,
-                                  label='Are you a clan representative?')
+    def clean_verification_value(self):
+        value = self.cleaned_data.get('verification_value')
+        if value != 'test':
+            raise forms.ValidationError("Verification value is incorrect.")
+        return value
 
-    def save(self, request):
-        user = super(CustomSignupForm, self).save(request)
-        user_profile = UserProfile.objects.create(
-            user=user,
-            clan_rep=self.cleaned_data["clan_rep"]
-        )
-        return user
+    def clean(self):
+        cleaned_data = super().clean()
+        email = cleaned_data.get('email')
+        if email and not User.objects.filter(email=email).exists():
+            raise forms.ValidationError("No account found with this email address.")
+        return cleaned_data
+
+class PasswordChangeForm(forms.Form):
+    username = forms.CharField(label="Username", max_length=150, widget=forms.TextInput(attrs={'readonly': 'readonly'}))
+    new_password = forms.CharField(label="New Password", widget=forms.PasswordInput())
