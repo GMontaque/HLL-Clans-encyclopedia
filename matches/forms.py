@@ -1,15 +1,19 @@
 from django import forms
 from .models import Match
+from clan_pages.models import Clan
 
-
-# create clan match form
 class ClamMatchForm(forms.ModelForm):
-    # creates a text box field for messages
     message = forms.CharField(widget=forms.Textarea, required=True)
-    # updates match data to a time and date field
     match_date = forms.DateTimeField(widget=forms.DateTimeInput(attrs={'type': 'datetime-local'}))
 
     class Meta:
         model = Match
-        # clan match field names
         fields = ['invitee_clan', 'game_type', 'match_date', 'message']
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)
+        super().__init__(*args, **kwargs)
+        if user and not user.is_superuser:
+            self.fields['invitee_clan'].queryset = Clan.objects.exclude(user=user)
+        else:
+            self.fields['invitee_clan'].queryset = Clan.objects.all()
