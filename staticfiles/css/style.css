@@ -238,7 +238,7 @@ footer {
 	font-weight: bold;
 }
 
-.nav-link {
+.nav-link, .nav-link:focus {
 	color: white;
 	padding: 0rem 1rem;
 	margin-bottom: 1rem;
