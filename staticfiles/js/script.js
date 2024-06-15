@@ -15,3 +15,7 @@ for (let i = 0; i < notification_status.length; i++) {
 	}
 	notification_status[i].innerHTML = icon + " " + statusVal;
 }
+
+// updates label text of registration form
+const emailLabel = document.querySelector('#id_email').previousElementSibling;
+emailLabel.innerHTML = 'Email:';
