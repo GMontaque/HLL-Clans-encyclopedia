@@ -57,7 +57,7 @@ body {
 }
 
 body .background-img {
-	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+	background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
 		url("../img/carentan.png");
 	background-position: center;
 	background-repeat: no-repeat;
@@ -517,7 +517,7 @@ tbody {
 /******************* hero homepage image *******************/
 
 .hero-image {
-	background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
 		url("../img/carentan.png");
 	background-position: center;
 	background-repeat: no-repeat;
