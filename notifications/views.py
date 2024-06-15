@@ -9,12 +9,13 @@ from django.db.models import Q
 from matches.models import Match
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 
 # function gets all notifications for the authorized user
 def get_all_notifications(user):
     if user.is_authenticated:
-        return Notification.objects.filter(Q(receiver=user) | Q(issuer=user))
+        return Notification.objects.filter(Q(receiver=user) | Q(issuer=user)).order_by('-create_at')
     return Notification.objects.none()
 
 
@@ -23,6 +24,9 @@ def get_all_notifications(user):
 def notifications(request):
     # gets notifications based on user
     all_notifications = get_all_notifications(request.user)
+    paginator = Paginator(all_notifications, 7)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     # gets admin user
     admin_user = User.objects.filter(is_superuser=True).first()
@@ -41,7 +45,7 @@ def notifications(request):
             matches = Match.objects.none()
 
     return render(request, 'notifications.html', {
-        'all_notifications': all_notifications,
+        'all_notifications': page_obj,
         'current_user': request.user,
         'matches': matches,
         'user_clan': clan_name

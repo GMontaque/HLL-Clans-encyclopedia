@@ -20,3 +20,5 @@ class Notification(models.Model):
         ("in-progress", "in-progress"),
         ("rejected", "rejected"),
     ], default='in-progress')
+    create_at = models.DateTimeField(auto_now=False, auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True, auto_now_add=False)
