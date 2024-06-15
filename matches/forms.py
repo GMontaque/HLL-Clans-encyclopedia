@@ -11,9 +11,18 @@ class ClamMatchForm(forms.ModelForm):
         fields = ['invitee_clan', 'game_type', 'match_date', 'message']
 
     def __init__(self, *args, **kwargs):
-        user = kwargs.pop('user', None)
+        self.user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
-        if user and not user.is_superuser:
-            self.fields['invitee_clan'].queryset = Clan.objects.exclude(user=user)
+        if self.user and not self.user.is_superuser:
+            self.fields['invitee_clan'].queryset = Clan.objects.exclude(user=self.user)
         else:
             self.fields['invitee_clan'].queryset = Clan.objects.all()
+
+    def clean(self):
+        cleaned_data = super().clean()
+        invitee_clan = cleaned_data.get('invitee_clan')
+        if self.user and not self.user.is_superuser:
+            inviter_clan = Clan.objects.filter(user=self.user).first()
+            if invitee_clan == inviter_clan:
+                self.add_error('invitee_clan', "You cannot request a game against your own clan.")
+        return cleaned_data

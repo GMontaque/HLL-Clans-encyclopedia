@@ -6,7 +6,6 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-
 @login_required
 def match_request(request):
     # checks if user has created a clan
@@ -28,10 +27,16 @@ def match_request(request):
                 selected_user = request.POST.get('selected_user')
                 if selected_user:
                     match.inviter_clan = Clan.objects.get(user=User.objects.get(username=selected_user))
-            # Save and commit
-            match.save()
-            messages.add_message(request, messages.SUCCESS, 'Match request sent')
-            return redirect('index')
+                else:
+                    match.inviter_clan = None  # Ensure inviter_clan is set for admin if no user selected
+            # Double-check the clans are not the same
+            if match.inviter_clan == match.invitee_clan:
+                messages.add_message(request, messages.ERROR, 'Error! A user can not request a game aganist themselves.')
+                return redirect('match_request')
+            else:
+                match.save()
+                messages.add_message(request, messages.SUCCESS, 'Match request sent')
+                return redirect('index')
         else:
             messages.add_message(request, messages.ERROR, 'Form is not valid')
     else:
