@@ -108,7 +108,7 @@
 								<a class="nav-link {% if request.path == '/signup/' %}active{% endif %} pd-right"
 								   aria-current="page" href="{% url 'account_signup' %}">Register</a>
 							</li>
-							<hr>
+							<li class="nav-line"></li>
 							<li class="nav-item">
 								<a class="nav-link {% if request.path == '/login/' %}active{% endif %}"
 								   aria-current="page" href="{% url 'account_login' %}">Login</a>
@@ -149,14 +149,14 @@
 			<!-- Content Goes here -->
 			{% endblock content %}
 		</main>
-		<footer class="container-fluid" style="height: 100%">
+		<footer class="container-fluid" >
 			<!-- footer content -->
 			<div class="row">
 				<!-- offical game external links -->
 				<section class="col-md-4 col-sm-6 footer-style">
 					<!-- footer title -->
 					<h2 class="display-none">website footer</h2>
-					<ul style="list-style: none">
+					<ul class="list-none">
 						<li>
 							<a href="https://www.hellletloose.com/" target="_blank"
 								>Offical Hell Let Loose Website</a

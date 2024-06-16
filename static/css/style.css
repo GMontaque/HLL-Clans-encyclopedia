@@ -21,6 +21,9 @@ html {
 	font-size: 3rem;
 }
 
+.pad-0{
+	padding: 0;
+}
 
 .sub-header-text{
 	font-size: 2rem;
@@ -109,12 +112,16 @@ button:hover {
 	border: 2px solid #ff0000;
 }
 
+.margin-b-1rem {
+	margin-bottom: 1rem;
+}
+
 .margin-b-3rem {
 	margin-bottom: 3rem;
 }
 
-.margin-b-1rem {
-	margin-bottom: 1rem;
+.margin-b-5rem {
+	margin-bottom: 5rem;
 }
 
 .width-99{
@@ -274,7 +281,7 @@ footer {
 	display: flex;
 }
 
-.login-system li {
+.login-system li, .list-none {
 	list-style: none;
 }
 
@@ -556,6 +563,7 @@ tbody {
 
 footer {
 	color: white;
+	height: 100%
 }
 
 .footer-style {
@@ -667,4 +675,18 @@ input[id="id_clan_rep"] {
 	flex-direction: column;
 	max-width: 70%;
 	margin: auto;
+}
+
+/******************* sing out page *******************/
+
+.signout-center{
+	max-width: 95%; 
+	margin: auto;
+}
+
+@media (min-width: 769px) {
+	.signout-center{
+		max-width: 70%; 
+		margin: auto;
+	}
 }
