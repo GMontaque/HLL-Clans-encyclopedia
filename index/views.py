@@ -20,19 +20,21 @@ class IndexView(generic.ListView):
 
 class LoginPopupView(LoginRequiredMixin, TemplateView):
     template_name = 'index.html'
-    
+
     def get(self, request, *args, **kwargs):
         response = login(request, *args, **kwargs)
         messages.success(request, 'Signed in successfully')
         return redirect('index')
 
+
 class LogoutPopupView(LoginRequiredMixin, TemplateView):
     template_name = 'index.html'
-    
+
     def get(self, request, *args, **kwargs):
         response = logout(request, *args, **kwargs)
         messages.info(request, 'Signed out successfully')
         return redirect('index')
+
 
 def error_view(request):
     return render(request, '404.html')
