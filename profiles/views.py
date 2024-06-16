@@ -8,6 +8,7 @@ from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from .forms import PasswordResetRequestForm, PasswordChangeForm
 
+
 def password_reset_request(request):
     if request.method == "POST":
         form = PasswordResetRequestForm(request.POST)
@@ -21,6 +22,7 @@ def password_reset_request(request):
         form = PasswordResetRequestForm()
     return render(request, 'account/password_reset.html', {'form': form})
 
+
 def password_change(request, uidb64=None, token=None):
     if uidb64 and token:
         uid = force_str(urlsafe_base64_decode(uidb64))
@@ -33,10 +35,20 @@ def password_change(request, uidb64=None, token=None):
                     user.set_password(new_password)
                     user.save()
                     update_session_auth_hash(request, user)
-                    messages.success(request, 'Your password has been reset successfully.')
+                    messages.success(
+                        request,
+                        'Your password has been reset successfully.'
+                    )
                     return redirect('index')
             else:
                 form = PasswordChangeForm(initial={'username': user.username})
-            return render(request, 'account/password_change.html', {'form': form})
-    messages.error(request, 'The password reset link is invalid or has expired.')
+            return render(
+                request,
+                'account/password_change.html',
+                {'form': form}
+            )
+    messages.error(
+        request,
+        'The password reset link is invalid or has expired.'
+    )
     return redirect('password_reset_request')
