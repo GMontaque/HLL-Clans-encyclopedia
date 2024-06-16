@@ -27,7 +27,11 @@ urlpatterns = [
     # goes to the clan page and clan creation html
     path('', include('clan_pages.urls'), name='clans'),
     path('match_request/', include('matches.urls'), name='matchs'),
-    path('notifications/', include('notifications.urls'), name='notifications'),
+    path(
+        'notifications/',
+        include('notifications.urls'),
+        name='notifications'
+    ),
     path("accounts/", include("allauth.urls")),
     path('admin/', admin.site.urls),
     path('profiles/', include('profiles.urls')),
