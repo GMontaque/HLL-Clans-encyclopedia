@@ -6,12 +6,16 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
+
 @login_required
 def match_request(request):
     # checks if user has created a clan
     if not Clan.objects.filter(user=request.user).exists() and not request.user.is_superuser:
-        messages.add_message(request, messages.ERROR,
-                             'You must make a clan before you can request a game')
+        messages.add_message(
+            request,
+            messages.ERROR,
+            'You must make a clan before you can request a game'
+        )
         return redirect('clan_creation')
 
     # Handle form submission
@@ -26,16 +30,27 @@ def match_request(request):
             else:
                 selected_user = request.POST.get('selected_user')
                 if selected_user:
-                    match.inviter_clan = Clan.objects.get(user=User.objects.get(username=selected_user))
+                    match.inviter_clan = Clan.objects.get(
+                        user=User.objects.get(username=selected_user)
+                    )
                 else:
-                    match.inviter_clan = None  # Ensure inviter_clan is set for admin if no user selected
+                    # Ensure inviter_clan is set for admin if no user selected
+                    match.inviter_clan = None
             # Double-check the clans are not the same
             if match.inviter_clan == match.invitee_clan:
-                messages.add_message(request, messages.ERROR, 'Error! A user can not request a game aganist themselves.')
+                messages.add_message(
+                    request,
+                    messages.ERROR,
+                    'Error! A user cannot request a game against themselves.'
+                )
                 return redirect('match_request')
             else:
                 match.save()
-                messages.add_message(request, messages.SUCCESS, 'Match request sent')
+                messages.add_message(
+                    request,
+                    messages.SUCCESS,
+                    'Match request sent'
+                )
                 return redirect('index')
         else:
             messages.add_message(request, messages.ERROR, 'Form is not valid')
@@ -44,7 +59,11 @@ def match_request(request):
 
     # Get the list of users for the admin dropdown
     users = User.objects.exclude(username='admin').filter(clan__isnull=False)
-    return render(request, 'match_request.html', {'match_form': form, 'users': users})
+    return render(
+        request,
+        'match_request.html',
+        {'match_form': form, 'users': users}
+    )
 
 
 # displays individual match requests
@@ -55,8 +74,11 @@ def requested_game(request, pk):
     if request.user.username != "admin":
         clan = Clan.objects.get(user=request.user.id)
         clan_name = clan.clan_name
-    return render(request, 'requested_game.html', {'matches': matches,
-                                                   'user_clan': clan_name})
+    return render(
+        request,
+        'requested_game.html',
+        {'matches': matches, 'user_clan': clan_name}
+    )
 
 
 # updates game request and redirects to notifications page

@@ -2,9 +2,12 @@ from django import forms
 from .models import Match
 from clan_pages.models import Clan
 
+
 class ClamMatchForm(forms.ModelForm):
     message = forms.CharField(widget=forms.Textarea, required=True)
-    match_date = forms.DateTimeField(widget=forms.DateTimeInput(attrs={'type': 'datetime-local'}))
+    match_date = forms.DateTimeField(
+        widget=forms.DateTimeInput(attrs={'type': 'datetime-local'})
+    )
 
     class Meta:
         model = Match
@@ -14,7 +17,9 @@ class ClamMatchForm(forms.ModelForm):
         self.user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
         if self.user and not self.user.is_superuser:
-            self.fields['invitee_clan'].queryset = Clan.objects.exclude(user=self.user)
+            self.fields['invitee_clan'].queryset = Clan.objects.exclude(
+                user=self.user
+            )
         else:
             self.fields['invitee_clan'].queryset = Clan.objects.all()
 
@@ -24,5 +29,8 @@ class ClamMatchForm(forms.ModelForm):
         if self.user and not self.user.is_superuser:
             inviter_clan = Clan.objects.filter(user=self.user).first()
             if invitee_clan == inviter_clan:
-                self.add_error('invitee_clan', "You cannot request a game against your own clan.")
+                self.add_error(
+                    'invitee_clan',
+                    "You cannot request a game against your own clan."
+                )
         return cleaned_data
