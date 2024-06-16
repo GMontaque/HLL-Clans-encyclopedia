@@ -11,16 +11,23 @@
 {% block content %}
 <!--  -->
 {% load static %}
-<div class="row">
-	<article>
-		<section>
-			<div class="col-md-8 mt-3 offset-md-2">
-				<h1>{% trans "Sign Out" %}</h1>
-				<p>{% trans 'Dont Run Away. Are you sure you want to sign out?' %}</p>
-				<img class="logout-img" src="{% static "img/log-out.png" %}" alt="hell
-				let loose art" srcset="" />
-			</div>
-			<div class="col-md-8 mt-3 offset-md-2">
+<div class="row ">
+	<article class="">
+		<h1 class="display-none">Sign Out</h1>
+		<section class="margin-b-3rem">
+			<hr class="hr-title-margin" />
+			<h2 class="notification-title">Sign Out</h2>
+			<hr class="hr-title-margin" />
+		</section>
+		<section class="margin-b-3rem signout-center" >
+			<h2 class="display-none">Sign Out image</h2>
+			<p>{% trans 'Dont Run Away. Are you sure you want to sign out?' %}</p>
+			<img class="logout-img" src="{% static "img/log-out.png" %}" alt="hell
+			let loose art" />
+		</section>
+		<section class="margin-b-3rem signout-center" >
+			<h2 class="display-none">Sign Out button</h2>
+			<div class="col-md-8 mt-3">
 				<form method="post" action="{% url 'account_logout' %}">
 					{% csrf_token %} {% if redirect_field_value %}
 					<input
