@@ -15,7 +15,9 @@ from django.core.paginator import Paginator
 # function gets all notifications for the authorized user
 def get_all_notifications(user):
     if user.is_authenticated:
-        return Notification.objects.filter(Q(receiver=user) | Q(issuer=user)).order_by('-create_at')
+        return Notification.objects.filter(
+            Q(receiver=user) | Q(issuer=user)
+            ).order_by('-create_at')
     return Notification.objects.none()
 
 
@@ -38,7 +40,9 @@ def notifications(request):
         # gets clan page based on user id
         try:
             clan = Clan.objects.get(user=request.user.id)
-            matches = Match.objects.filter(Q(inviter_clan_id=clan.id) | Q(invitee_clan_id=clan.id))
+            matches = Match.objects.filter(
+                Q(inviter_clan_id=clan.id) | Q(invitee_clan_id=clan.id)
+                )
             clan_name = clan.clan_name
         except Clan.DoesNotExist:
             clan_name = "non-clan-rep"
