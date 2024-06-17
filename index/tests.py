@@ -3,14 +3,17 @@ from clan_pages.models import Clan
 from django.contrib.auth.models import User
 from django.urls import reverse
 
+
 # Create your tests here.
 class indexTestCase(TestCase):
 
     def setUp(self):
         self.client = Client()
         # test user
-        self.user = User.objects.create_user(username="test1", email="test@test.com", password="test123")
-        
+        self.user = User.objects.create_user(username="test1",
+                                             email="test@test.com",
+                                             password="test123")
+
         # dummy clans
         Clan.objects.create(
             user=self.user,
@@ -37,7 +40,7 @@ class indexTestCase(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'index.html')
-        
+
         # Check the index page to make sure correct clans passed
         clans = response.context['clans']
         self.assertEqual(len(clans), 3)
