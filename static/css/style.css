@@ -629,12 +629,10 @@ label[for="id_email"],
 label[for="id_clan_rep"],
 label[for="id_password1"],
 label[for="id_password2"],
-label[for="id_memorable_name"] {
+label[for="id_memorable_name"],
+label[for="id_verification_value"],
+label[for="id_new_password"] {
 	width: 20rem;
-}
-
-input[id="id_clan_rep"] {
-	width: 2rem;
 }
 
 .sign-in-and-out-tag,
@@ -677,6 +675,24 @@ input[id="id_clan_rep"] {
 	max-width: 70%;
 	margin: auto;
 }
+
+#id_email, #id_verification_value{
+	margin: 3rem 0rem;
+}
+
+input[id="id_clan_rep"] {
+	width: 2rem;
+}
+
+.errorlist{
+	background-color: red;
+	color:#222222;
+	list-style: none;
+	padding: 1rem;
+	border-radius: 1rem;
+	font-weight: bold;
+}
+
 
 /******************* sing out page *******************/
 
