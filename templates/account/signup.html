@@ -1,5 +1,5 @@
-<!-- loads base.html then this html file inside it -->
 {% extends "base.html" %} 
+{% load static %}
 {% load allauth i18n %}
 {% block head_title %}
     {% trans "Signup" %}
@@ -38,7 +38,8 @@
         {% endif %}
     </section>
 </div>
-<!-- JS file static -->
-<script src="{% static '/js/email-label.js' %}"></script>
 {% endblock content %}
-
+{% block extra_js %}
+<!-- JS file static -->
+<script src="{% static 'js/email-label.js' %}"></script>
+{% endblock extra_js %}
