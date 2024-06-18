@@ -152,6 +152,7 @@ button:hover {
 .clan-page{
 	margin: auto;
     width: 92%;
+	margin-bottom: 5rem;
 }
 
 #clan-img {
@@ -336,6 +337,7 @@ footer {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	margin-bottom: 5rem;
 }
 
 .card-title {

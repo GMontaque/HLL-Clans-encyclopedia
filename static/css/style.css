@@ -152,6 +152,7 @@ button:hover {
 .clan-page{
 	margin: auto;
     width: 92%;
+	margin-bottom: 5rem;
 }
 
 #clan-img {
@@ -336,6 +337,7 @@ footer {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	margin-bottom: 5rem;
 }
 
 .card-title {
@@ -519,6 +521,7 @@ tbody {
 	margin: 0 !important;
 	padding-right: 1rem;
 	font-size: 1.5rem;
+	border-bottom: 1rem solid white;
 }
 
 /******************* hero homepage image *******************/
