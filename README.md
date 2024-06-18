@@ -213,3 +213,50 @@
   ![picture of body text example](readme-pics/font-body-example.png)
 
 
+## Agile
+
+Kanban Board Link - [Link](https://github.com/users/GMontaque/projects/4)
+
+**Epics**
+
+- During the design stage of my project, I decided on the different features, structure and strategy for the site, this was broken down for the project using the agile methodology to better understand how to complete the project and implement the necessary features. At the same time, this ensured that  the most important features were implemented first and that a deliverable product (minimum viable product) was created, even if some of the  features were not  completed within the set time. 11 EPICS were created and these were broken down into 68 user stories.
+
+- Below is the list of the 11 EPICS which were created for this project.
+  - EPIC 1: Project set up 
+  -	EPIC 2 : Website and clan page navigation
+  -	EPIC 3 : General User Comment Section
+  -	EPIC 4 : Clan Webpage Creation
+  -	EPIC 5 : Game Organisation
+  -	EPIC 6 : User Authentication and Authorisation
+  -	EPIC 7 : Database Management
+  -	EPIC 8 : User Notification System
+  -	EPIC 9 : Admin Management and Notifications
+  -	EPIC 10 : Error Handling
+  -	EPIC 11 : Website Testing
+
+
+
+**User stories**
+
+ - Once the user stories and epics had been created, the next stage was to break them down to understand which to prioritize and which could be left to be completed at a later stage. I used the MoSCoW prioritization technique to do this. This process works by giving each user story a score (story point) as to the estimated amount of effort required to implement the user story and then once implemented checked against the acceptance criteria. The story point number system uses something called the Fibonacci numbers, the reason for this is that the number sequence goes (1, 2, 3, 5, 8, 13, etc.), the benefit of which is that it allows for the different size of tasks. For example setting up a GitHub repository is a relatively easy task but styling a website is much more complex with a number of parts, which the Fibonacci numbers allows for.
+
+- Each entry in the kanban board shows the MoSCoW prioritisation result.
+
+- MoSCoW prioritization technique stands for:
+  - Must-Have: Critical requirements that must be implemented for the project to be considered successful.
+  - Should-Have: Important requirements that are not critical but add significant value.
+  - Could-Haves: Desirable features that would be nice to have but are not crucial.
+  - Won't-Have: Features that are explicitly excluded from the project scope.
+
+- The total Story Points in the project is 240.
+-	Must-Have : 110 story points
+-	Should-Have : 73 story points
+-	Could-Have : 57 story points
+-	Wont-Have
+
+**Mock Kanban Board**
+
+- As referenced previously, when deciding on how to proceed, I first broke the user stories down using the MoSCow technique and then added a story point value to each user story. I went through a few iterations to decide on the order of completion. Having arrived at a satisfactory order, I completed the project over 6 iterations. 
+
+[Excel Spreadsheet](https://docs.google.com/spreadsheets/d/158kUvL5gLR40iwjXMzUWyYzTrQp6--U38OAhn3ajcNQ/edit?gid=0#gid=0)
+
