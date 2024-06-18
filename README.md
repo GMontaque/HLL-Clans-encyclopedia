@@ -587,3 +587,18 @@ python manage.py runserver
 Cloning a repository Offical - [Link](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop)
 
 
+## Credit and Content
+
+**Images**
+
+  - Logo Image source - https://www.hellletloose.com/
+  - 404 Page and Sign Out page Source - https://www.behance.net/gallery/111125123/Hell-Let-Loose-Fan-art
+  - Background Image source - 
+
+**Tutor Support**
+
+- profile file
+
+**Youtube Courses**
+
+- django course
