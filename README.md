@@ -519,3 +519,71 @@ Kanban Board Link - [Link](https://github.com/users/GMontaque/projects/4)
 - whitenoise==6.6.0
 
 
+## Deployment
+
+### Deploy on Heroku:
+
+- Log in to Heroku - or set up a new account.
+- From the dashboard, click 'Create new app'.
+- Name your app - it will need to be unique. Select Region, then 'Create'.
+- Click on the 'Settings' tab.
+- Scroll down to Config Vars and click 'Reveal Config Vars'.
+- In the 'Key' field enter 'PORT', and in the 'Value' field enter '8000'.
+- If there is a credentials file, this will also need to be entered into the Config Vars setting.
+- Staying within 'Settings', scroll down to Buildpacks and click on 'Add Buildpacks'.
+- Select 'python' first and click 'Save changes'.
+- Then do the same again and this time select 'nodejs' and click 'Save changes'.
+- Ensure the buildpacks are in the order of python first and nodejs second.
+- Scroll to the top and select 'Deploy'.
+- In 'Deployment method' select 'GitHub' and confirm you want to connect.
+- Enter your GitHub repository into the search bar, and then 'Connect'.
+- Under 'Automatic deploys', click on 'Enable Automatic Deploys' if you want the app to update every time you push changes to GitHub.
+- Finally, click on 'Deploy Branch' under 'Manual deploy' to deploy your app. Once completed, you will be able to view your deployed link.
+
+### Local Deployment
+
+- Clone the Repository:
+- Open the Project in Your IDE:
+- Create a Virtual Environment: Open the terminal in your IDE and run:
+- Activate the Virtual Environment: 
+  - Windows: venv\Scripts\activate
+  - macOS/Linux: source venv/bin/activate
+- Install Dependencies: pip install -r requirements.txt
+- Set Up Environment Variables: Ceate a .env file in the root directory and add the necessary variables:
+```
+SECRET_KEY=your_secret_key
+DATABASE_URL=your_database_url
+CLOUDINARY_URL=your_cloudinary_url
+```
+- Run the Development Server: 
+```
+python manage.py runserver
+```
+
+### Forking the Repository
+
+- Click the "Fork" button found near the top right corner of the page. This duplicates the repository into your GitHub account.
+- After forking, you will be redirected to your forked repository.
+- If not already done, clone the forked repository to your local machine, using the instructions mentioned earlier.
+- Make any desired changes or additions to the code in your local copy of the repository.
+- Commit your changes to your local repository using the "git commit" command.
+- Push your changes to the forked repository on GitHub with the "git push" command.
+- If you intend to contribute your changes back to the original repository, initiate a pull request. You can do this by going to the original repository's page and selecting the "New pull request" button. From there, you can compare your changes to the original repository and request a merge.
+- You now have a forked copy of the GitHub repository in your account, allowing you to make changes and contribute back to the original repository if desired.
+
+### Cloning the Repository
+
+- Log in to GitHub and locate the GitHub Repository.
+- Under the repository name, click "Clone or download".
+- To clone the repository using HTTPS, under "Clone with HTTPS", copy the link.
+- Open Git Bash
+- Change the current working directory to the location where you want the cloned directory to be made.
+- Type git clone, and then paste the URL you copied in Step 3.
+ ```
+ $ git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY
+ ```
+- Press Enter. Your local clone will be created.
+
+Cloning a repository Offical - [Link](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop)
+
+
