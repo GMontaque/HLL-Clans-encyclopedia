@@ -311,3 +311,97 @@ class matchTestCase(TestCase):
 ![picture of validator error on sign up page](readme-pics/sign-up-validator-error.png)
 
 
+### Validation
+
+**Html Validator**
+
+- The table below contains all the html code and the results of passing it through the html validator to make sure they pass all web standards 
+
+|     File tested          |     Result                                                           |
+|--------------------------|------------------------------------------------------------------------------|
+|     404 Page             |     Pass - [Img Link](readme-pics/404-html-page.png)      |
+|     admin_ticket         |     Pass - [Img Link](readme-pics/admin-ticket-html-page.png)     |
+|     base                 |     Pass - [Img Link](readme-pics/base-html-page.png)       |
+|     clan_creation        |     Pass - [Img Link](readme-pics/clan-creation-html-page.png)      |
+|     clan_page            |     Pass - [Img Link](readme-pics/clan-page-html-page.png)      |
+|     edit_clan_page       |     Pass - [Img Link](readme-pics/edit-clan-page-html-page.png)       |
+|     index                |     Pass - [Img Link](readme-pics/index-html-page-validator-result.png)           |
+|     indiv_notification   |     Pass - [Img Link](readme-pics/indiv-notification-html-page.png)          |
+|     log out              |     Pass - [Img Link](readme-pics/log-out-html-page.png)        |
+|     login                |     Pass - [Img Link](readme-pics/login-html-page.png)       |
+|     match_request        |     Pass - [Img Link](readme-pics/match-request-html-page.png)       |
+|     notifications        |     Pass - [Img Link](readme-pics/notifications-html-page.png)         |
+|     password chnage      |     Pass - [Img Link](readme-pics/password-change-html-page.png)  |
+|     password reset       |     Pass - [Img Link](readme-pics/password-reset-html-page.png)  |
+|     reqeusted_game       |     Pass - [Img Link](readme-pics/requested-game-html-page.png) |
+
+
+**CSS Validator**
+
+- The image shows the results of passing the CSS file through the CSS validator
+
+![picture of CSS Validator result](readme-pics/css-validator-results.png)
+
+**Python Validator**
+
+- The table below contains all the python code and the results of passing it through the python validator to make sure it passes all pep standards 
+
+|     File tested             |     Result                                                                   |
+|-----------------------------|------------------------------------------------------------------------------|
+|     Clan page Forms         |     Pass - [Img Link](readme-pics/clan-page-forms-validator-result.png)      |
+|     Clan page Models        |     Pass - [Img Link](readme-pics/clan-page-models-validator-result.png)     |
+|     Clan page URLS          |     Pass - [Img Link](readme-pics/clan-page-urls-validator-result.png)       |
+|     Clan page Views         |     Pass - [Img Link](readme-pics/clan-page-views-validator-result.png)      |
+|     Hll_clans Forms         |     Pass - [Img Link](readme-pics/hll-clans-forms-validator-result.png)      |
+|     Hll_clans URLS          |     Pass - [Img Link](readme-pics/hll-clans-urls-validator-result.png)       |
+|     Hll_clans Settings      |     Pass - [Img Link](readme-pics/hll-clans-settings-validator-result.png)   |
+|     Index URLS              |     Pass - [Img Link](readme-pics/index-urls-validator-result.png)           |
+|     Index Views             |     Pass - [Img Link](readme-pics/index-views-validator-result.png)          |
+|     Matches Admin           |     Pass - [Img Link](readme-pics/matches-admin-validator-result.png)        |
+|     Matches Views           |     Pass - [Img Link](readme-pics/match-views-validator-result.png)          |
+|     Matches Forms           |     Pass - [Img Link](readme-pics/matches-forms-validator-result.png)        |
+|     Matches Models          |     Pass - [Img Link](readme-pics/matches-models-validator-result.png)       |
+|     Matches URLS            |     Pass - [Img Link](readme-pics/matches-urls-validator-result.png)         |
+|     Notifications Admin     |     Pass - [Img Link](readme-pics/notifications-admin-validator-result.png)  |
+|     Notifications Forms     |     Pass - [Img Link](readme-pics/notifications-forms-validator-result.png)  |
+|     Notifications Models    |     Pass - [Img Link](readme-pics/notifications-models-validator-result.png) |
+|     Notifications URLS      |     Pass - [Img Link](readme-pics/notifications-urls-validator-result.png)   |
+|     Notifications Views     |     Pass - [Img Link](readme-pics/notifications-views-validator-result.png)  |
+|     Profiles Admin          |     Pass - [Img Link](readme-pics/profiles-admin-validator-result.png)       |
+|     Profiles Models         |     Pass - [Img Link](readme-pics/profiles-models-validator-result.png)      |
+|     Profiles Signals        |     Pass - [Img Link](readme-pics/profiles-signals-validator-result.png)     |
+|     Profiles URLS           |     Pass - [Img Link](readme-pics/profiles-urls-validator-result.png)        |
+|     Profiles Views          |     Pass - [Img Link](readme-pics/profiles-views-validator-result.png)       |
+|     Profiles Forms          |     Pass - [Img Link](readme-pics/profiles-forms-validator-result.png)       |
+|     Clan Page Test          |     Pass - [Img Link](readme-pics/clan-pages-test-validator-result.png)      |
+|     Index Test              |     Pass - [Img Link](readme-pics/index-testing-validator-result.png)        |
+|     Matches Test            |     Pass - [Img Link](readme-pics/matches-test-validator-results.png)        |
+
+
+
+**Javascript Validator**
+
+- The image shows the results of passing the JavaScript file through the JavaScript validator
+
+![picture of Javascript Validator result](readme-pics/javascript-validator-result.png)
+
+
+## Browser Testing
+
+- When testing the website on different devices I have used the pre-defined dimensions that come with the developer tools on Google Chrome
+
+- I have also researched several websites which have described the most common screen size for devices in 2023 for desktop and mobile - https://www.designrush.com/agency/web-development-companies/trends/website-dimensions
+
+![picture of device sizes](readme-pics/most-common-screen-resolutions-worldwide-content.jpg)
+
+**Google Chromee**
+![picture of google chrome browser test](readme-pics/browser-test-google.png)
+
+**Edge**
+![picture of device sizes ](readme-pics/edge-browser-test.png)
+
+**Firefox**
+![picture of device sizes browser test](readme-pics/firefox-browser-test.png)
+
+## Lighthouse Test
+
