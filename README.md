@@ -481,3 +481,41 @@ Kanban Board Link - [Link](https://github.com/users/GMontaque/projects/4)
 - 2-way communication – the admin ticket system would be updated so that both admin and logged in users could communicate regarding a ticket that had been raised and submitted to the admin team
 - Comments under clan pages – under each of the clan pages. a comments section would be added so that users with an account could leave comments regarding the clan
 
+## Testing
+
+- Please see External testing file for manaul testing result, automated testing and errors/bugs
+
+[Link to test.md](testing.md)
+
+## Technologies and Languages
+
+- HTML: A markup language used to create the structure and content of web pages.
+- CSS: A styling language used to control the layout and visual appearance of web pages.
+- JavaScript: A programming language used to add interactivity and dynamic effects to web pages.
+- Python: A high-level programming language used for web development, data analysis, and artificial intelligence.
+- Django: A high-level Python web framework that enables rapid development of secure and maintainable websites.
+- Github: A web-based platform for version control and collaboration on software development projects.
+- Bootstrap: A popular front-end framework used to build responsive and mobile-first web applications.
+- Heroku: A cloud platform as a service (PaaS) that enables developers to build, deploy, and scale web applications.
+- Vscode: A lightweight, open-source code editor developed by Microsoft that supports a wide range of programming languages.
+- Gitpod: A cloud-based development environment that provides a pre-configured and collaborative coding experience.
+- SweetAlert: A JavaScript library used to create customizable and responsive alert messages and modal windows for web applications.
+
+## Requirments.txt
+
+- Following modules were used in creating the website
+
+- asgiref==3.8.1
+- cloudinary==1.40.0
+- crispy-bootstrap5==2024.2
+- dj-database-url==0.5.0
+- dj3-cloudinary-storage==0.0.6
+- Django==5.0.4
+- django-allauth==0.62.1
+- django-crispy-forms==2.1
+- gunicorn==22.0.0
+- psycopg2==2.9.9
+- sqlparse==0.5.0
+- whitenoise==6.6.0
+
+
