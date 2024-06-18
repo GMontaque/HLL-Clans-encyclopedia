@@ -45,6 +45,7 @@ def notifications(request):
                 )
             clan_name = clan.clan_name
         except Clan.DoesNotExist:
+            clan = None  # No clan associated with the user
             clan_name = "non-clan-rep"
             matches = Match.objects.none()
 
@@ -80,11 +81,11 @@ def admin_notifications(request):
     # gets admin user
     admin_user = User.objects.filter(is_superuser=True).first()
     # gets clan page based on user id
-    # clan = Clan.objects.get(user=request.user.id)
     try:
         clan = Clan.objects.get(user=request.user.id)
     except Clan.DoesNotExist:
-        clan = "non-clan-rep"
+        # when a non clan user raises a ticket
+        clan = None  
 
     if request.method == "POST":
         form = CreateNotification(data=request.POST)

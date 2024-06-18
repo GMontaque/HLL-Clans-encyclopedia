@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from clan_pages.models import Clan
 from matches.models import Match
 
-
 # creates notification database
 class Notification(models.Model):
     issuer = models.ForeignKey(User, verbose_name=("Issuer"),
@@ -13,7 +12,7 @@ class Notification(models.Model):
                                  on_delete=models.CASCADE,
                                  related_name='receiver')
     clan = models.ForeignKey(Clan, verbose_name=("Clan"),
-                             on_delete=models.CASCADE)
+                             on_delete=models.CASCADE, null=True, blank=True)  # Allow null and blank values
     content = models.TextField(verbose_name=("Content"), max_length=100)
     status = models.CharField(max_length=50, choices=[
         ("completed", "completed"),
