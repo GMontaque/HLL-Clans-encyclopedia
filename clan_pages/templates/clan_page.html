@@ -4,6 +4,7 @@
 {% block content %}
 <!-- loads css  -->
 {% load static %}
+{% load custom_filters %}
 <!-- displays clan page -->
 <div class="row">
 	<article class="clan-page">
@@ -27,7 +28,7 @@
 					{% else %}
 					<img
 						class="img-fluid rounded-top"
-						src=" {{ clan.image_url.url }}"
+						src=" {{ clan.image_url.url|secure_url }}"
 						alt="{{ clan.clan_name }}-logo"
 						id="clan-img"
 					/>
