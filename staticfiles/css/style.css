@@ -249,11 +249,13 @@ footer {
 .nav-link, .nav-link:focus {
 	color: white;
 	padding: 0rem 1rem;
-	margin-bottom: 1rem;
+	margin-bottom: 0rem;
 }
 
 .nav-link:hover {
 	color: #ff0000;
+	padding: 0rem 1rem;
+	margin-bottom: 0rem;
 }
 
 .navbar-expand-sm .navbar-collapse {
