@@ -290,7 +290,7 @@ Kanban Board Link - [Link](https://github.com/users/GMontaque/projects/4)
 
 - **Mobile Navigation Bar**
 
-![picture of Clan Representative navigation bar](readme-pics/non-clan-rep-navbar.png)
+![picture of Clan Representative navigation bar](readme-pics/mobile-navbar.png)
 
 
 **Footer**
@@ -423,6 +423,16 @@ Kanban Board Link - [Link](https://github.com/users/GMontaque/projects/4)
 
 ![picture of Clan Representative game requests on Notification Page](readme-pics/clan-rep-notification-game-requests.png)
 
+**Notifications – Individual Game Request**
+
+- When clicking on the button next to the game request you are taken to the full game request
+- This page provides all the information related to the game
+- If you have the correct access, you can accept or decline the game request
+- Accepted games appear on the clan page related to the receiver of the game request
+
+
+![picture of Individual Game Request](readme-pics/individual-game-request.png)
+
 **Upcoming games clan page**
 
 - Each clan page has a section at the bottom which displays match requests
@@ -462,7 +472,7 @@ Kanban Board Link - [Link](https://github.com/users/GMontaque/projects/4)
 - The user can add in any text they wish into the text field before submitting  the form
 - Validation has been included so that if nothing is entered in the text field, the form will not send
 
-![picture of Admin Ticket Request Page](readme-pics/raise-admin-ticket.png).
+![picture of Admin Ticket Request Page](readme-pics/raise-admin-ticket.png)
 
 **Delete Clan Page**
 
