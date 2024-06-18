@@ -415,7 +415,11 @@ class matchTestCase(TestCase):
 
 **Clan Page**
 
-![picture of Lighthouse result for Clan Page](readme-pics/firefox-browser-test.png)
+- Desktop
+![picture of Lighthouse result for Edit Clan Page](readme-pics/clan-page-lighthouse-desktop.png)
+
+- Mobile
+![picture of Lighthouse result for Edit Clan Page](readme-pics/clan-page-lighthouse-mobile.png)
 
 **Edit Clan Page**
 
