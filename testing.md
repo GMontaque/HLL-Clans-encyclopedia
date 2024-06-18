@@ -408,95 +408,119 @@ class matchTestCase(TestCase):
 **Homepage**
 
 - Desktop
+
 ![picture of Lighthouse result for homepage](readme-pics/homepage-lighthouse-desktop.png)
 
 - Mobile
+
 ![picture of Lighthouse result for homepage](readme-pics/homepage-lighthouse-mobile.png)
 
 **Clan Page**
 
 - Desktop
+
 ![picture of Lighthouse result for Edit Clan Page](readme-pics/clan-page-lighthouse-desktop.png)
 
 - Mobile
+
 ![picture of Lighthouse result for Edit Clan Page](readme-pics/clan-page-lighthouse-mobile.png)
 
 **Edit Clan Page**
 
 - Desktop
+
 ![picture of Lighthouse result for Edit Clan Page](readme-pics/homepage-lighthouse-desktop.png)
 
 - Mobile
+
 ![picture of Lighthouse result for Edit Clan Page](readme-pics/edit-clan-page-mobile.png)
 
 **Notifications Page**
 
 - Desktop
+
 ![picture of Lighthouse result for Notifications Page](readme-pics/notification-lighthouse-desktop.png)
 
 - Mobile
+
 ![picture of Lighthouse result for Notifications Page](readme-pics/notification-lighthouse-mobile.png)
 
 **Individual Game Request**
 
 - Desktop
+
 ![picture of Lighthouse result for Individual Game Request](readme-pics/deskotp-page-lighthouse-result.png)
 
 - Mobile
+
 ![picture of Lighthouse result for Individual Game Request](readme-pics/mobile-page-lighthouse-mobile.png)
 
 **Individual Notification**
 
 - Desktop
+
 ![picture of Lighthouse result for Individual Notification](readme-pics/deskotp-page-lighthouse-result.png)
 
 - Mobile
+
 ![picture of Lighthouse result for Individual Notification](readme-pics/mobile-page-lighthouse-mobile.png)
 
 **Match Request**
 
 - Desktop
+
 ![picture of Lighthouse result for Match Request](readme-pics/deskotp-page-lighthouse-result.png)
 
 - Mobile
+
 ![picture of Lighthouse result for Match Request](readme-pics/mobile-page-lighthouse-mobile.png)
 
 **Clan Creation**
 
 - Desktop
+
 ![picture of Lighthouse result for Clan Creation](readme-pics/deskotp-page-lighthouse-result.png)
 
 - Mobile
+
 ![picture of Lighthouse result for Clan Creation](readme-pics/mobile-page-lighthouse-mobile.png)
 
 **404 Page**
 
 - Desktop
+
 ![picture of Lighthouse result for 404 Page](readme-pics/deskotp-page-lighthouse-result.png)
 
 - Mobile
+
 ![picture of Lighthouse result for 404 Page](readme-pics/mobile-page-lighthouse-mobile.png)
 
 **Register**
 
 - Desktop
+
 ![picture of Lighthouse result for Register](readme-pics/deskotp-page-lighthouse-result.png)
 
 - Mobile
+
 ![picture of Lighthouse result for Register](readme-pics/mobile-page-lighthouse-mobile.png)
 
 **Log In**
 
 - Desktop
+
 ![picture of Lighthouse result for Log In](readme-pics/deskotp-page-lighthouse-result.png)
 
 - Mobile
+
 ![picture of Lighthouse result for Log In](readme-pics/mobile-page-lighthouse-mobile.png)
 
 **Log Out**
 
 - Desktop
+
 ![picture of Lighthouse result for Log Out](readme-pics/deskotp-page-lighthouse-result.png)
 
 - Mobile
+
 ![picture of Lighthouse result for Log Out](readme-pics/mobile-page-lighthouse-mobile.png)

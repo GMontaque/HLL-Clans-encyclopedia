@@ -593,13 +593,21 @@ Cloning a repository Offical - [Link](https://docs.github.com/en/repositories/cr
 **Images**
 
   - Logo Image source - https://www.hellletloose.com/
+  - placeholder image clan page - https://www.reddit.com/r/HellLetLoose/comments/13rfgv3/does_anyone_else_hate_the_new_logo_and_lettering/
   - 404 Page and Sign Out page Source - https://www.behance.net/gallery/111125123/Hell-Let-Loose-Fan-art
-  - Background Image source - 
+  - Background Image source - Hell Let Loose Discord
+
+**Clan Pages Content**
+
+- This has been taken from the Discord pages of each of the Hell Let Loose Clans added to the website
 
 **Tutor Support**
 
-- profile file
+- profile file: created with the help of Code Institute Tutor Support
 
 **Youtube Courses**
 
-- django course
+- Corey Schafer: https://www.youtube.com/watch?v=UmljXZIypDc&list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p&ab_channel=CoreySchafer
+
+- Codemy.com: https://www.youtube.com/watch?v=B40bteAMM_M&list=PLCC34OHNcOtr025c1kHSPrnP18YPB-NFi&ab_channel=Codemy.com
+
