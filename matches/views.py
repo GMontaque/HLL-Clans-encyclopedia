@@ -10,7 +10,10 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def match_request(request):
     # checks if user has created a clan
-    if not Clan.objects.filter(user=request.user).exists() and not request.user.is_superuser:
+    if (
+    not Clan.objects.filter(user=request.user).exists() and 
+    not request.user.is_superuser
+    ):
         messages.add_message(
             request,
             messages.ERROR,
