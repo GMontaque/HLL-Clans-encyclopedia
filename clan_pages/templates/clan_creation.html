@@ -25,14 +25,17 @@
 					class="form-select"
 					name="selected_user"
 					aria-label="Default select example"
+					required
 				>
-					<option selected>Open this select menu</option>
+					<option value="" selected>Open this select menu</option>
 					{% for user in user_accounts %}
-					<option value="{{user.username}}">{{user.username}}</option>
+					<option value="{{ user.username }}">{{ user.username }}</option>
 					{% endfor %}
 				</select>
+				<div class="invalid-feedback">
+					Please select a clan rep.
+				</div>
 				{% endif %}
-				<!-- form submit button  -->
 				<button
 					id="submitButton"
 					type="submit"

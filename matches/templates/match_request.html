@@ -29,12 +29,16 @@
                         class="form-select"
                         name="selected_user"
                         aria-label="Default select example"
+                        required
                     >
-                        <option selected>Open this select menu</option>
+                        <option value="" selected>Open this select menu</option>
                         {% for user in users %}
                         <option value="{{ user.username }}">{{ user.username }}</option>
                         {% endfor %}
                     </select>
+                    <div class="invalid-feedback">
+                        Please select an inviter.
+                    </div>
                     {% endif %}
                 </div>
                 {{ match_form | crispy }} {% csrf_token %}
