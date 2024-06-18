@@ -3,7 +3,7 @@
 let notification_status = document.getElementsByClassName("status-icon");
 
 for (let i = 0; i < notification_status.length; i++) {
-	let statusVal = notification_status[i].textContent.trim();
+	statusVal = notification_status[i].textContent.trim();
 	statusVal = statusVal.charAt(0).toUpperCase() + statusVal.slice(1);
 	let icon = "";
 	if (statusVal == "Completed") {
@@ -16,6 +16,4 @@ for (let i = 0; i < notification_status.length; i++) {
 	notification_status[i].innerHTML = icon + " " + statusVal;
 }
 
-// updates label text of registration form
-const emailLabel = document.querySelector('#id_email').previousElementSibling;
-emailLabel.innerHTML = 'Email:';
+
