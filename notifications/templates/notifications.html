@@ -31,11 +31,11 @@
 					<thead>
 						<tr>
 							<th scope="col">Issuer</th>
-							<th scope="col">Clan</th>
+							<th scope="col" class="d-none d-sm-table-cell">Clan</th>
 							<th scope="col" class="d-none d-sm-table-cell">content</th>
 							<th scope="col">Status</th>
+							<th scope="col" class="d-none d-sm-table-cell">time-date</th>
 							<th scope="col">Message</th>
-							<th scope="col">time-date</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -44,14 +44,14 @@
 						{% if notification.receiver == current_user %}
 						<tr class="">
 							<td>{{ notification.issuer}}</td>
-							<td>{{ notification.clan}}</td>
+							<td class="d-none d-sm-table-cell">{{ notification.clan}}</td>
 							<td class="d-none d-sm-table-cell">
 								{{ notification.content |slice:":10"}}...
 							</td>
 							<td class="status">
 								<span class="status-icon">{{ notification.status}}</span>
 							</td>
-							<td>{{ notification.create_at}}</td>
+							<td class="d-none d-sm-table-cell">{{ notification.create_at}}</td>
 							<td>
 								<a
 									class="btn btn-primary btn-notification"
@@ -93,7 +93,7 @@
 					<thead>
 						<tr>
 							<th scope="col">Receiver</th>
-							<th scope="col">content</th>
+							<th scope="col" class="d-none d-sm-table-cell">content</th>
 							<th scope="col">Status</th>
 							<th scope="col">Message</th>
 						</tr>
@@ -104,7 +104,7 @@
 						{% if notification.issuer == current_user %}
 						<tr class="">
 							<td>{{ notification.receiver}}</td>
-							<td>{{ notification.content |slice:":10"}}...</td>
+							<td class="d-none d-sm-table-cell">{{ notification.content |slice:":10"}}...</td>
 							<td class="status">
 								<span class="status-icon">{{ notification.status}}</span>
 							</td>
@@ -150,7 +150,7 @@
 					<thead>
 						<tr>
 							<th scope="col">Teams</th>
-							<th scope="col">Game Type</th>
+							<th scope="col" class="d-none d-sm-table-cell">Game Type</th>
 							<th scope="col">Status</th>
 							<th scope="col">Action</th>
 						</tr>
@@ -163,7 +163,7 @@
 								<strong>vs</strong>
 								{{match.invitee_clan}}
 							</td>
-							<td>{{match.game_type}}</td>
+							<td class="d-none d-sm-table-cell">{{match.game_type}}</td>
 							<td>{{match.is_accepted}}</td>
 							<td>
 								<a
@@ -190,7 +190,7 @@
 					<thead>
 						<tr>
 							<th scope="col">Issuer</th>
-							<th scope="col">Game Type</th>
+							<th scope="col" class="d-none d-sm-table-cell">Game Type</th>
 							<th scope="col">Status</th>
 							<th scope="col">Message</th>
 						</tr>
@@ -202,7 +202,7 @@
 						{% if match.invitee_clan|stringformat:"s" == user_clan|stringformat:"s" %}
 						<tr class="">
 							<td >{{match.inviter_clan}}</td>
-							<td>{{match.game_type}}</td>
+							<td class="d-none d-sm-table-cell">{{match.game_type}}</td>
 							<td>{{match.is_accepted}}</td>
 							<td>
 								<a
