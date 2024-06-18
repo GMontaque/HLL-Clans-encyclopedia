@@ -197,6 +197,7 @@
 
 - Focus  - #ff0000 – used for hover effects and buttons
 
+![picture of colour palette ](readme-pics/colour-pallete.png)
 
 **Typography**
 
