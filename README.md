@@ -260,3 +260,224 @@ Kanban Board Link - [Link](https://github.com/users/GMontaque/projects/4)
 
 [Excel Spreadsheet](https://docs.google.com/spreadsheets/d/158kUvL5gLR40iwjXMzUWyYzTrQp6--U38OAhn3ajcNQ/edit?gid=0#gid=0)
 
+## Features
+
+**Navigation bar**
+
+- The navigation bar appears at the top of all pages within the website
+- Before a user logs in. the navigation bar contains logo, home, register and login 
+- For a clan representative user, the navigation bar updates to home, notification, match request, clan request and log out
+- For a non-clan representative user, the navigation bar updates to home, notification and log out
+- For an admin user the navigation bar updates to home, notification, match request, clan request, admin and log out
+- When a link is moused over, it changes to red to show focus. Also, the link to the page which the user is currently on, will appear red on the navigation bar. 
+
+- **Navigation bar**
+
+![picture of inital navigation bar](readme-pics/inital-navbar.png)
+
+- **Admin**
+
+![picture of admin navigation bar](readme-pics/admin-navbar.png)
+
+- **Signed In - Clan Representative**
+
+![picture of Clan Representative navigation bar](readme-pics/signed-in-user.png)
+
+- **Signed In - Non Clan Representative**
+
+![picture of Clan Representative navigation bar](readme-pics/non-clan-rep-navbar.png)
+
+- **Mobile Navigation Bar**
+
+![picture of Clan Representative navigation bar](readme-pics/non-clan-rep-navbar.png)
+
+
+**Footer**
+
+- The footer appears at the bottom of all the web pages
+- The footer contains official links for the hell let loose discord, website and a link to buy the game
+- There are 2 other sections which contain the hell let loose logo and details regarding the admin team for the site
+
+![picture of footer](readme-pics/footer.png)
+
+**Home Page**
+
+- The page contains a header background image which is an image of one of the maps in the game together with the title of the website and some summary text
+- Description section: this explains the website in more detail
+- A-Z style list:  contains all the clan names with a uniform background image
+- When hovered over, the  clan card displays a link so that the user can view the clan page in full
+
+![picture of homepage top](readme-pics/homepage-top.png)
+![picture of homepage bottom](readme-pics/homepage-bottom.png)
+
+
+**User Registration**
+
+- There is a link in the navigation bar which the user must click to get to the registration form
+- The user must complete the form in full, providing a nickname, email address, password , memorable name and a tick in the checkbox if they represent a clan
+- Once the form is submitted, a confirmation message appears confirming this and the user is  redirected to the homepage
+- A confirmation message will appear to confirm that they are registered
+
+![picture of sign up page](readme-pics/sign-up-page.png)
+
+**User Log In**
+
+- There is a link in the navigation bar which when clicked , takes the user to the log in form
+- The user must input their username and password
+- Once logged in, they are taken back to the homepage
+- A confirmation message appears to confirm that they are logged in
+- Once logged in, a log out button appears in the navigation bar where the log in button was previously
+- The Navigation bar will update with correct links based on the users access
+
+![picture of sign in page](readme-pics/user-sign-in.png)
+
+**User Log Out**
+
+- The log out link appears in the navigation bar when the user has logged in
+- When clicked on, it takes the user to a webpage to confirm if they want to log out
+- If the user clicks yes on the on-screen button that appears, they are  logged out
+- A pop-up message appears confirming this and the user is  re-directed to the home page
+
+![picture of sign out page](readme-pics/sign-out-page.png)
+
+**Raise game request**
+
+- When either a clan rep or admin are logged in, a game request button appears in the navbar
+- When clicked they are taken to a page with a form to raise a game request
+- The form has several fields that they need to complete to raise a game request
+- Checks will be carried out to make sure the form is fully completed
+- Once completed the form is submitted and they are shown a message confirming the form is submitted as a pop up
+- Admin user can raise a game request for any user against any clan
+
+![picture of game request page](readme-pics/game-request-page.png)
+
+**Create Clan Page**
+
+- When either a clan rep or admin are logged in, a clan creation link will appear in the navigation bar
+- When clicked they are taken to a page with a form to create a clan
+- The form has several fields that they need to complete to create a clan
+- Checks will be carried out to make sure the clan name does not already exist and that the user does not already have a clan linked to the account
+- Once completed the form is submitted and they are shown a message confirming the form submitted as a pop up
+- If admin is logged in, they can create a clan for any user provided there is not one already linked to their account
+- This is the C in C.R.U.D as the user with clan representative access or admin can create a clan page
+
+![picture of clan creation page](readme-pics/clan-creation-page.png)
+
+**Notification Page**
+
+- All signed in users will see a notifications link in the navigation bar
+- When clicking on the notifications link as an admin user, it will show all games and inbound messages for all users
+- When clicking on the notifications link as a clan representative, it will show all outbound messages and games related to them, split between game requests sent and received 
+- When clicking on the notifications link as a non-clan rep, it will only show outbound messages to admin
+- Each message and game requests has  a button next to it which when clicked, will display the full message in a separate webpage
+
+**Admin notification page and ticket – inbound messages**
+
+- When an admin user clicks on notifications, they will see all messages sent to them.
+- Admin must click on the button link next to the message to view it in full
+- When viewing the full message, they have the ability to update the status of the admin ticket to one of the following 3 options:  in-progress, accepted or cancelled.
+
+**Admin Page**
+
+![picture of clan creation Notification Page](readme-pics/admin-notification-page.png)
+
+**Admin Ticket Message**
+
+![picture of individual notification message](readme-pics/notification-message.png)
+
+**Raise Admin Ticket**
+
+![picture of individual notification message](readme-pics/admin-ticket-page.png)
+
+
+**Clan Representative and logged in user outbound messages**
+
+- Clan representative and non-clan representative users will be shown the below notification page and outbound message section when they click the notifications link.
+- They will see all messages they have sent out to admin
+- These can be viewed by clicking the button next to each admin ticket raised
+- Initially in table form, the outbound message will contain limited information 
+- The user can view the full message. The status of the message is shown in the table and on the full admin ticket message
+
+**Clan Representative Page**
+
+![picture of Clan Representative Notification Page](readme-pics/notifications-page-clan-rep-user.png)
+
+**Non Clan Representative Page**
+
+![picture of Non Clan Representative Notification Page](readme-pics/notifications-page-non-clan-rep-user.png)
+
+**Notifications – game request**
+
+- Clan representatives and admin users have the ability to either accept or decline game requests
+- Clan representatives can only do this for game requests that they have received 
+- An admin user can accept or deny all game requests that have been sent
+- A user can see all game requests sent and received from other clan users to them
+- Initially the game requests will be displayed in a table form with limited information.
+
+**Notifications – game request - Admin**
+
+![picture of admin game requests on Notification Page](readme-pics/admin-notification-game-requests.png)
+
+**Notifications – game request - Clan Representative**
+
+![picture of Clan Representative game requests on Notification Page](readme-pics/clan-rep-notification-game-requests.png)
+
+**Upcoming games clan page**
+
+- Each clan page has a section at the bottom which displays match requests
+- These match requests will be games that the clan owner has agreed to play
+- They will display the details of the upcoming game
+- If a clan does not have any games that have been accepted, this section will not be displayed
+
+![picture of Non Clan Representative Notification Page](readme-pics/clan-page-game-requests-accepted.png)
+
+**Clan page**
+
+- When the user clicks on a link for one of the clan pages they will be taken to the full clan page
+- The clan page displays the name of the clan at the top, below that and to the left, is the user linked to the clan and if the clan has a logo, it is placed to the right. 
+- Below that is the main content of the clan page and either a discord or website link if they have a social media page.
+- Below that are the edit and delete buttons for the clan page, which will only be visible for the user linked to the clan page and to admin
+- This is the R in C.R.U.D as all users who visit the site are able to click on a clan page and view the full clan details
+
+![picture of Clan Page](readme-pics/clan-page-game-requests-accepted.png)
+
+**Edit Clan Page**
+
+- This is the page the user will see when they click the edit button
+- Here, they can edit all the content of the page that would appear on the clan page
+- There is also a section that allows users to upload images
+- Before the form can be submitted, they must fill out all the relevant fields
+- On submission, the logged in user’s name is checked to see if they are the clan owner or admin
+- Once submitted a confirmation message will appear
+- This is the R in C.R.U.D as the clan representative linked to the clan page and admin can update the content of the page
+
+![picture of Edit Clan Page](readme-pics/edit-clan-page.png)
+
+**Raise Admin Ticket**
+
+- For logged in users, there will be a button that appears on the top left of the page
+- When they click the button they are taken to an form
+- The form will be partially pre-filled with the users username in the ‘From’ input and admin in the ‘To’ input
+- The user can add in any text they wish into the text field before submitting  the form
+- Validation has been included so that if nothing is entered in the text field, the form will not send
+
+![picture of Admin Ticket Request Page](readme-pics/raise-admin-ticket.png).
+
+**Delete Clan Page**
+
+- Here you can see the pop up that appears when the clan representative or admin clicks delete
+- A 2 part check is carried out to confirm clan representative wants to delete clan
+- The 2 part check stops accidental deletion
+- This is the D in C.R.U.D as the clan representative linked to the clan page and admin can delete the clan page
+
+![picture of delete Clan Page pop up](readme-pics/delete-clan-page-popup.png)
+
+
+## Future Implementations
+
+- Search bar – this search bar will appear on the homepage and allow a user to input the name of a clan without having to search through them all
+- Notification bar will change colour for unread messages – this feature would alert the user to a new notification as the notification link in the navigation bar would change colour to show that they have a new message
+- Distinction between read and unread message – when a user looks through their messages they would be able to see which messages they had read and which they had left to check
+- 2-way communication – the admin ticket system would be updated so that both admin and logged in users could communicate regarding a ticket that had been raised and submitted to the admin team
+- Comments under clan pages – under each of the clan pages. a comments section would be added so that users with an account could leave comments regarding the clan
+
